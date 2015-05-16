@@ -1,0 +1,9 @@
+.obj/
+LibMiniLib
+Pping.Linux
+Pping.BSD
+Proxy
+*.py
+*.swp
+*.swo
+*.~
