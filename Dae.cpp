@@ -1,0 +1,232 @@
+/*-
+ * Copyright 2015 - Polite Ping Software Foundation - All rights reserved.
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions
+ * are met:
+ * 1. Redistributions of source code must retain the above copyright
+ *	notice, this list of conditions and the following disclaimer.
+ * 2. Redistributions in binary form must reproduce the above copyright
+ *	notice, this list of conditions and the following disclaimer in the
+ *	documentation and/or other materials provided with the distribution.
+ * 3. All advertising materials mentioning features or use of this software
+ *	must display the following acknowledgement:
+ *	This product includes software developed by the Polite Ping Software
+ *	 Foundation and its contributors.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE REGENTS AND CONTRIBUTORS ``AS IS'' AND
+ * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ * ARE DISCLAIMED.  IN NO EVENT SHALL THE REGENTS OR CONTRIBUTORS BE LIABLE
+ * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+ * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+ * OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+ * HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+ * LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+ * OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+ * SUCH DAMAGE.
+ *
+ */
+
+#include <memory>
+#ifndef __FreeBSD__
+#include <linux/if_tun.h>
+#endif
+
+#include "Debug.h"
+#include "Singleton.h"
+#include "Deque.h"
+#include "TunTap.h"
+#include "CraftRaw.h"
+#include "SockHandler.h"
+#include "SockNetwork.h"
+#include "SockTransport.h"
+#include "SockPresentation.h"
+
+#include "ProxyConf.h"
+#include "Check.h"
+#include "Dae.h"
+#include "Iface.h"
+#include "Proto.h"
+
+namespace Proxy {
+
+BaseSocket::BaseSocket()
+	: confh(__(Check::PConf)),
+	  logh(__(Debug::Debug))
+{
+	logh->Log("[BaseSocket::BaseSocket]");
+}
+
+BaseSocket::~BaseSocket()
+{
+	logh->Log("[BaseSocket::~BaseSocket]");
+}
+
+/*
+ * Inner socket initialization:
+ * create TUN devices and add IPv6 (IPv4) address and routes
+ */
+void InnerSocket::Init()
+{
+	logh->Log("[InnerSocket::Init]");
+	iface->Alloc();
+	iface->Up();
+	app = std::make_shared<Iface>(iface);
+	if (confh->Client()) {
+		iface->Addr6(std::string(TCADDR6));
+		/* iface->SSRoute6(); */
+		iface->SDRoute6();
+#ifdef DONOTDISABLEV4
+		iface->Addr4(std::string(TCADDR4));
+		iface->SSRoute4();
+		iface->SDRoute4();
+#endif
+	} else {
+		iface->Addr6(std::string(TSADDR6));
+#ifdef DONOTDISABLEV4
+		iface->Addr4(std::string(TSADDR4));
+#endif
+	}
+	if (Check::DConf::GetReset() && confh->Client()) {
+		iface->RRoute6();
+#ifdef DONOTDISABLEV4
+		iface->RRoute4();
+#endif
+	}
+}
+
+/*
+ * Inner socket infinite loop
+ * I/O through TUN device
+ */
+void InnerSocket::Run()
+{
+	logh->Log("[InnerSocket::Run]");
+	app->Run();
+	if (confh->Client()) {
+		iface->RRoute6();
+#ifdef DONOTDISABLEV4
+		iface->RRoute4();
+#endif
+	}
+}
+
+InnerSocket::InnerSocket()
+	: BaseSocket(),
+#ifdef __FreeBSD__
+	  iface(std::make_shared<TunTap::Interface>(0,
+	      confh->Tun(), confh->Addr())),
+#else
+	  iface(std::make_shared<TunTap::Interface>(IFF_TUN|IFF_NO_PI,
+	      confh->Tun(), confh->Addr())),
+#endif
+	  app(nullptr)
+{
+	logh->Log("[InnerSocket::InnerSocket]");
+}
+
+InnerSocket::~InnerSocket()
+{
+	logh->Log("[InnerSocket::~InnerSocket]");
+	iface->Close();
+}
+
+/*
+ * Outer socket client initialization:
+ * configure socket descriptor (message in COR)
+ */
+void OuterSocket::InitClient()
+{
+	logh->Log("[OuterSocket::InitClient]");
+	sd->SetMode(ModeClient);
+	sd->SetPort(Active, confh->Port());
+	sd->SetBuff(const_cast<char*>((confh->Addr()).c_str()));
+	tls->Getaddrinfo(sd);
+}
+
+/*
+ * Outer socket server initialization:
+ * configure socket descriptor (message in COR)
+ */
+void OuterSocket::InitServer()
+{
+	logh->Log("[OuterSocket::InitServer]");
+	sd->SetMode(ModeServer);
+	sd->SetAddr(Passive, confh->Addr());
+	sd->SetPort(Passive, confh->Port());
+        sd->SetOptlevel(SOL_SOCKET);
+        sd->SetOptname(SO_REUSEADDR);
+	int opt=1;
+        sd->SetOptval(reinterpret_cast<char*>(&opt));
+        sd->SetOptlen(sizeof(opt));
+}
+
+/*
+ * Initialize SSL
+ */
+void OuterSocket::InitSsl()
+{
+	logh->Log("[OuterSocket::InitSsl]: key", confh->Key());
+	logh->Log("[OuterSocket::InitSsl]: X509", confh->Cert());
+	sd->SetKeypath(confh->Key());
+	sd->SetCertpath(confh->Cert());
+}
+
+/*
+ * Outer socket initialization:
+ * configure the Chain of Responsibility (TCP/IP stack) and its message (sd)
+ * IPv6 server on dual-stack host can service both IPv6 and IPv4
+ * IPv6 client on dual-stack host can communicate with IPv6 and IPv4 servers
+ * ... hence -> IPv6
+ */
+void OuterSocket::Init()
+{
+	logh->Log("[OuterSocket::Init]");
+	if (confh->Client())
+		app = std::make_shared<StreamClient>();
+	else
+		app = std::make_shared<StreamServer>();
+	tls = std::make_shared<Layer::SockTls>();
+	tcp = std::make_shared<Layer::SockTcp>();
+	ip = std::make_shared<Layer::SockIp<Layer::IA6,Layer::SAI6>>(IPv6);
+	sd = std::make_shared<Layer::ActiveSock<Layer::IA6,Layer::SAI6>>(IPv6);
+	tls->SetSucc(tcp);
+	tcp->SetSucc(ip);
+	if (confh->Client())
+		InitClient();
+	else
+		InitServer();
+	InitSsl();
+	app->SetHandler(tls);
+	app->SetSocket(sd);
+	app->Init();
+}
+
+/*
+ * Outer socket infinite loop
+ * TLS I/O
+ */
+void OuterSocket::Run()
+{
+	logh->Log("[OuterSocket::Run]");
+	app->Run();
+}
+
+OuterSocket::OuterSocket()
+	: BaseSocket(),
+	  sd(nullptr),
+	  app(nullptr),
+	  tls(nullptr),
+	  tcp(nullptr),
+	  ip(nullptr)
+{
+	logh->Log("[OuterSocket::OuterSocket]");
+}
+
+OuterSocket::~OuterSocket()
+{
+	logh->Log("[OuterSocket::~OuterSocket]");
+}
+} /* namespace Proxy */
+/* tabstop=8 */
