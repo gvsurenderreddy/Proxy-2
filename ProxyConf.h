@@ -63,9 +63,9 @@
 #endif
 
 /* key */
-#define NESTKEY "certs/proxy-key.pem"
+#define NESTKEY "certs/nest.politeping.com-key.pem"
 /* certificate */
-#define NESTX  "certs/proxy-cert.pem"
+#define NESTX  "certs/nest.politeping.com-cert.pem"
 /* cacertificate */
 #define NESTCAX  "certs/cacert.pem"
 
