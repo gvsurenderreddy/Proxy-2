@@ -103,6 +103,10 @@ void DConf::Config(const std::string _k, const std::string _v)
 		logh->Log("[DConf::Config]: MaxBuffer:", _v);
 		max = atoi(_v.c_str());
 		break;
+	case IAUTO:
+		logh->Log("[DConf::Config]: Iface auto-conf:", _v);
+		std::istringstream(_v) >> std::boolalpha >> iauto;
+		break;
 	};
 }
 
@@ -116,6 +120,8 @@ void *DConf::Config(const std::string _k)
 		return &guard;
 	case MAX:
 		return &max;
+	case IAUTO:
+		return &iauto;
 	default:
 		return nullptr;
 	};
@@ -162,6 +168,11 @@ DConf::DConf()
 	max = MAX_BUFF;
 #else
 	max = 131072;
+#endif
+#ifdef IAUTO
+	iauto = true;
+#else
+	iauto = false;
 #endif
 	logh->Log("[DConf::DConf]");
 }
@@ -349,6 +360,7 @@ void PConf::Help() const
 	std::cout << "Options:" << std::endl;
 	std::cout << "\t [-a] set address (client mode)" << std::endl;
 	std::cout << "\t [-d] set daemon mode" << std::endl;
+	std::cout << "\t [-i] set interface auto-conf mode" << std::endl;
 	std::cout << "\t [-p] set port" << std::endl;
 	std::cout << "\t [-t] set interface" << std::endl;
 	std::cout << std::endl;
@@ -382,6 +394,11 @@ const uint16_t PConf::Guard() const
 const uint32_t PConf::Max() const
 {
 	return *(static_cast<const uint16_t*>(dconf->Config(MAX)));
+}
+
+const bool PConf::Iauto() const
+{
+	return *(static_cast<const bool*>(dconf->Config(IAUTO)));
 }
 
 const std::string PConf::Addr() const
@@ -481,16 +498,19 @@ PConf::PConf(int argc, char** argv)
 			case 'd':
 				dconf->Config(DAEMON, "true");
 				break;
-                        case 'p':                                               
-                                if (--argc)                                     
-                                        if (argv[1][0] != '-') {                
-                                                cconf->Config(PORT,
-                                                    std::string(*++argv));       
-                                                argv[0][1] = 0;                 
-                                                break;                          
-                                        }                                       
-                                Help();                                         
-                                exit(0);
+			case 'i':
+				dconf->Config(IAUTO, "true");
+				break;
+			case 'p':
+				if (--argc)
+					if (argv[1][0] != '-') {
+						cconf->Config(PORT,
+						    std::string(*++argv));
+						argv[0][1] = 0;
+						break;
+					}
+				Help();
+				exit(0);
 			case 't':
 				if (--argc)
 					if (argv[1][0] != '-') {

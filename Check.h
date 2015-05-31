@@ -47,7 +47,7 @@ namespace Debug {
 namespace Check {
 
 enum ConfType {PTYPE=3, PPROTO=5};
-enum ServType {DAEMON=1, SAFE, MAX};
+enum ServType {DAEMON=1, SAFE, MAX, IAUTO};
 enum ProtoType {CLIENT=1, ADDR, PORT, KEY, X509, TUNI};
 
 class IConf {
@@ -72,6 +72,7 @@ private:
 	bool daemonize;
 	uint16_t guard;
 	uint32_t max;
+	bool iauto;
 	static bool reset;
 	static bool config;
 public:
@@ -125,6 +126,7 @@ public:
 	const bool Daemon() const;
 	const uint16_t Guard() const;
 	const uint32_t Max() const;
+	const bool Iauto() const;
 	const std::string Addr() const;
 	const uint16_t Port() const;
 	const std::string Key() const;
