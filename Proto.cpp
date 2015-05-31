@@ -277,7 +277,10 @@ void StreamClient::Init()
 void StreamClient::Run()
 {
 	logh->Log("[StreamClient::Run]");
-	Selector();
+	if (!Check::DConf::GetReset() && !sd->GetError()->Get())
+		Selector();
+	else if (!Check::DConf::GetReset())
+		Check::DConf::SetReset();
 }
 
 StreamClient::StreamClient(std::shared_ptr<Layer::BaseSock> _s,
@@ -467,7 +470,7 @@ void StreamServer::Run()
 {
 	logh->Log("[StreamServer::Run]");
 	sp->Set(sd->GetSd(0), sd);
-	while (!Check::DConf::GetReset()) {
+	while (!Check::DConf::GetReset() && !sd->GetError()->Get()) {
 		timeval ts={confh->Guard()*AF/F, U};
 		fd_set rds;
 		auto maxfd=sd->GetSd(0)+1;
@@ -494,6 +497,8 @@ void StreamServer::Run()
 		}
 		Summary();
 	}
+	if (!Check::DConf::GetReset())
+		Check::DConf::SetReset();
 }
 
 StreamServer::StreamServer(std::shared_ptr<Layer::BaseSock> _s,

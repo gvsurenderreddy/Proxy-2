@@ -65,7 +65,7 @@ BaseSocket::~BaseSocket()
 
 /*
  * Inner socket initialization:
- * create TUN devices and add IPv6 (IPv4) address and routes
+ * create TUN devices and add IPv6 (IPv4) address and routes (if auto-conf)
  */
 void InnerSocket::Init()
 {
@@ -75,12 +75,8 @@ void InnerSocket::Init()
 	app = std::make_shared<Iface>(iface);
 	if (confh->Client()) {
 		iface->Addr6(std::string(TCADDR6));
-		/* iface->SSRoute6(); */
-		iface->SDRoute6();
 #ifdef DONOTDISABLEV4
 		iface->Addr4(std::string(TCADDR4));
-		iface->SSRoute4();
-		iface->SDRoute4();
 #endif
 	} else {
 		iface->Addr6(std::string(TSADDR6));
@@ -88,7 +84,16 @@ void InnerSocket::Init()
 		iface->Addr4(std::string(TSADDR4));
 #endif
 	}
-	if (Check::DConf::GetReset() && confh->Client()) {
+	if (confh->Client() && confh->Iauto())
+	{
+		//iface->SSRoute6();
+		iface->SDRoute6();
+#ifdef DONOTDISABLEV4
+		iface->SSRoute4();
+		iface->SDRoute4();
+#endif
+	}
+	if (Check::DConf::GetReset() && confh->Client() && confh->Iauto()) {
 		iface->RRoute6();
 #ifdef DONOTDISABLEV4
 		iface->RRoute4();
@@ -104,7 +109,7 @@ void InnerSocket::Run()
 {
 	logh->Log("[InnerSocket::Run]");
 	app->Run();
-	if (confh->Client()) {
+	if (confh->Client() && confh->Iauto()) {
 		iface->RRoute6();
 #ifdef DONOTDISABLEV4
 		iface->RRoute4();
