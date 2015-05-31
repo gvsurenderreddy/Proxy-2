@@ -48,7 +48,7 @@ namespace Check {
 
 enum ConfType {PTYPE=3, PPROTO=5};
 enum ServType {DAEMON=1, SAFE, MAX, IAUTO};
-enum ProtoType {CLIENT=1, ADDR, PORT, KEY, X509, TUNI};
+enum ProtoType {CLIENT=1, ADDR, PORT, KEY, X509, CAX, TUNI};
 
 class IConf {
 protected:
@@ -94,6 +94,7 @@ private:
 	std::string cwd;
 	std::string key;
 	std::string cert;
+	std::string cax;
 	std::string tun;
 	static bool status;
 public:
@@ -131,6 +132,7 @@ public:
 	const uint16_t Port() const;
 	const std::string Key() const;
 	const std::string Cert() const;
+	const std::string Cax() const;
 	const std::string Tun() const;
 	void Static(const std::string) const;
 	void Dynamic(const std::string) const;

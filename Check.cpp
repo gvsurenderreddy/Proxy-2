@@ -206,6 +206,10 @@ void CConf::Config(const std::string _k, const std::string _v)
 		logh->Log("[CConf::Config]: certificate path", _v);
 		cert = cwd + _v;
 		break;
+	case CAX:
+		logh->Log("[CConf::Config]: cacertificate path", _v);
+		cax = cwd + _v;
+		break;
 	case TUNI:
 		logh->Log("[CConf::Config]: tun interface", _v);
 		tun = _v;
@@ -226,6 +230,8 @@ void *CConf::Config(const std::string _k)
 		return &key;
 	case X509:
 		return &cert;
+	case CAX:
+		return &cax;
 	case TUNI:
 		return &tun;
 	default:
@@ -277,6 +283,11 @@ CConf::CConf()
 	cert = cwd + NESTX;
 #else
 	cert = "";
+#endif
+#ifdef NESTCAX
+	cax = cwd + NESTX;
+#else
+	cax = "";
 #endif
 #ifdef TUN
 	tun = TUN;
@@ -340,6 +351,8 @@ void PConf::Summary() const
 		logh->Log("[PConf::Summary]: key", Key());
 	if (!Cert().empty())
 		logh->Log("[PConf::Summary]: X509", Cert());
+	if (!Cax().empty())
+		logh->Log("[PConf::Summary]: CAX", Cax());
 	if (!Addr().empty())
 		logh->Log("[PConf::Summary]: address", Addr());
 	else
@@ -419,6 +432,11 @@ const std::string PConf::Key() const
 const std::string PConf::Cert() const
 {
 	return *(static_cast<const std::string*>(cconf->Config(X509)));
+}
+
+const std::string PConf::Cax() const
+{
+	return *(static_cast<const std::string*>(cconf->Config(CAX)));
 }
 
 const std::string PConf::Tun() const

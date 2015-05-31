@@ -174,8 +174,10 @@ void OuterSocket::InitSsl()
 {
 	logh->Log("[OuterSocket::InitSsl]: key", confh->Key());
 	logh->Log("[OuterSocket::InitSsl]: X509", confh->Cert());
+	logh->Log("[OuterSocket::InitSsl]: CAX", confh->Cax());
 	sd->SetKeypath(confh->Key());
 	sd->SetCertpath(confh->Cert());
+	sd->SetCacertpath(confh->Cax());
 }
 
 /*
