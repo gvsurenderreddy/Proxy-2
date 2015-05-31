@@ -67,7 +67,7 @@
 /* certificate */
 #define NESTX  "certs/nest.politeping.com-cert.pem"
 /* cacertificate */
-#define NESTCAX  "/certs/cacert.pem"
+#define NESTCAX  "certs/cacert.pem"
 
 #undef SetPort
 #endif

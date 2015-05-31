@@ -255,9 +255,10 @@ CConf::CConf()
 	: IConf()
 {
 	char buff[256]={0};
-	if (getcwd(buff, 256))
+	if (getcwd(buff, 256)) {
 		cwd = buff;
-	else
+		cwd += '/';
+	} else
 		DConf::SetReset();
 #ifdef CLIENT_L
 	client = CLIENT;
