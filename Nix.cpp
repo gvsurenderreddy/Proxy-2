@@ -1,5 +1,5 @@
 /*-
- * Copyright 2015 - Polite Ping Software Foundation - All rights reserved.
+ * Copyright 2015 - Datagram Garden OÜ - All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
