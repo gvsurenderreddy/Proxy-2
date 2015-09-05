@@ -2,8 +2,7 @@
 certs/
 cert/
 certs
-certs.stable/
-certs.latest/
+certs/
 LibMiniLib
 Pping.Linux
 Pping.BSD
@@ -12,3 +11,6 @@ Proxy
 *.swp
 *.swo
 *.~
+*.stable
+*.latest
+*.debug
