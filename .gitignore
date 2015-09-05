@@ -1,6 +1,9 @@
 .obj/
 certs/
 cert/
+certs
+certs.stable/
+certs.latest/
 LibMiniLib
 Pping.Linux
 Pping.BSD
