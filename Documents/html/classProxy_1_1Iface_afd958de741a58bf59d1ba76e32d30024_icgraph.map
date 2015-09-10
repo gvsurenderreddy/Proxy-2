@@ -1,0 +1,5 @@
+<map id="Proxy::Iface::MultiAf" name="Proxy::Iface::MultiAf">
+<area shape="rect" id="node2" href="$classProxy_1_1Iface.html#a0a5fc7e4ffa6b2248a98176974f4af53" title="Proxy::Iface::Read" alt="" coords="196,5,328,32"/>
+<area shape="rect" id="node4" href="$classProxy_1_1Iface.html#a499ed7a6730dea2805b0f09ef72f7838" title="Proxy::Iface::Write" alt="" coords="196,56,328,83"/>
+<area shape="rect" id="node3" href="$classProxy_1_1Iface.html#adf7f34937a2db255476979639b9d5e35" title="Proxy::Iface::Run" alt="" coords="376,31,501,57"/>
+</map>

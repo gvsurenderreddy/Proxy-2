@@ -1,0 +1,10 @@
+<map id="Check::DConf::GetReset" name="Check::DConf::GetReset">
+<area shape="rect" id="node2" href="$classProxy_1_1InnerSocket.html#a2411ec94b9b2150da4e61681fe1948a2" title="Proxy::InnerSocket\l::Init" alt="" coords="245,5,379,47"/>
+<area shape="rect" id="node3" href="$classProxy_1_1StreamClient.html#a24e2b304d3c65244d401848fc5a176d2" title="Proxy::StreamClient\l::Init" alt="" coords="242,71,382,112"/>
+<area shape="rect" id="node4" href="$classProxy_1_1StreamServer.html#a3df61ac41cc76e2f141b235e1d21c79e" title="Proxy::StreamServer\l::Init" alt="" coords="240,136,384,177"/>
+<area shape="rect" id="node5" href="$Main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97" title="main" alt="" coords="448,303,499,330"/>
+<area shape="rect" id="node6" href="$classProxy_1_1Iface.html#adf7f34937a2db255476979639b9d5e35" title="Proxy::Iface::Run" alt="" coords="249,253,375,279"/>
+<area shape="rect" id="node7" href="$classProxy_1_1StreamClient.html#a97bee203bd39a66b44d11e95924a6eb2" title="Proxy::StreamClient::Run" alt="" coords="226,303,398,330"/>
+<area shape="rect" id="node8" href="$classProxy_1_1StreamServer.html#a9dc585644f185a830f15f02726c18f32" title="Proxy::StreamServer::Run" alt="" coords="224,354,400,381"/>
+<area shape="rect" id="node9" href="$classProxy_1_1Nix.html#a1a75245c92d8a55d444e843d001a98f9" title="Proxy::Nix::Tloop" alt="" coords="250,405,374,431"/>
+</map>

@@ -1,0 +1,6 @@
+<map id="Check::CConf::Status" name="Check::CConf::Status">
+<area shape="rect" id="node2" href="$classProxy_1_1StreamClient.html#a24e2b304d3c65244d401848fc5a176d2" title="Proxy::StreamClient\l::Init" alt="" coords="223,5,363,47"/>
+<area shape="rect" id="node3" href="$classProxy_1_1Iface.html#a0a5fc7e4ffa6b2248a98176974f4af53" title="Proxy::Iface::Read" alt="" coords="227,71,359,98"/>
+<area shape="rect" id="node5" href="$classProxy_1_1StreamServer.html#a9dc585644f185a830f15f02726c18f32" title="Proxy::StreamServer::Run" alt="" coords="205,122,381,149"/>
+<area shape="rect" id="node4" href="$classProxy_1_1Iface.html#adf7f34937a2db255476979639b9d5e35" title="Proxy::Iface::Run" alt="" coords="429,71,555,98"/>
+</map>
