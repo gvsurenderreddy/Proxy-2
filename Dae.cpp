@@ -145,6 +145,7 @@ void OuterSocket::InitClient()
 {
 	logh->Log("[OuterSocket::InitClient]");
 	sd->SetMode(ModeClient);
+	sd->SetMutual(true);
 	sd->SetPort(Active, confh->Port());
 	sd->SetBuff(const_cast<char*>((confh->Addr()).c_str()));
 	tls->Getaddrinfo(sd);
@@ -158,6 +159,7 @@ void OuterSocket::InitServer()
 {
 	logh->Log("[OuterSocket::InitServer]");
 	sd->SetMode(ModeServer);
+	sd->SetMutual(true);
 	sd->SetAddr(Passive, confh->Addr());
 	sd->SetPort(Passive, confh->Port());
         sd->SetOptlevel(SOL_SOCKET);
