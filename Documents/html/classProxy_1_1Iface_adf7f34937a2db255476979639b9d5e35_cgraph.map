@@ -1,7 +1,0 @@
-<map id="Proxy::Iface::Run" name="Proxy::Iface::Run">
-<area shape="rect" id="node2" href="$classCheck_1_1DConf.html#a7651ae79fddad419bd66fc6e820f5492" title="Check::DConf::GetReset" alt="" coords="179,5,349,32"/>
-<area shape="rect" id="node3" href="$classProxy_1_1Iface.html#a0a5fc7e4ffa6b2248a98176974f4af53" title="Proxy::Iface::Read" alt="" coords="198,107,330,133"/>
-<area shape="rect" id="node6" href="$classProxy_1_1Iface.html#a499ed7a6730dea2805b0f09ef72f7838" title="Proxy::Iface::Write" alt="" coords="198,56,330,83"/>
-<area shape="rect" id="node4" href="$classProxy_1_1Iface.html#afd958de741a58bf59d1ba76e32d30024" title="Proxy::Iface::MultiAf" alt="" coords="402,56,545,83"/>
-<area shape="rect" id="node5" href="$classCheck_1_1CConf.html#a16611a4200e7d2d345e2c9300f9bc419" title="Check::CConf::Status" alt="" coords="397,107,549,133"/>
-</map>

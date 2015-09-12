@@ -1,8 +1,0 @@
-<map id="main" name="main">
-<area shape="rect" id="node2" href="$classCheck_1_1DConf.html#a7651ae79fddad419bd66fc6e820f5492" title="Check::DConf::GetReset" alt="" coords="277,81,448,108"/>
-<area shape="rect" id="node3" href="$Main_8cpp.html#a674aa4fad49cd7d8b4b6ce7614082e58" title="sig" alt="" coords="147,5,185,32"/>
-<area shape="rect" id="node5" href="$classProxy_1_1Nix.html#a4a727222dbe3bc56594930910e7df68d" title="Proxy::Nix::Tinit" alt="" coords="107,107,225,133"/>
-<area shape="rect" id="node6" href="$classProxy_1_1Nix.html#a1a75245c92d8a55d444e843d001a98f9" title="Proxy::Nix::Tloop" alt="" coords="104,157,228,184"/>
-<area shape="rect" id="node4" href="$classCheck_1_1DConf.html#a2a457fbfa18428922b30340daa2b36de" title="Check::DConf::SetReset" alt="" coords="278,5,447,32"/>
-<area shape="rect" id="node7" href="$classCheck_1_1DConf.html#afc21c7932c994ba8a700397f540d7c6e" title="Check::DConf::GetConfig" alt="" coords="276,157,449,184"/>
-</map>
