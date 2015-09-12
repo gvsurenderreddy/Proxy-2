@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.8"/>
-<title>MiniLib: Proto.cpp Source File</title>
+<title>Proxy: Proto.cpp Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -29,7 +29,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">MiniLib
+   <div id="projectname">Proxy
    </div>
   </td>
  </tr>
@@ -92,7 +92,7 @@ $(document).ready(function(){initNavTree('Proto_8cpp_source.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Data Structures</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Data Structures</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -139,17 +139,17 @@ $(document).ready(function(){initNavTree('Proto_8cpp_source.html','');});
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#include &lt;map&gt;</span></div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#include &lt;algorithm&gt;</span></div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor">#include &quot;Debug.h&quot;</span></div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="preprocessor">#include &quot;Lock.h&quot;</span></div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="preprocessor">#include &quot;Singleton.h&quot;</span></div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor">#include &quot;Deque.h&quot;</span></div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="preprocessor">#include &quot;ExecUnit.h&quot;</span></div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="preprocessor">#include &quot;Decorator.h&quot;</span></div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="preprocessor">#include &quot;Memory.h&quot;</span></div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="preprocessor">#include &quot;ThreadsBase.h&quot;</span></div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="preprocessor">#include &quot;Threads.h&quot;</span></div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="preprocessor">#include &quot;SockHandler.h&quot;</span></div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="preprocessor">#include &quot;Headers.h&quot;</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="Debug_8h.html">Debug.h</a>&quot;</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="Lock_8h.html">Lock.h</a>&quot;</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="Singleton_8h.html">Singleton.h</a>&quot;</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="Deque_8h.html">Deque.h</a>&quot;</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="ExecUnit_8h.html">ExecUnit.h</a>&quot;</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="Decorator_8h.html">Decorator.h</a>&quot;</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="Memory_8h.html">Memory.h</a>&quot;</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="ThreadsBase_8h.html">ThreadsBase.h</a>&quot;</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="Threads_8h.html">Threads.h</a>&quot;</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="SockHandler_8h.html">SockHandler.h</a>&quot;</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="Headers_8h.html">Headers.h</a>&quot;</span></div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="ProxyConf_8h.html">ProxyConf.h</a>&quot;</span></div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="Check_8h.html">Check.h</a>&quot;</span></div>
@@ -165,12 +165,12 @@ $(document).ready(function(){initNavTree('Proto_8cpp_source.html','');});
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="keyword"></span>{</div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        <span class="keywordtype">int</span> lenght=0;</div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        <span class="keywordflow">if</span> (reinterpret_cast&lt;Craft::ip*&gt;(_buff)-&gt;ip_v == 6) {</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;                <span class="keyword">auto</span> ip6_h=<span class="keyword">reinterpret_cast&lt;</span>Craft::ip6*<span class="keyword">&gt;</span>(_buff);</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;                <span class="keyword">auto</span> ip6_h=<span class="keyword">reinterpret_cast&lt;</span><a class="code" href="structCraft_1_1ip6.html">Craft::ip6</a>*<span class="keyword">&gt;</span>(_buff);</div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;                lenght = ntohs(ip6_h-&gt;ip6_plen)+40;</div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;                <a class="code" href="classProxy_1_1ProtoBase.html#aa22293900dba2fd6c8e60c38ad59701e">logh</a>-&gt;Log(<span class="stringliteral">&quot;[ProtoBase::Lenght]: IPv6 of&quot;</span>, lenght);</div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="preprocessor">#ifdef DONOTDISABLEV4</span></div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;                <span class="keyword">auto</span> ip_h=<span class="keyword">reinterpret_cast&lt;</span>Craft::ip*<span class="keyword">&gt;</span>(_buff);</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;                <span class="keyword">auto</span> ip_h=<span class="keyword">reinterpret_cast&lt;</span><a class="code" href="structCraft_1_1ip.html">Craft::ip</a>*<span class="keyword">&gt;</span>(_buff);</div>
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;                lenght = ntohs(ip_h-&gt;ip_len);</div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;                <a class="code" href="classProxy_1_1ProtoBase.html#aa22293900dba2fd6c8e60c38ad59701e">logh</a>-&gt;Log(<span class="stringliteral">&quot;[ProtoBase::Lenght]: IPv4 of&quot;</span>, lenght);</div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="preprocessor">#endif</span></div>
@@ -272,13 +272,13 @@ $(document).ready(function(){initNavTree('Proto_8cpp_source.html','');});
 <div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;</div>
 <div class="line"><a name="l00165"></a><span class="lineno"><a class="line" href="classProxy_1_1ProtoBase.html#ae439268320f5dcc074b049c40dce791e">  165</a></span>&#160;<a class="code" href="classProxy_1_1ProtoBase.html#ae439268320f5dcc074b049c40dce791e">ProtoBase::ProtoBase</a>(std::shared_ptr&lt;Layer::BaseSock&gt; _s,</div>
 <div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;    std::shared_ptr&lt;Layer::SockHandler&gt; _h) </div>
-<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;        : dh(Singleton::_&lt;<a class="code" href="namespaceDeque.html">Deque</a>::<a class="code" href="namespaceDeque.html">Deque</a>&lt;int, char*&gt;&gt;()),</div>
-<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;          mp(__(<a class="code" href="namespaceMemory.html">Memory</a>::MemoryPool)),</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;        : dh(<a class="code" href="namespaceSingleton.html">Singleton</a>::<a class="code" href="namespaceSingleton.html#af869352dbb84905a4956bedf1411ebf2">_</a>&lt;<a class="code" href="namespaceDeque.html">Deque</a>::<a class="code" href="namespaceDeque.html">Deque</a>&lt;int, char*&gt;&gt;()),</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;          mp(<a class="code" href="Singleton_8h.html#a798d57b6fad3ea2438d29cd51a116ba1">__</a>(<a class="code" href="namespaceMemory.html">Memory</a>::MemoryPool)),</div>
 <div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;          exc(nullptr),</div>
-<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;          confh(__(<a class="code" href="namespaceCheck.html">Check</a>::PConf)),</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;          confh(<a class="code" href="Singleton_8h.html#a798d57b6fad3ea2438d29cd51a116ba1">__</a>(<a class="code" href="namespaceCheck.html">Check</a>::PConf)),</div>
 <div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;          sh(_h),</div>
 <div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;          sd(_s),</div>
-<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;          logh(__(<a class="code" href="namespaceDebug.html">Debug</a>::<a class="code" href="namespaceDebug.html">Debug</a>))</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;          logh(<a class="code" href="Singleton_8h.html#a798d57b6fad3ea2438d29cd51a116ba1">__</a>(<a class="code" href="namespaceDebug.html">Debug</a>::<a class="code" href="namespaceDebug.html">Debug</a>))</div>
 <div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;{</div>
 <div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;        <a class="code" href="classProxy_1_1ProtoBase.html#aa22293900dba2fd6c8e60c38ad59701e">logh</a>-&gt;Log(<span class="stringliteral">&quot;[ProtoBase::ProtoBase]&quot;</span>);</div>
 <div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;        <span class="keyword">auto</span> ee=std::make_shared&lt;ExecUnit::Eunit&lt;int, ProtoBase*&gt;&gt;</div>
@@ -408,7 +408,7 @@ $(document).ready(function(){initNavTree('Proto_8cpp_source.html','');});
 <div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;<span class="comment"> */</span></div>
 <div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;<span class="keywordtype">int</span>&amp; StreamServer::Csd::operator[](uint64_t _k)</div>
 <div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;{</div>
-<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;        Lock::Lock l(&amp;csl);</div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;        <a class="code" href="classLock_1_1Lock.html">Lock::Lock</a> l(&amp;csl);</div>
 <div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;        <span class="keywordflow">return</span> _csd[_k];</div>
 <div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;}</div>
 <div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;</div>
@@ -417,7 +417,7 @@ $(document).ready(function(){initNavTree('Proto_8cpp_source.html','');});
 <div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;<span class="comment"> */</span></div>
 <div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;<span class="keywordtype">void</span> StreamServer::Csd::Erase(uint64_t _k)</div>
 <div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;{</div>
-<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;        Lock::Lock l(&amp;csl);</div>
+<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;        <a class="code" href="classLock_1_1Lock.html">Lock::Lock</a> l(&amp;csl);</div>
 <div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;        _csd.erase(_k);</div>
 <div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;}</div>
 <div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;</div>
@@ -455,14 +455,14 @@ $(document).ready(function(){initNavTree('Proto_8cpp_source.html','');});
 <div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;        sp-&gt;Set(sd-&gt;GetSd(1), nsd);</div>
 <div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;        <span class="keyword">auto</span> st=std::make_shared&lt;Threads::SmartThread&gt;([](<span class="keywordtype">void</span> *_t)-&gt;<span class="keywordtype">void</span>* {</div>
 <div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;                <span class="keyword">auto</span> _x=<span class="keyword">static_cast&lt;</span><a class="code" href="classProxy_1_1StreamServer.html#ab7a5df1128a00710ce0fb7e371ef57cd">StreamServer</a>*<span class="keyword">&gt;</span>(_t);</div>
-<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;                __(Debug::Debug)-&gt;Log(<span class="stringliteral">&quot;[StreamServer::HandleConn]: spawning&quot;</span>);</div>
+<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;                <a class="code" href="Singleton_8h.html#a798d57b6fad3ea2438d29cd51a116ba1">__</a>(<a class="code" href="classDebug_1_1Debug.html">Debug::Debug</a>)-&gt;Log(<span class="stringliteral">&quot;[StreamServer::HandleConn]: spawning&quot;</span>);</div>
 <div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;                _x-&gt;Selector();</div>
 <div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
 <div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;        }, (<span class="keywordtype">void</span>*)<span class="keyword">this</span>);</div>
 <div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;        <a class="code" href="classProxy_1_1ProtoBase.html#aa22293900dba2fd6c8e60c38ad59701e">logh</a>-&gt;Log(<span class="stringliteral">&quot;[StreamServer::HandleConn]: setting connected socket for&quot;</span>,</div>
 <div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;            st-&gt;Uid());</div>
 <div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;        csd[st-&gt;Uid()] = sd-&gt;GetSd(1);</div>
-<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;        Threads::STI sti;</div>
+<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;        <a class="code" href="namespaceThreads.html#aa82e2583acb8bf15f18de555e0df88c2">Threads::STI</a> sti;</div>
 <div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;        tp-&gt;Add(st, &amp;sti);</div>
 <div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;</div>
 <div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;        <span class="comment">/* current version only supports one connection */</span></div>
@@ -478,7 +478,7 @@ $(document).ready(function(){initNavTree('Proto_8cpp_source.html','');});
 <div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;<span class="comment"> */</span></div>
 <div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;<span class="keywordtype">void</span> StreamServer::Selector()</div>
 <div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;{</div>
-<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;        <span class="keyword">auto</span> tt=tp-&gt;Get(Threads::ThreadBase::Pself());</div>
+<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;        <span class="keyword">auto</span> tt=tp-&gt;Get(<a class="code" href="classThreads_1_1ThreadBase.html#a9fe2a8cd6da94ec161c7ff5c692410c5">Threads::ThreadBase::Pself</a>());</div>
 <div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;        <a class="code" href="classProxy_1_1ProtoBase.html#aa22293900dba2fd6c8e60c38ad59701e">logh</a>-&gt;Log(<span class="stringliteral">&quot;[StreamServer::Selector]: getting for&quot;</span>, tt-&gt;Uid());</div>
 <div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;        <span class="keywordtype">int</span> fd=csd[tt-&gt;Uid()];</div>
 <div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;        <span class="keywordtype">int</span> dd=<a class="code" href="classProxy_1_1ProtoBase.html#a1965edb4bb5dce0ff84d191aa3d08541">dh</a>-&gt;FdDirect();</div>
@@ -613,8 +613,8 @@ $(document).ready(function(){initNavTree('Proto_8cpp_source.html','');});
 <div class="line"><a name="l00505"></a><span class="lineno">  505</span>&#160;    std::shared_ptr&lt;Layer::SockHandler&gt; _h) </div>
 <div class="line"><a name="l00506"></a><span class="lineno">  506</span>&#160;        : <a class="code" href="classProxy_1_1ProtoBase.html">ProtoBase</a>(_s, _h),</div>
 <div class="line"><a name="l00507"></a><span class="lineno">  507</span>&#160;          csd(),</div>
-<div class="line"><a name="l00508"></a><span class="lineno">  508</span>&#160;          sp(__(<a class="code" href="namespaceLayer.html">Layer</a>::SockPool)),</div>
-<div class="line"><a name="l00509"></a><span class="lineno">  509</span>&#160;          tp(__(<a class="code" href="namespaceThreads.html">Threads</a>::ThreadPool))</div>
+<div class="line"><a name="l00508"></a><span class="lineno">  508</span>&#160;          sp(<a class="code" href="Singleton_8h.html#a798d57b6fad3ea2438d29cd51a116ba1">__</a>(<a class="code" href="namespaceLayer.html">Layer</a>::SockPool)),</div>
+<div class="line"><a name="l00509"></a><span class="lineno">  509</span>&#160;          tp(<a class="code" href="Singleton_8h.html#a798d57b6fad3ea2438d29cd51a116ba1">__</a>(<a class="code" href="namespaceThreads.html">Threads</a>::ThreadPool))</div>
 <div class="line"><a name="l00510"></a><span class="lineno">  510</span>&#160;{</div>
 <div class="line"><a name="l00511"></a><span class="lineno">  511</span>&#160;        <a class="code" href="classProxy_1_1ProtoBase.html#aa22293900dba2fd6c8e60c38ad59701e">logh</a>-&gt;Log(<span class="stringliteral">&quot;[StreamServer::StreamServer]&quot;</span>);</div>
 <div class="line"><a name="l00512"></a><span class="lineno">  512</span>&#160;}</div>
@@ -626,6 +626,7 @@ $(document).ready(function(){initNavTree('Proto_8cpp_source.html','');});
 <div class="line"><a name="l00518"></a><span class="lineno">  518</span>&#160;}</div>
 <div class="line"><a name="l00519"></a><span class="lineno">  519</span>&#160;} <span class="comment">/* namespace Proxy */</span></div>
 <div class="line"><a name="l00520"></a><span class="lineno">  520</span>&#160;<span class="comment">/* tabstop=8 */</span></div>
+<div class="ttc" id="Decorator_8h_html"><div class="ttname"><a href="Decorator_8h.html">Decorator.h</a></div></div>
 <div class="ttc" id="Check_8h_html"><div class="ttname"><a href="Check_8h.html">Check.h</a></div></div>
 <div class="ttc" id="classProxy_1_1ProtoBase_html_abb1997d8f8b94ab198a412fe1468ec51"><div class="ttname"><a href="classProxy_1_1ProtoBase.html#abb1997d8f8b94ab198a412fe1468ec51">Proxy::ProtoBase::SetHandler</a></div><div class="ttdeci">void SetHandler(std::shared_ptr&lt; Layer::SockHandler &gt;)</div><div class="ttdef"><b>Definition:</b> <a href="Proto_8cpp_source.html#l00129">Proto.cpp:129</a></div></div>
 <div class="ttc" id="classProxy_1_1ProtoBase_html_aa22293900dba2fd6c8e60c38ad59701e"><div class="ttname"><a href="classProxy_1_1ProtoBase.html#aa22293900dba2fd6c8e60c38ad59701e">Proxy::ProtoBase::logh</a></div><div class="ttdeci">std::shared_ptr&lt; Debug::Debug &gt; logh</div><div class="ttdef"><b>Definition:</b> <a href="Proto_8h_source.html#l00079">Proto.h:79</a></div></div>
@@ -633,39 +634,58 @@ $(document).ready(function(){initNavTree('Proto_8cpp_source.html','');});
 <div class="ttc" id="namespaceLayer_html"><div class="ttname"><a href="namespaceLayer.html">Layer</a></div><div class="ttdef"><b>Definition:</b> <a href="Dae_8h_source.html#l00051">Dae.h:51</a></div></div>
 <div class="ttc" id="namespaceDeque_html"><div class="ttname"><a href="namespaceDeque.html">Deque</a></div><div class="ttdef"><b>Definition:</b> <a href="Dae_8h_source.html#l00041">Dae.h:41</a></div></div>
 <div class="ttc" id="classProxy_1_1StreamClient_html_a11adebb360dc7dfc48bb0c35c25cdea5"><div class="ttname"><a href="classProxy_1_1StreamClient.html#a11adebb360dc7dfc48bb0c35c25cdea5">Proxy::StreamClient::StreamClient</a></div><div class="ttdeci">StreamClient(std::shared_ptr&lt; Layer::BaseSock &gt; _s=nullptr, std::shared_ptr&lt; Layer::SockHandler &gt; _h=nullptr)</div><div class="ttdef"><b>Definition:</b> <a href="Proto_8cpp_source.html#l00286">Proto.cpp:286</a></div></div>
+<div class="ttc" id="Debug_8h_html"><div class="ttname"><a href="Debug_8h.html">Debug.h</a></div></div>
+<div class="ttc" id="Lock_8h_html"><div class="ttname"><a href="Lock_8h.html">Lock.h</a></div></div>
+<div class="ttc" id="SockHandler_8h_html"><div class="ttname"><a href="SockHandler_8h.html">SockHandler.h</a></div></div>
 <div class="ttc" id="classProxy_1_1StreamClient_html_a24e2b304d3c65244d401848fc5a176d2"><div class="ttname"><a href="classProxy_1_1StreamClient.html#a24e2b304d3c65244d401848fc5a176d2">Proxy::StreamClient::Init</a></div><div class="ttdeci">void Init()</div><div class="ttdef"><b>Definition:</b> <a href="Proto_8cpp_source.html#l00241">Proto.cpp:241</a></div></div>
 <div class="ttc" id="namespaceMemory_html"><div class="ttname"><a href="namespaceMemory.html">Memory</a></div><div class="ttdef"><b>Definition:</b> <a href="Iface_8h_source.html#l00043">Iface.h:43</a></div></div>
+<div class="ttc" id="structCraft_1_1ip6_html"><div class="ttname"><a href="structCraft_1_1ip6.html">Craft::ip6</a></div><div class="ttdef"><b>Definition:</b> <a href="Headers_8h_source.html#l00079">Headers.h:79</a></div></div>
+<div class="ttc" id="namespaceThreads_html_aa82e2583acb8bf15f18de555e0df88c2"><div class="ttname"><a href="namespaceThreads.html#aa82e2583acb8bf15f18de555e0df88c2">Threads::STI</a></div><div class="ttdeci">pthread_t STI</div><div class="ttdef"><b>Definition:</b> <a href="Threads_8h_source.html#l00051">Threads.h:51</a></div></div>
 <div class="ttc" id="classProxy_1_1ProtoBase_html_ab6f3689377e8ade89b19d0e19f2c1b40"><div class="ttname"><a href="classProxy_1_1ProtoBase.html#ab6f3689377e8ade89b19d0e19f2c1b40">Proxy::ProtoBase::sd</a></div><div class="ttdeci">std::shared_ptr&lt; Layer::BaseSock &gt; sd</div><div class="ttdef"><b>Definition:</b> <a href="Proto_8h_source.html#l00078">Proto.h:78</a></div></div>
+<div class="ttc" id="Memory_8h_html"><div class="ttname"><a href="Memory_8h.html">Memory.h</a></div></div>
+<div class="ttc" id="Singleton_8h_html_a798d57b6fad3ea2438d29cd51a116ba1"><div class="ttname"><a href="Singleton_8h.html#a798d57b6fad3ea2438d29cd51a116ba1">__</a></div><div class="ttdeci">#define __(T)</div><div class="ttdef"><b>Definition:</b> <a href="Singleton_8h_source.html#l00084">Singleton.h:84</a></div></div>
 <div class="ttc" id="ProxyConf_8h_html_a42257a545daf5b7933d6e8f96adc74f2"><div class="ttname"><a href="ProxyConf_8h.html#a42257a545daf5b7933d6e8f96adc74f2">F</a></div><div class="ttdeci">#define F</div><div class="ttdef"><b>Definition:</b> <a href="ProxyConf_8h_source.html#l00046">ProxyConf.h:46</a></div></div>
 <div class="ttc" id="namespacestd_html"><div class="ttname"><a href="namespacestd.html">std</a></div><div class="ttdoc">STL namespace. </div></div>
+<div class="ttc" id="classDebug_1_1Debug_html"><div class="ttname"><a href="classDebug_1_1Debug.html">Debug::Debug</a></div><div class="ttdef"><b>Definition:</b> <a href="Debug_8h_source.html#l00059">Debug.h:59</a></div></div>
 <div class="ttc" id="classProxy_1_1StreamServer_html_ab7a5df1128a00710ce0fb7e371ef57cd"><div class="ttname"><a href="classProxy_1_1StreamServer.html#ab7a5df1128a00710ce0fb7e371ef57cd">Proxy::StreamServer::StreamServer</a></div><div class="ttdeci">StreamServer(std::shared_ptr&lt; Layer::BaseSock &gt; _s=nullptr, std::shared_ptr&lt; Layer::SockHandler &gt; _h=nullptr)</div><div class="ttdef"><b>Definition:</b> <a href="Proto_8cpp_source.html#l00504">Proto.cpp:504</a></div></div>
 <div class="ttc" id="ProxyConf_8h_html_a76ba789cde9c36cd57dbb390bdee7661"><div class="ttname"><a href="ProxyConf_8h.html#a76ba789cde9c36cd57dbb390bdee7661">AF</a></div><div class="ttdeci">#define AF</div><div class="ttdef"><b>Definition:</b> <a href="ProxyConf_8h_source.html#l00040">ProxyConf.h:40</a></div></div>
 <div class="ttc" id="namespaceCheck_html"><div class="ttname"><a href="namespaceCheck.html">Check</a></div><div class="ttdef"><b>Definition:</b> <a href="Check_8cpp_source.html#l00046">Check.cpp:46</a></div></div>
+<div class="ttc" id="Headers_8h_html"><div class="ttname"><a href="Headers_8h.html">Headers.h</a></div></div>
 <div class="ttc" id="classProxy_1_1ProtoBase_html_a1965edb4bb5dce0ff84d191aa3d08541"><div class="ttname"><a href="classProxy_1_1ProtoBase.html#a1965edb4bb5dce0ff84d191aa3d08541">Proxy::ProtoBase::dh</a></div><div class="ttdeci">std::shared_ptr&lt; Deque::Deque&lt; int, char * &gt; &gt; dh</div><div class="ttdef"><b>Definition:</b> <a href="Proto_8h_source.html#l00073">Proto.h:73</a></div></div>
+<div class="ttc" id="ExecUnit_8h_html"><div class="ttname"><a href="ExecUnit_8h.html">ExecUnit.h</a></div></div>
 <div class="ttc" id="classProxy_1_1StreamServer_html_a3df61ac41cc76e2f141b235e1d21c79e"><div class="ttname"><a href="classProxy_1_1StreamServer.html#a3df61ac41cc76e2f141b235e1d21c79e">Proxy::StreamServer::Init</a></div><div class="ttdeci">void Init()</div><div class="ttdef"><b>Definition:</b> <a href="Proto_8cpp_source.html#l00411">Proto.cpp:411</a></div></div>
-<div class="ttc" id="namespaceThreads_html"><div class="ttname"><a href="namespaceThreads.html">Threads</a></div><div class="ttdef"><b>Definition:</b> <a href="Nix_8h_source.html#l00044">Nix.h:44</a></div></div>
+<div class="ttc" id="namespaceThreads_html"><div class="ttname"><a href="namespaceThreads.html">Threads</a></div><div class="ttdef"><b>Definition:</b> <a href="Threads_8h_source.html#l00046">Threads.h:46</a></div></div>
+<div class="ttc" id="namespaceSingleton_html"><div class="ttname"><a href="namespaceSingleton.html">Singleton</a></div><div class="ttdef"><b>Definition:</b> <a href="Singleton_8h_source.html#l00048">Singleton.h:48</a></div></div>
 <div class="ttc" id="classProxy_1_1ProtoBase_html_a2e2d457ef04fed494761b7ffe9cfc09c"><div class="ttname"><a href="classProxy_1_1ProtoBase.html#a2e2d457ef04fed494761b7ffe9cfc09c">Proxy::ProtoBase::mp</a></div><div class="ttdeci">std::shared_ptr&lt; Memory::MemoryPool &gt; mp</div><div class="ttdef"><b>Definition:</b> <a href="Proto_8h_source.html#l00074">Proto.h:74</a></div></div>
 <div class="ttc" id="classProxy_1_1ProtoBase_html_a1c22febfebc93a5513e7dcbc03941bbd"><div class="ttname"><a href="classProxy_1_1ProtoBase.html#a1c22febfebc93a5513e7dcbc03941bbd">Proxy::ProtoBase::exc</a></div><div class="ttdeci">std::shared_ptr&lt; Decorator::Decorator&lt; int, int, ProtoBase * &gt; &gt; exc</div><div class="ttdef"><b>Definition:</b> <a href="Proto_8h_source.html#l00075">Proto.h:75</a></div></div>
 <div class="ttc" id="classProxy_1_1ProtoBase_html_ae5590dcd6b5444008ab634be4d2b8100"><div class="ttname"><a href="classProxy_1_1ProtoBase.html#ae5590dcd6b5444008ab634be4d2b8100">Proxy::ProtoBase::Lenght</a></div><div class="ttdeci">virtual int Lenght(char *) const </div><div class="ttdef"><b>Definition:</b> <a href="Proto_8cpp_source.html#l00056">Proto.cpp:56</a></div></div>
+<div class="ttc" id="Singleton_8h_html"><div class="ttname"><a href="Singleton_8h.html">Singleton.h</a></div></div>
 <div class="ttc" id="classProxy_1_1ProtoBase_html_a5c8125cb7f40bb177846daf5141ae8c0"><div class="ttname"><a href="classProxy_1_1ProtoBase.html#a5c8125cb7f40bb177846daf5141ae8c0">Proxy::ProtoBase::~ProtoBase</a></div><div class="ttdeci">virtual ~ProtoBase()</div><div class="ttdef"><b>Definition:</b> <a href="Proto_8cpp_source.html#l00186">Proto.cpp:186</a></div></div>
+<div class="ttc" id="ThreadsBase_8h_html"><div class="ttname"><a href="ThreadsBase_8h.html">ThreadsBase.h</a></div></div>
 <div class="ttc" id="classProxy_1_1ProtoBase_html_ac84b9cc2248f83f6b03202120a8cd2d1"><div class="ttname"><a href="classProxy_1_1ProtoBase.html#ac84b9cc2248f83f6b03202120a8cd2d1">Proxy::ProtoBase::GetHandler</a></div><div class="ttdeci">std::shared_ptr&lt; Layer::SockHandler &gt; GetHandler() const </div><div class="ttdef"><b>Definition:</b> <a href="Proto_8cpp_source.html#l00139">Proto.cpp:139</a></div></div>
 <div class="ttc" id="Proto_8h_html"><div class="ttname"><a href="Proto_8h.html">Proto.h</a></div></div>
+<div class="ttc" id="classLock_1_1Lock_html"><div class="ttname"><a href="classLock_1_1Lock.html">Lock::Lock</a></div><div class="ttdef"><b>Definition:</b> <a href="Lock_8h_source.html#l00046">Lock.h:46</a></div></div>
+<div class="ttc" id="Threads_8h_html"><div class="ttname"><a href="Threads_8h.html">Threads.h</a></div></div>
 <div class="ttc" id="classCheck_1_1DConf_html_a7651ae79fddad419bd66fc6e820f5492"><div class="ttname"><a href="classCheck_1_1DConf.html#a7651ae79fddad419bd66fc6e820f5492">Check::DConf::GetReset</a></div><div class="ttdeci">static bool GetReset()</div><div class="ttdef"><b>Definition:</b> <a href="Check_8cpp_source.html#l00148">Check.cpp:148</a></div></div>
+<div class="ttc" id="Deque_8h_html"><div class="ttname"><a href="Deque_8h.html">Deque.h</a></div></div>
 <div class="ttc" id="namespaceDebug_html"><div class="ttname"><a href="namespaceDebug.html">Debug</a></div><div class="ttdef"><b>Definition:</b> <a href="Check_8h_source.html#l00043">Check.h:43</a></div></div>
 <div class="ttc" id="namespaceProxy_html"><div class="ttname"><a href="namespaceProxy.html">Proxy</a></div><div class="ttdef"><b>Definition:</b> <a href="Dae_8cpp_source.html#l00052">Dae.cpp:52</a></div></div>
 <div class="ttc" id="classProxy_1_1ProtoBase_html_ad0a65a9c9fab6f410a992c3bc79ade56"><div class="ttname"><a href="classProxy_1_1ProtoBase.html#ad0a65a9c9fab6f410a992c3bc79ade56">Proxy::ProtoBase::Recv</a></div><div class="ttdeci">virtual void Recv(std::shared_ptr&lt; Layer::BaseSock &gt;, int *)</div><div class="ttdef"><b>Definition:</b> <a href="Proto_8cpp_source.html#l00077">Proto.cpp:77</a></div></div>
 <div class="ttc" id="classProxy_1_1StreamClient_html_a97bee203bd39a66b44d11e95924a6eb2"><div class="ttname"><a href="classProxy_1_1StreamClient.html#a97bee203bd39a66b44d11e95924a6eb2">Proxy::StreamClient::Run</a></div><div class="ttdeci">void Run()</div><div class="ttdef"><b>Definition:</b> <a href="Proto_8cpp_source.html#l00277">Proto.cpp:277</a></div></div>
 <div class="ttc" id="classProxy_1_1ProtoBase_html_aecf1f28122161c0fbf0efd4f78e40860"><div class="ttname"><a href="classProxy_1_1ProtoBase.html#aecf1f28122161c0fbf0efd4f78e40860">Proxy::ProtoBase::SetSocket</a></div><div class="ttdeci">void SetSocket(std::shared_ptr&lt; Layer::BaseSock &gt;)</div><div class="ttdef"><b>Definition:</b> <a href="Proto_8cpp_source.html#l00149">Proto.cpp:149</a></div></div>
 <div class="ttc" id="classProxy_1_1ProtoBase_html_a323d278bdd32cc2387bb4ed103ce9c4d"><div class="ttname"><a href="classProxy_1_1ProtoBase.html#a323d278bdd32cc2387bb4ed103ce9c4d">Proxy::ProtoBase::GetSock</a></div><div class="ttdeci">std::shared_ptr&lt; Layer::BaseSock &gt; GetSock() const </div><div class="ttdef"><b>Definition:</b> <a href="Proto_8cpp_source.html#l00159">Proto.cpp:159</a></div></div>
+<div class="ttc" id="namespaceSingleton_html_af869352dbb84905a4956bedf1411ebf2"><div class="ttname"><a href="namespaceSingleton.html#af869352dbb84905a4956bedf1411ebf2">Singleton::_</a></div><div class="ttdeci">std::shared_ptr&lt; T1 &gt; _(Args...vargs)</div><div class="ttdef"><b>Definition:</b> <a href="Singleton_8h_source.html#l00086">Singleton.h:86</a></div></div>
 <div class="ttc" id="ProxyConf_8h_html"><div class="ttname"><a href="ProxyConf_8h.html">ProxyConf.h</a></div></div>
 <div class="ttc" id="classCheck_1_1CConf_html_a16611a4200e7d2d345e2c9300f9bc419"><div class="ttname"><a href="classCheck_1_1CConf.html#a16611a4200e7d2d345e2c9300f9bc419">Check::CConf::Status</a></div><div class="ttdeci">static bool Status()</div><div class="ttdef"><b>Definition:</b> <a href="Check_8cpp_source.html#l00248">Check.cpp:248</a></div></div>
 <div class="ttc" id="classProxy_1_1ProtoBase_html_a24acffc57ba608f09dee9373baa1c8b3"><div class="ttname"><a href="classProxy_1_1ProtoBase.html#a24acffc57ba608f09dee9373baa1c8b3">Proxy::ProtoBase::sh</a></div><div class="ttdeci">std::shared_ptr&lt; Layer::SockHandler &gt; sh</div><div class="ttdef"><b>Definition:</b> <a href="Proto_8h_source.html#l00077">Proto.h:77</a></div></div>
 <div class="ttc" id="classProxy_1_1ProtoBase_html_ae439268320f5dcc074b049c40dce791e"><div class="ttname"><a href="classProxy_1_1ProtoBase.html#ae439268320f5dcc074b049c40dce791e">Proxy::ProtoBase::ProtoBase</a></div><div class="ttdeci">ProtoBase(std::shared_ptr&lt; Layer::BaseSock &gt; _s=nullptr, std::shared_ptr&lt; Layer::SockHandler &gt; _h=nullptr)</div><div class="ttdef"><b>Definition:</b> <a href="Proto_8cpp_source.html#l00165">Proto.cpp:165</a></div></div>
 <div class="ttc" id="classProxy_1_1ProtoBase_html_acaf7557b132a0dd619ba1b811733c7e6"><div class="ttname"><a href="classProxy_1_1ProtoBase.html#acaf7557b132a0dd619ba1b811733c7e6">Proxy::ProtoBase::confh</a></div><div class="ttdeci">std::shared_ptr&lt; Check::PConf &gt; confh</div><div class="ttdef"><b>Definition:</b> <a href="Proto_8h_source.html#l00076">Proto.h:76</a></div></div>
 <div class="ttc" id="classCheck_1_1DConf_html_a2a457fbfa18428922b30340daa2b36de"><div class="ttname"><a href="classCheck_1_1DConf.html#a2a457fbfa18428922b30340daa2b36de">Check::DConf::SetReset</a></div><div class="ttdeci">static void SetReset()</div><div class="ttdef"><b>Definition:</b> <a href="Check_8cpp_source.html#l00142">Check.cpp:142</a></div></div>
+<div class="ttc" id="structCraft_1_1ip_html"><div class="ttname"><a href="structCraft_1_1ip.html">Craft::ip</a></div><div class="ttdef"><b>Definition:</b> <a href="Headers_8h_source.html#l00061">Headers.h:61</a></div></div>
 <div class="ttc" id="classProxy_1_1StreamClient_html_abef4293427419dda6cf8d6a0197d99d6"><div class="ttname"><a href="classProxy_1_1StreamClient.html#abef4293427419dda6cf8d6a0197d99d6">Proxy::StreamClient::~StreamClient</a></div><div class="ttdeci">virtual ~StreamClient()</div><div class="ttdef"><b>Definition:</b> <a href="Proto_8cpp_source.html#l00293">Proto.cpp:293</a></div></div>
 <div class="ttc" id="ProxyConf_8h_html_affc9cbf86b78292bdb405361761c47f5"><div class="ttname"><a href="ProxyConf_8h.html#affc9cbf86b78292bdb405361761c47f5">U</a></div><div class="ttdeci">#define U</div><div class="ttdef"><b>Definition:</b> <a href="ProxyConf_8h_source.html#l00044">ProxyConf.h:44</a></div></div>
 <div class="ttc" id="classProxy_1_1ProtoBase_html_abe508beeb43e540130ebc0f953bcc635"><div class="ttname"><a href="classProxy_1_1ProtoBase.html#abe508beeb43e540130ebc0f953bcc635">Proxy::ProtoBase::Send</a></div><div class="ttdeci">virtual void Send(std::shared_ptr&lt; Layer::BaseSock &gt;, int *)</div><div class="ttdef"><b>Definition:</b> <a href="Proto_8cpp_source.html#l00108">Proto.cpp:108</a></div></div>
+<div class="ttc" id="classThreads_1_1ThreadBase_html_a9fe2a8cd6da94ec161c7ff5c692410c5"><div class="ttname"><a href="classThreads_1_1ThreadBase.html#a9fe2a8cd6da94ec161c7ff5c692410c5">Threads::ThreadBase::Pself</a></div><div class="ttdeci">static pthread_t Pself()</div></div>
 <div class="ttc" id="classProxy_1_1ProtoBase_html"><div class="ttname"><a href="classProxy_1_1ProtoBase.html">Proxy::ProtoBase</a></div><div class="ttdef"><b>Definition:</b> <a href="Proto_8h_source.html#l00071">Proto.h:71</a></div></div>
 <div class="ttc" id="classProxy_1_1StreamServer_html_a9dc585644f185a830f15f02726c18f32"><div class="ttname"><a href="classProxy_1_1StreamServer.html#a9dc585644f185a830f15f02726c18f32">Proxy::StreamServer::Run</a></div><div class="ttdeci">void Run()</div><div class="ttdef"><b>Definition:</b> <a href="Proto_8cpp_source.html#l00469">Proto.cpp:469</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
@@ -674,7 +694,7 @@ $(document).ready(function(){initNavTree('Proto_8cpp_source.html','');});
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="Proto_8cpp.html">Proto.cpp</a></li>
-    <li class="footer">Generated on Tue Sep 8 2015 00:12:05 for MiniLib by
+    <li class="footer">Generated on Sat Sep 12 2015 03:23:44 for Proxy by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.8 </li>
   </ul>

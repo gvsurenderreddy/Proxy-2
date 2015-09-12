@@ -1,5 +1,3 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$classProxy_1_1BaseSocket.html" title="Proxy::BaseSocket" alt="" coords="5,31,140,57"/>
-<area shape="rect" id="node2" href="$classProxy_1_1InnerSocket.html" title="Proxy::InnerSocket" alt="" coords="189,5,324,32"/>
-<area shape="rect" id="node3" href="$classProxy_1_1OuterSocket.html" title="Proxy::OuterSocket" alt="" coords="188,56,325,83"/>
+<area shape="rect" id="node1" href="$structCraft_1_1icmp6__gwaddr.html" title="Craft::icmp6_gwaddr" alt="" coords="5,5,148,32"/>
 </map>

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['proxy',['Proxy',['../namespaceProxy.html',1,'']]]
+  ['memory',['Memory',['../namespaceMemory.html',1,'']]]
 ];

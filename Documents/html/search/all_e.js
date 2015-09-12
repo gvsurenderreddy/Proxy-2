@@ -1,17 +1,15 @@
 var searchData=
 [
-  ['pconf',['PConf',['../classCheck_1_1PConf.html',1,'Check']]],
-  ['pconf',['PConf',['../classCheck_1_1PConf.html#a0c84d5b1b5c13933b92b660453f0e4da',1,'Check::PConf']]],
-  ['port',['Port',['../classCheck_1_1PConf.html#a8e65661b0870f870fc9f6104940cb2ac',1,'Check::PConf::Port()'],['../namespaceCheck.html#abbd5f740a4da9671bd4fa3a23ecfd8ada76af76d34f126c38c4043fa90d92f71e',1,'Check::PORT()']]],
-  ['port_5fl',['PORT_L',['../ProxyConf_8h.html#ad72ce2e5a1c36ef26b9e59a5783a0283',1,'ProxyConf.h']]],
-  ['pproto',['PPROTO',['../namespaceCheck.html#aff90ae0cba23aeabaa4514f300592da2a8be62810122dcf49913382ff56508871',1,'Check']]],
-  ['proto_2ecpp',['Proto.cpp',['../Proto_8cpp.html',1,'']]],
-  ['proto_2eh',['Proto.h',['../Proto_8h.html',1,'']]],
-  ['protobase',['ProtoBase',['../classProxy_1_1ProtoBase.html#ae439268320f5dcc074b049c40dce791e',1,'Proxy::ProtoBase']]],
-  ['protobase',['ProtoBase',['../classProxy_1_1ProtoBase.html',1,'Proxy']]],
-  ['prototype',['ProtoType',['../namespaceCheck.html#abbd5f740a4da9671bd4fa3a23ecfd8ad',1,'Check']]],
-  ['proxy',['Proxy',['../namespaceProxy.html',1,'']]],
-  ['proxyconf',['PROXYCONF',['../ProxyConf_8h.html#a68a576aff0c1b5cdc80ee3f6cec22ee8',1,'ProxyConf.h']]],
-  ['proxyconf_2eh',['ProxyConf.h',['../ProxyConf_8h.html',1,'']]],
-  ['ptype',['PTYPE',['../namespaceCheck.html#aff90ae0cba23aeabaa4514f300592da2a7e8b4c9d6ddb7635124d793cd39fc71c',1,'Check']]]
+  ['n',['N',['../classMemory_1_1MemoryPool.html#a1e543606c6d4048afad9229bb065d480',1,'Memory::MemoryPool::N()'],['../classLayer_1_1SockPool.html#a4a783fa75a94da51e760cb8a3a26df7d',1,'Layer::SockPool::N()'],['../classLayer_1_1SockPool.html#a5a10f88c8c898ab644efb87ee9f61697',1,'Layer::SockPool::N(uint32_t)'],['../classThreads_1_1ThreadPool.html#aa71f7bb09d61d1902c6a2f3641e5a9ef',1,'Threads::ThreadPool::N()'],['../classLayer_1_1DataSock.html#a567f45d26ed73f622b91b5cf6e48283e',1,'Layer::DataSock::n()']]],
+  ['nestcax',['NESTCAX',['../ProxyConf_8h.html#af987afa29a6ddb3d14cae5fa14fe59d6',1,'ProxyConf.h']]],
+  ['nestkey',['NESTKEY',['../ProxyConf_8h.html#af370295be1740cfed4f5e390a7255796',1,'ProxyConf.h']]],
+  ['nestx',['NESTX',['../ProxyConf_8h.html#af1319534087da11498a1988b743242a3',1,'ProxyConf.h']]],
+  ['netcraftconf_2eh',['NetCraftConf.h',['../NetCraftConf_8h.html',1,'']]],
+  ['netlayerconf_2eh',['NetLayerConf.h',['../NetLayerConf_8h.html',1,'']]],
+  ['nix',['Nix',['../classProxy_1_1Nix.html',1,'Proxy']]],
+  ['nix',['Nix',['../classProxy_1_1Nix.html#ad3543a52bd88338afb8e2b2a6a7019e2',1,'Proxy::Nix']]],
+  ['nix_2ecpp',['Nix.cpp',['../Nix_8cpp.html',1,'']]],
+  ['nix_2eh',['Nix.h',['../Nix_8h.html',1,'']]],
+  ['nonblock',['NonBlock',['../classLayer_1_1BaseSock.html#ad573e78153a88374316bbff174c9904e',1,'Layer::BaseSock']]],
+  ['numparams',['NUMPARAMS',['../ProxyConf_8h.html#acfdf7bea7a8b97969917559576655291',1,'ProxyConf.h']]]
 ];

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['servtype',['ServType',['../namespaceCheck.html#a64635b9ee5a949aef45c487300c345c5',1,'Check']]]
+  ['prototype',['ProtoType',['../namespaceCheck.html#abbd5f740a4da9671bd4fa3a23ecfd8ad',1,'Check']]]
 ];

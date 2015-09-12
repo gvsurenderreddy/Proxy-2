@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.8"/>
-<title>MiniLib: Dae.cpp Source File</title>
+<title>Proxy: Dae.cpp Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -29,7 +29,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">MiniLib
+   <div id="projectname">Proxy
    </div>
   </td>
  </tr>
@@ -92,7 +92,7 @@ $(document).ready(function(){initNavTree('Dae_8cpp_source.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Data Structures</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Data Structures</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -141,15 +141,15 @@ $(document).ready(function(){initNavTree('Dae_8cpp_source.html','');});
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">#include &lt;linux/if_tun.h&gt;</span></div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="preprocessor">#include &quot;Debug.h&quot;</span></div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor">#include &quot;Singleton.h&quot;</span></div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="preprocessor">#include &quot;Deque.h&quot;</span></div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="preprocessor">#include &quot;TunTap.h&quot;</span></div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="preprocessor">#include &quot;CraftRaw.h&quot;</span></div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="preprocessor">#include &quot;SockHandler.h&quot;</span></div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="preprocessor">#include &quot;SockNetwork.h&quot;</span></div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="preprocessor">#include &quot;SockTransport.h&quot;</span></div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="preprocessor">#include &quot;SockPresentation.h&quot;</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="Debug_8h.html">Debug.h</a>&quot;</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="Singleton_8h.html">Singleton.h</a>&quot;</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="Deque_8h.html">Deque.h</a>&quot;</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="TunTap_8h.html">TunTap.h</a>&quot;</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="CraftRaw_8h.html">CraftRaw.h</a>&quot;</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="SockHandler_8h.html">SockHandler.h</a>&quot;</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="SockNetwork_8h.html">SockNetwork.h</a>&quot;</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="SockTransport_8h.html">SockTransport.h</a>&quot;</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="SockPresentation_8h.html">SockPresentation.h</a>&quot;</span></div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="ProxyConf_8h.html">ProxyConf.h</a>&quot;</span></div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="Check_8h.html">Check.h</a>&quot;</span></div>
@@ -160,8 +160,8 @@ $(document).ready(function(){initNavTree('Dae_8cpp_source.html','');});
 <div class="line"><a name="l00052"></a><span class="lineno"><a class="line" href="namespaceProxy.html">   52</a></span>&#160;<span class="keyword">namespace </span><a class="code" href="namespaceProxy.html">Proxy</a> {</div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;</div>
 <div class="line"><a name="l00054"></a><span class="lineno"><a class="line" href="classProxy_1_1BaseSocket.html#a302900cc82a71f63d50307fcdac5e25f">   54</a></span>&#160;<a class="code" href="classProxy_1_1BaseSocket.html#a302900cc82a71f63d50307fcdac5e25f">BaseSocket::BaseSocket</a>()</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        : confh(__(<a class="code" href="namespaceCheck.html">Check</a>::PConf)),</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;          logh(__(<a class="code" href="namespaceDebug.html">Debug</a>::<a class="code" href="namespaceDebug.html">Debug</a>))</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        : confh(<a class="code" href="Singleton_8h.html#a798d57b6fad3ea2438d29cd51a116ba1">__</a>(<a class="code" href="namespaceCheck.html">Check</a>::PConf)),</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;          logh(<a class="code" href="Singleton_8h.html#a798d57b6fad3ea2438d29cd51a116ba1">__</a>(<a class="code" href="namespaceDebug.html">Debug</a>::<a class="code" href="namespaceDebug.html">Debug</a>))</div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;{</div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        <a class="code" href="classProxy_1_1BaseSocket.html#a3d29c9be7b437907dac471074713b391">logh</a>-&gt;Log(<span class="stringliteral">&quot;[BaseSocket::BaseSocket]&quot;</span>);</div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;}</div>
@@ -252,118 +252,133 @@ $(document).ready(function(){initNavTree('Dae_8cpp_source.html','');});
 <div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;<span class="keywordtype">void</span> OuterSocket::InitClient()</div>
 <div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;{</div>
 <div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;        <a class="code" href="classProxy_1_1BaseSocket.html#a3d29c9be7b437907dac471074713b391">logh</a>-&gt;Log(<span class="stringliteral">&quot;[OuterSocket::InitClient]&quot;</span>);</div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;        sd-&gt;SetMode(ModeClient);</div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;        sd-&gt;SetPort(Active, <a class="code" href="classProxy_1_1BaseSocket.html#a5ad5a39911cf34004f84c88b6b701b77">confh</a>-&gt;Port());</div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;        sd-&gt;SetBuff(const_cast&lt;char*&gt;((<a class="code" href="classProxy_1_1BaseSocket.html#a5ad5a39911cf34004f84c88b6b701b77">confh</a>-&gt;Addr()).c_str()));</div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;        tls-&gt;Getaddrinfo(sd);</div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;}</div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;</div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;<span class="comment">/*</span></div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;<span class="comment"> * Outer socket server initialization:</span></div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;<span class="comment"> * configure socket descriptor (message in COR)</span></div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;<span class="keywordtype">void</span> OuterSocket::InitServer()</div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;{</div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;        <a class="code" href="classProxy_1_1BaseSocket.html#a3d29c9be7b437907dac471074713b391">logh</a>-&gt;Log(<span class="stringliteral">&quot;[OuterSocket::InitServer]&quot;</span>);</div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;        sd-&gt;SetMode(ModeServer);</div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;        sd-&gt;SetAddr(Passive, <a class="code" href="classProxy_1_1BaseSocket.html#a5ad5a39911cf34004f84c88b6b701b77">confh</a>-&gt;Addr());</div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;        sd-&gt;SetPort(Passive, <a class="code" href="classProxy_1_1BaseSocket.html#a5ad5a39911cf34004f84c88b6b701b77">confh</a>-&gt;Port());</div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;        sd-&gt;SetOptlevel(SOL_SOCKET);</div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;        sd-&gt;SetOptname(SO_REUSEADDR);</div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;        <span class="keywordtype">int</span> opt=1;</div>
-<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;        sd-&gt;SetOptval(reinterpret_cast&lt;char*&gt;(&amp;opt));</div>
-<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;        sd-&gt;SetOptlen(<span class="keyword">sizeof</span>(opt));</div>
-<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;}</div>
-<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;</div>
-<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;<span class="comment">/*</span></div>
-<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;<span class="comment"> * Initialize SSL</span></div>
-<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;<span class="keywordtype">void</span> OuterSocket::InitSsl()</div>
-<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;{</div>
-<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;        <a class="code" href="classProxy_1_1BaseSocket.html#a3d29c9be7b437907dac471074713b391">logh</a>-&gt;Log(<span class="stringliteral">&quot;[OuterSocket::InitSsl]: key&quot;</span>, <a class="code" href="classProxy_1_1BaseSocket.html#a5ad5a39911cf34004f84c88b6b701b77">confh</a>-&gt;Key());</div>
-<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;        <a class="code" href="classProxy_1_1BaseSocket.html#a3d29c9be7b437907dac471074713b391">logh</a>-&gt;Log(<span class="stringliteral">&quot;[OuterSocket::InitSsl]: X509&quot;</span>, <a class="code" href="classProxy_1_1BaseSocket.html#a5ad5a39911cf34004f84c88b6b701b77">confh</a>-&gt;Cert());</div>
-<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;        <a class="code" href="classProxy_1_1BaseSocket.html#a3d29c9be7b437907dac471074713b391">logh</a>-&gt;Log(<span class="stringliteral">&quot;[OuterSocket::InitSsl]: CAX&quot;</span>, <a class="code" href="classProxy_1_1BaseSocket.html#a5ad5a39911cf34004f84c88b6b701b77">confh</a>-&gt;Cax());</div>
-<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;        sd-&gt;SetKeypath(<a class="code" href="classProxy_1_1BaseSocket.html#a5ad5a39911cf34004f84c88b6b701b77">confh</a>-&gt;Key());</div>
-<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;        sd-&gt;SetCertpath(<a class="code" href="classProxy_1_1BaseSocket.html#a5ad5a39911cf34004f84c88b6b701b77">confh</a>-&gt;Cert());</div>
-<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;        sd-&gt;SetCacertpath(<a class="code" href="classProxy_1_1BaseSocket.html#a5ad5a39911cf34004f84c88b6b701b77">confh</a>-&gt;Cax());</div>
-<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;}</div>
-<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;</div>
-<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;<span class="comment">/*</span></div>
-<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;<span class="comment"> * Outer socket initialization:</span></div>
-<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;<span class="comment"> * configure the Chain of Responsibility (TCP/IP stack) and its message (sd)</span></div>
-<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;<span class="comment"> * IPv6 server on dual-stack host can service both IPv6 and IPv4</span></div>
-<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;<span class="comment"> * IPv6 client on dual-stack host can communicate with IPv6 and IPv4 servers</span></div>
-<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;<span class="comment"> * ... hence -&gt; IPv6</span></div>
-<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00190"></a><span class="lineno"><a class="line" href="classProxy_1_1OuterSocket.html#a8449f31c14ba5e7e31380c18dace60e3">  190</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classProxy_1_1OuterSocket.html#a8449f31c14ba5e7e31380c18dace60e3">OuterSocket::Init</a>()</div>
-<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;{</div>
-<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;        <a class="code" href="classProxy_1_1BaseSocket.html#a3d29c9be7b437907dac471074713b391">logh</a>-&gt;Log(<span class="stringliteral">&quot;[OuterSocket::Init]&quot;</span>);</div>
-<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="classProxy_1_1BaseSocket.html#a5ad5a39911cf34004f84c88b6b701b77">confh</a>-&gt;Client())</div>
-<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;                app = std::make_shared&lt;StreamClient&gt;();</div>
-<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;        <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;                app = std::make_shared&lt;StreamServer&gt;();</div>
-<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;        tls = std::make_shared&lt;Layer::SockTls&gt;();</div>
-<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;        tcp = std::make_shared&lt;Layer::SockTcp&gt;();</div>
-<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;        ip = std::make_shared&lt;Layer::SockIp&lt;Layer::IA6,Layer::SAI6&gt;&gt;(IPv6);</div>
-<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;        sd = std::make_shared&lt;Layer::ActiveSock&lt;Layer::IA6,Layer::SAI6&gt;&gt;(IPv6);</div>
-<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;        tls-&gt;SetSucc(tcp);</div>
-<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;        tcp-&gt;SetSucc(ip);</div>
-<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="classProxy_1_1BaseSocket.html#a5ad5a39911cf34004f84c88b6b701b77">confh</a>-&gt;Client())</div>
-<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;                InitClient();</div>
-<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;        <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;                InitServer();</div>
-<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;        InitSsl();</div>
-<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;        app-&gt;SetHandler(tls);</div>
-<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;        app-&gt;SetSocket(sd);</div>
-<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;        app-&gt;Init();</div>
-<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;}</div>
-<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;</div>
-<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;<span class="comment">/*</span></div>
-<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;<span class="comment"> * Outer socket infinite loop</span></div>
-<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;<span class="comment"> * TLS I/O</span></div>
-<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00217"></a><span class="lineno"><a class="line" href="classProxy_1_1OuterSocket.html#aa2e795478fca74b19da07fb7bff4b39c">  217</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classProxy_1_1OuterSocket.html#aa2e795478fca74b19da07fb7bff4b39c">OuterSocket::Run</a>()</div>
-<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;{</div>
-<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;        <a class="code" href="classProxy_1_1BaseSocket.html#a3d29c9be7b437907dac471074713b391">logh</a>-&gt;Log(<span class="stringliteral">&quot;[OuterSocket::Run]&quot;</span>);</div>
-<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;        app-&gt;Run();</div>
-<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;}</div>
-<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;</div>
-<div class="line"><a name="l00223"></a><span class="lineno"><a class="line" href="classProxy_1_1OuterSocket.html#ae266776247411aacb5ec047c2bc4ab84">  223</a></span>&#160;<a class="code" href="classProxy_1_1OuterSocket.html#ae266776247411aacb5ec047c2bc4ab84">OuterSocket::OuterSocket</a>()</div>
-<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;        : <a class="code" href="classProxy_1_1BaseSocket.html">BaseSocket</a>(),</div>
-<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;          sd(nullptr),</div>
-<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;          app(nullptr),</div>
-<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;          tls(nullptr),</div>
-<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;          tcp(nullptr),</div>
-<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;          ip(nullptr)</div>
-<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;{</div>
-<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;        <a class="code" href="classProxy_1_1BaseSocket.html#a3d29c9be7b437907dac471074713b391">logh</a>-&gt;Log(<span class="stringliteral">&quot;[OuterSocket::OuterSocket]&quot;</span>);</div>
-<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;}</div>
-<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;</div>
-<div class="line"><a name="l00234"></a><span class="lineno"><a class="line" href="classProxy_1_1OuterSocket.html#ad24f590b94aa6ab3f88e555ba90dc32b">  234</a></span>&#160;<a class="code" href="classProxy_1_1OuterSocket.html#ad24f590b94aa6ab3f88e555ba90dc32b">OuterSocket::~OuterSocket</a>()</div>
-<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;{</div>
-<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;        <a class="code" href="classProxy_1_1BaseSocket.html#a3d29c9be7b437907dac471074713b391">logh</a>-&gt;Log(<span class="stringliteral">&quot;[OuterSocket::~OuterSocket]&quot;</span>);</div>
-<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;}</div>
-<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;} <span class="comment">/* namespace Proxy */</span></div>
-<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;<span class="comment">/* tabstop=8 */</span></div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;        sd-&gt;SetMode(<a class="code" href="SockHandler_8h.html#ab59282e23eff17a3acf75ad51185ac0b">ModeClient</a>);</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;        sd-&gt;SetMutual(<span class="keyword">true</span>);</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;        sd-&gt;SetPort(<a class="code" href="SockHandler_8h.html#a3e4aba4f7d3a690fdce5d1fe31156421">Active</a>, <a class="code" href="classProxy_1_1BaseSocket.html#a5ad5a39911cf34004f84c88b6b701b77">confh</a>-&gt;Port());</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;        sd-&gt;SetBuff(const_cast&lt;char*&gt;((<a class="code" href="classProxy_1_1BaseSocket.html#a5ad5a39911cf34004f84c88b6b701b77">confh</a>-&gt;Addr()).c_str()));</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;        tls-&gt;Getaddrinfo(sd);</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;}</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;<span class="comment"> * Outer socket server initialization:</span></div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;<span class="comment"> * configure socket descriptor (message in COR)</span></div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;<span class="keywordtype">void</span> OuterSocket::InitServer()</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;{</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;        <a class="code" href="classProxy_1_1BaseSocket.html#a3d29c9be7b437907dac471074713b391">logh</a>-&gt;Log(<span class="stringliteral">&quot;[OuterSocket::InitServer]&quot;</span>);</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;        sd-&gt;SetMode(<a class="code" href="SockHandler_8h.html#a2a8559b430ff858810cd9d89ea18101f">ModeServer</a>);</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;        sd-&gt;SetMutual(<span class="keyword">true</span>);</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;        sd-&gt;SetAddr(<a class="code" href="SockHandler_8h.html#a638d888edaaab2ffded6211e4be1b935">Passive</a>, <a class="code" href="classProxy_1_1BaseSocket.html#a5ad5a39911cf34004f84c88b6b701b77">confh</a>-&gt;Addr());</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;        sd-&gt;SetPort(<a class="code" href="SockHandler_8h.html#a638d888edaaab2ffded6211e4be1b935">Passive</a>, <a class="code" href="classProxy_1_1BaseSocket.html#a5ad5a39911cf34004f84c88b6b701b77">confh</a>-&gt;Port());</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;        sd-&gt;SetOptlevel(SOL_SOCKET);</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;        sd-&gt;SetOptname(SO_REUSEADDR);</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;        <span class="keywordtype">int</span> opt=1;</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;        sd-&gt;SetOptval(reinterpret_cast&lt;char*&gt;(&amp;opt));</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;        sd-&gt;SetOptlen(<span class="keyword">sizeof</span>(opt));</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;}</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;<span class="comment"> * Initialize SSL</span></div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;<span class="keywordtype">void</span> OuterSocket::InitSsl()</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;{</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;        <a class="code" href="classProxy_1_1BaseSocket.html#a3d29c9be7b437907dac471074713b391">logh</a>-&gt;Log(<span class="stringliteral">&quot;[OuterSocket::InitSsl]: key&quot;</span>, <a class="code" href="classProxy_1_1BaseSocket.html#a5ad5a39911cf34004f84c88b6b701b77">confh</a>-&gt;Key());</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;        <a class="code" href="classProxy_1_1BaseSocket.html#a3d29c9be7b437907dac471074713b391">logh</a>-&gt;Log(<span class="stringliteral">&quot;[OuterSocket::InitSsl]: X509&quot;</span>, <a class="code" href="classProxy_1_1BaseSocket.html#a5ad5a39911cf34004f84c88b6b701b77">confh</a>-&gt;Cert());</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;        <a class="code" href="classProxy_1_1BaseSocket.html#a3d29c9be7b437907dac471074713b391">logh</a>-&gt;Log(<span class="stringliteral">&quot;[OuterSocket::InitSsl]: CAX&quot;</span>, <a class="code" href="classProxy_1_1BaseSocket.html#a5ad5a39911cf34004f84c88b6b701b77">confh</a>-&gt;Cax());</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;        sd-&gt;SetKeypath(<a class="code" href="classProxy_1_1BaseSocket.html#a5ad5a39911cf34004f84c88b6b701b77">confh</a>-&gt;Key());</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;        sd-&gt;SetCertpath(<a class="code" href="classProxy_1_1BaseSocket.html#a5ad5a39911cf34004f84c88b6b701b77">confh</a>-&gt;Cert());</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;        sd-&gt;SetCacertpath(<a class="code" href="classProxy_1_1BaseSocket.html#a5ad5a39911cf34004f84c88b6b701b77">confh</a>-&gt;Cax());</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;}</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;<span class="comment"> * Outer socket initialization:</span></div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;<span class="comment"> * configure the Chain of Responsibility (TCP/IP stack) and its message (sd)</span></div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;<span class="comment"> * IPv6 server on dual-stack host can service both IPv6 and IPv4</span></div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;<span class="comment"> * IPv6 client on dual-stack host can communicate with IPv6 and IPv4 servers</span></div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;<span class="comment"> * ... hence -&gt; IPv6</span></div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00192"></a><span class="lineno"><a class="line" href="classProxy_1_1OuterSocket.html#a8449f31c14ba5e7e31380c18dace60e3">  192</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classProxy_1_1OuterSocket.html#a8449f31c14ba5e7e31380c18dace60e3">OuterSocket::Init</a>()</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;{</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;        <a class="code" href="classProxy_1_1BaseSocket.html#a3d29c9be7b437907dac471074713b391">logh</a>-&gt;Log(<span class="stringliteral">&quot;[OuterSocket::Init]&quot;</span>);</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="classProxy_1_1BaseSocket.html#a5ad5a39911cf34004f84c88b6b701b77">confh</a>-&gt;Client())</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;                app = std::make_shared&lt;StreamClient&gt;();</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;        <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;                app = std::make_shared&lt;StreamServer&gt;();</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;        tls = std::make_shared&lt;Layer::SockTls&gt;();</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;        tcp = std::make_shared&lt;Layer::SockTcp&gt;();</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;        ip = std::make_shared&lt;Layer::SockIp&lt;Layer::IA6,Layer::SAI6&gt;&gt;(<a class="code" href="SockHandler_8h.html#a2c29ea2ee796869613ef16cf5d2d8d9c">IPv6</a>);</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;        sd = std::make_shared&lt;Layer::ActiveSock&lt;Layer::IA6,Layer::SAI6&gt;&gt;(<a class="code" href="SockHandler_8h.html#a2c29ea2ee796869613ef16cf5d2d8d9c">IPv6</a>);</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;        tls-&gt;SetSucc(tcp);</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;        tcp-&gt;SetSucc(ip);</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="classProxy_1_1BaseSocket.html#a5ad5a39911cf34004f84c88b6b701b77">confh</a>-&gt;Client())</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;                InitClient();</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;        <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;                InitServer();</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;        InitSsl();</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;        app-&gt;SetHandler(tls);</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;        app-&gt;SetSocket(sd);</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;        app-&gt;Init();</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;}</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;<span class="comment"> * Outer socket infinite loop</span></div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;<span class="comment"> * TLS I/O</span></div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00219"></a><span class="lineno"><a class="line" href="classProxy_1_1OuterSocket.html#aa2e795478fca74b19da07fb7bff4b39c">  219</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classProxy_1_1OuterSocket.html#aa2e795478fca74b19da07fb7bff4b39c">OuterSocket::Run</a>()</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;{</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;        <a class="code" href="classProxy_1_1BaseSocket.html#a3d29c9be7b437907dac471074713b391">logh</a>-&gt;Log(<span class="stringliteral">&quot;[OuterSocket::Run]&quot;</span>);</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;        app-&gt;Run();</div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;}</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;</div>
+<div class="line"><a name="l00225"></a><span class="lineno"><a class="line" href="classProxy_1_1OuterSocket.html#ae266776247411aacb5ec047c2bc4ab84">  225</a></span>&#160;<a class="code" href="classProxy_1_1OuterSocket.html#ae266776247411aacb5ec047c2bc4ab84">OuterSocket::OuterSocket</a>()</div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;        : <a class="code" href="classProxy_1_1BaseSocket.html">BaseSocket</a>(),</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;          sd(nullptr),</div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;          app(nullptr),</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;          tls(nullptr),</div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;          tcp(nullptr),</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;          ip(nullptr)</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;{</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;        <a class="code" href="classProxy_1_1BaseSocket.html#a3d29c9be7b437907dac471074713b391">logh</a>-&gt;Log(<span class="stringliteral">&quot;[OuterSocket::OuterSocket]&quot;</span>);</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;}</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;</div>
+<div class="line"><a name="l00236"></a><span class="lineno"><a class="line" href="classProxy_1_1OuterSocket.html#ad24f590b94aa6ab3f88e555ba90dc32b">  236</a></span>&#160;<a class="code" href="classProxy_1_1OuterSocket.html#ad24f590b94aa6ab3f88e555ba90dc32b">OuterSocket::~OuterSocket</a>()</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;{</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;        <a class="code" href="classProxy_1_1BaseSocket.html#a3d29c9be7b437907dac471074713b391">logh</a>-&gt;Log(<span class="stringliteral">&quot;[OuterSocket::~OuterSocket]&quot;</span>);</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;}</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;} <span class="comment">/* namespace Proxy */</span></div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;<span class="comment">/* tabstop=8 */</span></div>
 <div class="ttc" id="Check_8h_html"><div class="ttname"><a href="Check_8h.html">Check.h</a></div></div>
 <div class="ttc" id="Dae_8h_html"><div class="ttname"><a href="Dae_8h.html">Dae.h</a></div></div>
 <div class="ttc" id="classProxy_1_1BaseSocket_html"><div class="ttname"><a href="classProxy_1_1BaseSocket.html">Proxy::BaseSocket</a></div><div class="ttdef"><b>Definition:</b> <a href="Dae_8h_source.html#l00062">Dae.h:62</a></div></div>
 <div class="ttc" id="classProxy_1_1InnerSocket_html_a43200274e5be244d49b552009de6cfb5"><div class="ttname"><a href="classProxy_1_1InnerSocket.html#a43200274e5be244d49b552009de6cfb5">Proxy::InnerSocket::InnerSocket</a></div><div class="ttdeci">InnerSocket()</div><div class="ttdef"><b>Definition:</b> <a href="Dae_8cpp_source.html#l00120">Dae.cpp:120</a></div></div>
+<div class="ttc" id="SockHandler_8h_html_a2a8559b430ff858810cd9d89ea18101f"><div class="ttname"><a href="SockHandler_8h.html#a2a8559b430ff858810cd9d89ea18101f">ModeServer</a></div><div class="ttdeci">#define ModeServer</div><div class="ttdef"><b>Definition:</b> <a href="SockHandler_8h_source.html#l00069">SockHandler.h:69</a></div></div>
+<div class="ttc" id="Debug_8h_html"><div class="ttname"><a href="Debug_8h.html">Debug.h</a></div></div>
 <div class="ttc" id="classProxy_1_1BaseSocket_html_a3d29c9be7b437907dac471074713b391"><div class="ttname"><a href="classProxy_1_1BaseSocket.html#a3d29c9be7b437907dac471074713b391">Proxy::BaseSocket::logh</a></div><div class="ttdeci">std::shared_ptr&lt; Debug::Debug &gt; logh</div><div class="ttdef"><b>Definition:</b> <a href="Dae_8h_source.html#l00068">Dae.h:68</a></div></div>
+<div class="ttc" id="SockHandler_8h_html"><div class="ttname"><a href="SockHandler_8h.html">SockHandler.h</a></div></div>
 <div class="ttc" id="classProxy_1_1BaseSocket_html_a302900cc82a71f63d50307fcdac5e25f"><div class="ttname"><a href="classProxy_1_1BaseSocket.html#a302900cc82a71f63d50307fcdac5e25f">Proxy::BaseSocket::BaseSocket</a></div><div class="ttdeci">BaseSocket()</div><div class="ttdef"><b>Definition:</b> <a href="Dae_8cpp_source.html#l00054">Dae.cpp:54</a></div></div>
+<div class="ttc" id="SockHandler_8h_html_ab59282e23eff17a3acf75ad51185ac0b"><div class="ttname"><a href="SockHandler_8h.html#ab59282e23eff17a3acf75ad51185ac0b">ModeClient</a></div><div class="ttdeci">#define ModeClient</div><div class="ttdef"><b>Definition:</b> <a href="SockHandler_8h_source.html#l00068">SockHandler.h:68</a></div></div>
 <div class="ttc" id="ProxyConf_8h_html_aa56c660c184d4245992c2bad901719d1"><div class="ttname"><a href="ProxyConf_8h.html#aa56c660c184d4245992c2bad901719d1">TSADDR4</a></div><div class="ttdeci">#define TSADDR4</div><div class="ttdef"><b>Definition:</b> <a href="ProxyConf_8h_source.html#l00056">ProxyConf.h:56</a></div></div>
-<div class="ttc" id="classProxy_1_1OuterSocket_html_a8449f31c14ba5e7e31380c18dace60e3"><div class="ttname"><a href="classProxy_1_1OuterSocket.html#a8449f31c14ba5e7e31380c18dace60e3">Proxy::OuterSocket::Init</a></div><div class="ttdeci">void Init()</div><div class="ttdef"><b>Definition:</b> <a href="Dae_8cpp_source.html#l00190">Dae.cpp:190</a></div></div>
+<div class="ttc" id="classProxy_1_1OuterSocket_html_a8449f31c14ba5e7e31380c18dace60e3"><div class="ttname"><a href="classProxy_1_1OuterSocket.html#a8449f31c14ba5e7e31380c18dace60e3">Proxy::OuterSocket::Init</a></div><div class="ttdeci">void Init()</div><div class="ttdef"><b>Definition:</b> <a href="Dae_8cpp_source.html#l00192">Dae.cpp:192</a></div></div>
+<div class="ttc" id="Singleton_8h_html_a798d57b6fad3ea2438d29cd51a116ba1"><div class="ttname"><a href="Singleton_8h.html#a798d57b6fad3ea2438d29cd51a116ba1">__</a></div><div class="ttdeci">#define __(T)</div><div class="ttdef"><b>Definition:</b> <a href="Singleton_8h_source.html#l00084">Singleton.h:84</a></div></div>
 <div class="ttc" id="namespacestd_html"><div class="ttname"><a href="namespacestd.html">std</a></div><div class="ttdoc">STL namespace. </div></div>
-<div class="ttc" id="classProxy_1_1OuterSocket_html_ae266776247411aacb5ec047c2bc4ab84"><div class="ttname"><a href="classProxy_1_1OuterSocket.html#ae266776247411aacb5ec047c2bc4ab84">Proxy::OuterSocket::OuterSocket</a></div><div class="ttdeci">OuterSocket()</div><div class="ttdef"><b>Definition:</b> <a href="Dae_8cpp_source.html#l00223">Dae.cpp:223</a></div></div>
+<div class="ttc" id="CraftRaw_8h_html"><div class="ttname"><a href="CraftRaw_8h.html">CraftRaw.h</a></div></div>
+<div class="ttc" id="classProxy_1_1OuterSocket_html_ae266776247411aacb5ec047c2bc4ab84"><div class="ttname"><a href="classProxy_1_1OuterSocket.html#ae266776247411aacb5ec047c2bc4ab84">Proxy::OuterSocket::OuterSocket</a></div><div class="ttdeci">OuterSocket()</div><div class="ttdef"><b>Definition:</b> <a href="Dae_8cpp_source.html#l00225">Dae.cpp:225</a></div></div>
+<div class="ttc" id="SockTransport_8h_html"><div class="ttname"><a href="SockTransport_8h.html">SockTransport.h</a></div></div>
+<div class="ttc" id="TunTap_8h_html"><div class="ttname"><a href="TunTap_8h.html">TunTap.h</a></div></div>
 <div class="ttc" id="namespaceCheck_html"><div class="ttname"><a href="namespaceCheck.html">Check</a></div><div class="ttdef"><b>Definition:</b> <a href="Check_8cpp_source.html#l00046">Check.cpp:46</a></div></div>
+<div class="ttc" id="SockPresentation_8h_html"><div class="ttname"><a href="SockPresentation_8h.html">SockPresentation.h</a></div></div>
 <div class="ttc" id="classProxy_1_1BaseSocket_html_a083db0f55380aff7a8b0fe406b4a29fd"><div class="ttname"><a href="classProxy_1_1BaseSocket.html#a083db0f55380aff7a8b0fe406b4a29fd">Proxy::BaseSocket::~BaseSocket</a></div><div class="ttdeci">virtual ~BaseSocket()</div><div class="ttdef"><b>Definition:</b> <a href="Dae_8cpp_source.html#l00061">Dae.cpp:61</a></div></div>
+<div class="ttc" id="SockHandler_8h_html_a2c29ea2ee796869613ef16cf5d2d8d9c"><div class="ttname"><a href="SockHandler_8h.html#a2c29ea2ee796869613ef16cf5d2d8d9c">IPv6</a></div><div class="ttdeci">#define IPv6</div><div class="ttdef"><b>Definition:</b> <a href="SockHandler_8h_source.html#l00071">SockHandler.h:71</a></div></div>
+<div class="ttc" id="Singleton_8h_html"><div class="ttname"><a href="Singleton_8h.html">Singleton.h</a></div></div>
+<div class="ttc" id="SockHandler_8h_html_a638d888edaaab2ffded6211e4be1b935"><div class="ttname"><a href="SockHandler_8h.html#a638d888edaaab2ffded6211e4be1b935">Passive</a></div><div class="ttdeci">#define Passive</div><div class="ttdef"><b>Definition:</b> <a href="SockHandler_8h_source.html#l00066">SockHandler.h:66</a></div></div>
 <div class="ttc" id="classProxy_1_1InnerSocket_html_a5646675570a50dd004e9b20cbd6c60dd"><div class="ttname"><a href="classProxy_1_1InnerSocket.html#a5646675570a50dd004e9b20cbd6c60dd">Proxy::InnerSocket::Run</a></div><div class="ttdeci">void Run()</div><div class="ttdef"><b>Definition:</b> <a href="Dae_8cpp_source.html#l00108">Dae.cpp:108</a></div></div>
-<div class="ttc" id="classProxy_1_1OuterSocket_html_aa2e795478fca74b19da07fb7bff4b39c"><div class="ttname"><a href="classProxy_1_1OuterSocket.html#aa2e795478fca74b19da07fb7bff4b39c">Proxy::OuterSocket::Run</a></div><div class="ttdeci">void Run()</div><div class="ttdef"><b>Definition:</b> <a href="Dae_8cpp_source.html#l00217">Dae.cpp:217</a></div></div>
+<div class="ttc" id="classProxy_1_1OuterSocket_html_aa2e795478fca74b19da07fb7bff4b39c"><div class="ttname"><a href="classProxy_1_1OuterSocket.html#aa2e795478fca74b19da07fb7bff4b39c">Proxy::OuterSocket::Run</a></div><div class="ttdeci">void Run()</div><div class="ttdef"><b>Definition:</b> <a href="Dae_8cpp_source.html#l00219">Dae.cpp:219</a></div></div>
 <div class="ttc" id="Proto_8h_html"><div class="ttname"><a href="Proto_8h.html">Proto.h</a></div></div>
-<div class="ttc" id="classProxy_1_1OuterSocket_html_ad24f590b94aa6ab3f88e555ba90dc32b"><div class="ttname"><a href="classProxy_1_1OuterSocket.html#ad24f590b94aa6ab3f88e555ba90dc32b">Proxy::OuterSocket::~OuterSocket</a></div><div class="ttdeci">virtual ~OuterSocket()</div><div class="ttdef"><b>Definition:</b> <a href="Dae_8cpp_source.html#l00234">Dae.cpp:234</a></div></div>
+<div class="ttc" id="classProxy_1_1OuterSocket_html_ad24f590b94aa6ab3f88e555ba90dc32b"><div class="ttname"><a href="classProxy_1_1OuterSocket.html#ad24f590b94aa6ab3f88e555ba90dc32b">Proxy::OuterSocket::~OuterSocket</a></div><div class="ttdeci">virtual ~OuterSocket()</div><div class="ttdef"><b>Definition:</b> <a href="Dae_8cpp_source.html#l00236">Dae.cpp:236</a></div></div>
 <div class="ttc" id="ProxyConf_8h_html_a588673ed283c0686cd93b468a8026bc7"><div class="ttname"><a href="ProxyConf_8h.html#a588673ed283c0686cd93b468a8026bc7">TSADDR6</a></div><div class="ttdeci">#define TSADDR6</div><div class="ttdef"><b>Definition:</b> <a href="ProxyConf_8h_source.html#l00053">ProxyConf.h:53</a></div></div>
 <div class="ttc" id="classCheck_1_1DConf_html_a7651ae79fddad419bd66fc6e820f5492"><div class="ttname"><a href="classCheck_1_1DConf.html#a7651ae79fddad419bd66fc6e820f5492">Check::DConf::GetReset</a></div><div class="ttdeci">static bool GetReset()</div><div class="ttdef"><b>Definition:</b> <a href="Check_8cpp_source.html#l00148">Check.cpp:148</a></div></div>
 <div class="ttc" id="ProxyConf_8h_html_a6faf9a5b203cfee2191ae4e91f1d5ab2"><div class="ttname"><a href="ProxyConf_8h.html#a6faf9a5b203cfee2191ae4e91f1d5ab2">TCADDR6</a></div><div class="ttdeci">#define TCADDR6</div><div class="ttdef"><b>Definition:</b> <a href="ProxyConf_8h_source.html#l00059">ProxyConf.h:59</a></div></div>
+<div class="ttc" id="Deque_8h_html"><div class="ttname"><a href="Deque_8h.html">Deque.h</a></div></div>
 <div class="ttc" id="namespaceDebug_html"><div class="ttname"><a href="namespaceDebug.html">Debug</a></div><div class="ttdef"><b>Definition:</b> <a href="Check_8h_source.html#l00043">Check.h:43</a></div></div>
 <div class="ttc" id="namespaceProxy_html"><div class="ttname"><a href="namespaceProxy.html">Proxy</a></div><div class="ttdef"><b>Definition:</b> <a href="Dae_8cpp_source.html#l00052">Dae.cpp:52</a></div></div>
 <div class="ttc" id="classProxy_1_1BaseSocket_html_a5ad5a39911cf34004f84c88b6b701b77"><div class="ttname"><a href="classProxy_1_1BaseSocket.html#a5ad5a39911cf34004f84c88b6b701b77">Proxy::BaseSocket::confh</a></div><div class="ttdeci">std::shared_ptr&lt; Check::PConf &gt; confh</div><div class="ttdef"><b>Definition:</b> <a href="Dae_8h_source.html#l00067">Dae.h:67</a></div></div>
@@ -373,13 +388,15 @@ $(document).ready(function(){initNavTree('Dae_8cpp_source.html','');});
 <div class="ttc" id="Iface_8h_html"><div class="ttname"><a href="Iface_8h.html">Iface.h</a></div></div>
 <div class="ttc" id="namespaceTunTap_html"><div class="ttname"><a href="namespaceTunTap.html">TunTap</a></div><div class="ttdef"><b>Definition:</b> <a href="Dae_8h_source.html#l00045">Dae.h:45</a></div></div>
 <div class="ttc" id="classProxy_1_1InnerSocket_html_a93f2ae0646e270f178506df889682347"><div class="ttname"><a href="classProxy_1_1InnerSocket.html#a93f2ae0646e270f178506df889682347">Proxy::InnerSocket::~InnerSocket</a></div><div class="ttdeci">virtual ~InnerSocket()</div><div class="ttdef"><b>Definition:</b> <a href="Dae_8cpp_source.html#l00134">Dae.cpp:134</a></div></div>
+<div class="ttc" id="SockHandler_8h_html_a3e4aba4f7d3a690fdce5d1fe31156421"><div class="ttname"><a href="SockHandler_8h.html#a3e4aba4f7d3a690fdce5d1fe31156421">Active</a></div><div class="ttdeci">#define Active</div><div class="ttdef"><b>Definition:</b> <a href="SockHandler_8h_source.html#l00067">SockHandler.h:67</a></div></div>
+<div class="ttc" id="SockNetwork_8h_html"><div class="ttname"><a href="SockNetwork_8h.html">SockNetwork.h</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="Dae_8cpp.html">Dae.cpp</a></li>
-    <li class="footer">Generated on Tue Sep 8 2015 00:12:05 for MiniLib by
+    <li class="footer">Generated on Sat Sep 12 2015 03:23:43 for Proxy by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.8 </li>
   </ul>

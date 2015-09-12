@@ -1,4 +1,18 @@
 var searchData=
 [
-  ['u',['U',['../ProxyConf_8h.html#affc9cbf86b78292bdb405361761c47f5',1,'ProxyConf.h']]]
+  ['rc',['rc',['../namespaceSingleton.html#a6540172f3fb3b4e941fab1c8427dfdf4',1,'Singleton']]],
+  ['read',['Read',['../classProxy_1_1Iface.html#a0a5fc7e4ffa6b2248a98176974f4af53',1,'Proxy::Iface']]],
+  ['readme_2emd',['README.md',['../README_8md.html',1,'']]],
+  ['ready',['READY',['../namespaceThreads.html#af838b82ab5aaf9ec238f7a9a408ac476a037456fa35735252d8f69615027f3c1e',1,'Threads']]],
+  ['recv',['Recv',['../classLayer_1_1SockHandler.html#a83179fa3fa78b6d3a872a83e287ef77e',1,'Layer::SockHandler::Recv()'],['../classLayer_1_1SockIp.html#a4b89f57ed49b5abdd4f548ac6dd0c705',1,'Layer::SockIp::Recv()'],['../classLayer_1_1SockSecure.html#a70478d5a39fca43158e5e4bcc497cd7e',1,'Layer::SockSecure::Recv()'],['../classLayer_1_1SockTcp.html#a4e6b88f604f3dc3d0c3bd029eb5cbd12',1,'Layer::SockTcp::Recv()'],['../classLayer_1_1SockUdp.html#a928f2381fb789160482c86b9a4a9db90',1,'Layer::SockUdp::Recv()'],['../classProxy_1_1ProtoBase.html#ad0a65a9c9fab6f410a992c3bc79ade56',1,'Proxy::ProtoBase::Recv()']]],
+  ['recvfrom',['Recvfrom',['../classLayer_1_1SockHandler.html#a476adcdce470799101a2a65a0f061b74',1,'Layer::SockHandler::Recvfrom()'],['../classLayer_1_1SockIp.html#a4bc013f10c4109614080cd5929eb35eb',1,'Layer::SockIp::Recvfrom()']]],
+  ['redecorator',['Redecorator',['../classDecorator_1_1Redecorator.html',1,'Decorator']]],
+  ['redecorator',['Redecorator',['../classDecorator_1_1Redecorator.html#aa093e26d49a7d1ac988b918735357dba',1,'Decorator::Redecorator']]],
+  ['refcount',['RefCount',['../classSingleton_1_1Singleton.html#a37d112832aece3e531bec1ed17a67546',1,'Singleton::Singleton']]],
+  ['resetsd',['ResetSd',['../classLayer_1_1BaseSock.html#aa76bcbad13c97916cc59bda2c91f0798',1,'Layer::BaseSock']]],
+  ['reverse',['REVERSE',['../namespaceDeque.html#a0da5a9ac5e0123601c5dca300f303780ac90e9e52cc2d441bfb75f94927a5607d',1,'Deque']]],
+  ['rroute4',['RRoute4',['../classTunTap_1_1Interface.html#ad1ca556019f3d81dece607b453e3e511',1,'TunTap::Interface']]],
+  ['rroute6',['RRoute6',['../classTunTap_1_1Interface.html#a3c2403c5c9e06b30bff0a01baf2e8d67',1,'TunTap::Interface']]],
+  ['run',['Run',['../classProxy_1_1BaseSocket.html#ac623751356d11090a834a684df8de6a0',1,'Proxy::BaseSocket::Run()'],['../classProxy_1_1InnerSocket.html#a5646675570a50dd004e9b20cbd6c60dd',1,'Proxy::InnerSocket::Run()'],['../classProxy_1_1OuterSocket.html#aa2e795478fca74b19da07fb7bff4b39c',1,'Proxy::OuterSocket::Run()'],['../classProxy_1_1Iface.html#adf7f34937a2db255476979639b9d5e35',1,'Proxy::Iface::Run()'],['../classProxy_1_1ProtoBase.html#aab32c0a8a001e57ba393151a190750b1',1,'Proxy::ProtoBase::Run()'],['../classProxy_1_1StreamClient.html#a97bee203bd39a66b44d11e95924a6eb2',1,'Proxy::StreamClient::Run()'],['../classProxy_1_1StreamServer.html#a9dc585644f185a830f15f02726c18f32',1,'Proxy::StreamServer::Run()'],['../classDecorator_1_1Decorator.html#ab0007b40d55bf32d7d595d0f83c8f078',1,'Decorator::Decorator::run()'],['../classDecorator_1_1Decorator_3_01R_00_01R_00_01T_8_8_8_4.html#ac9f581ec877f8113070b6e3c5cf3df02',1,'Decorator::Decorator&lt; R, R, T...&gt;::run()'],['../classDecorator_1_1Redecorator.html#a8aa8d6ff25f449972980e6b7c7f176ad',1,'Decorator::Redecorator::run()'],['../classExecUnit_1_1Eunit.html#acbee07831239ac79b4d254d4af4cab0b',1,'ExecUnit::Eunit::run()'],['../classExecUnit_1_1Eunit.html#adbdb10f437a6253408080fc286e6563e',1,'ExecUnit::Eunit::run(F &amp;&amp;_fun)'],['../classExecUnit_1_1Eunit_3_01void_00_01Ts_8_8_8_4.html#aabcd54f0fa9bbda477624685e8cf7117',1,'ExecUnit::Eunit&lt; void, Ts...&gt;::run()']]],
+  ['running',['RUNNING',['../namespaceThreads.html#af838b82ab5aaf9ec238f7a9a408ac476abeb084632487d757138d360c006d47ca',1,'Threads']]]
 ];

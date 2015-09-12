@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['memory',['Memory',['../namespaceMemory.html',1,'']]]
+  ['layer',['Layer',['../namespaceLayer.html',1,'']]],
+  ['lock',['Lock',['../namespaceLock.html',1,'']]]
 ];

@@ -1,5 +1,12 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$classProxy_1_1ProtoBase.html" title="Proxy::ProtoBase" alt="" coords="5,31,131,57"/>
-<area shape="rect" id="node2" href="$classProxy_1_1StreamClient.html" title="Proxy::StreamClient" alt="" coords="181,5,321,32"/>
-<area shape="rect" id="node3" href="$classProxy_1_1StreamServer.html" title="Proxy::StreamServer" alt="" coords="179,56,323,83"/>
+<area shape="rect" id="node1" href="$classCraft_1_1PacketBase.html" title="Craft::PacketBase" alt="" coords="5,107,136,133"/>
+<area shape="rect" id="node2" href="$classCraft_1_1Packet.html" title="Craft::Packet\&lt; pheader \&gt;" alt="" coords="184,5,355,32"/>
+<area shape="rect" id="node3" href="$classCraft_1_1Packet.html" title="Craft::Packet\&lt; icmp \&gt;" alt="" coords="193,56,345,83"/>
+<area shape="rect" id="node5" href="$classCraft_1_1Packet.html" title="Craft::Packet\&lt; icmp6 \&gt;" alt="" coords="190,107,349,133"/>
+<area shape="rect" id="node7" href="$classCraft_1_1Packet.html" title="Craft::Packet\&lt; ip \&gt;" alt="" coords="202,157,337,184"/>
+<area shape="rect" id="node9" href="$classCraft_1_1Packet.html" title="Craft::Packet\&lt; ip6 \&gt;" alt="" coords="199,208,340,235"/>
+<area shape="rect" id="node4" href="$classCraft_1_1Icmp.html" title="Craft::Icmp" alt="" coords="406,56,494,83"/>
+<area shape="rect" id="node6" href="$classCraft_1_1Icmp6.html" title="Craft::Icmp6" alt="" coords="403,107,497,133"/>
+<area shape="rect" id="node8" href="$classCraft_1_1Ip.html" title="Craft::Ip" alt="" coords="415,157,485,184"/>
+<area shape="rect" id="node10" href="$classCraft_1_1Ip6.html" title="Craft::Ip6" alt="" coords="411,208,489,235"/>
 </map>

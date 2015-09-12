@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.8"/>
-<title>MiniLib: Iface.cpp Source File</title>
+<title>Proxy: Iface.cpp Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -29,7 +29,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">MiniLib
+   <div id="projectname">Proxy
    </div>
   </td>
  </tr>
@@ -92,7 +92,7 @@ $(document).ready(function(){initNavTree('Iface_8cpp_source.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Data Structures</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Data Structures</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -141,13 +141,13 @@ $(document).ready(function(){initNavTree('Iface_8cpp_source.html','');});
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">#include &lt;sys/socket.h&gt;</span></div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="preprocessor">#include &quot;Debug.h&quot;</span></div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor">#include &quot;Lock.h&quot;</span></div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="preprocessor">#include &quot;Singleton.h&quot;</span></div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="preprocessor">#include &quot;Deque.h&quot;</span></div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="preprocessor">#include &quot;Memory.h&quot;</span></div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="preprocessor">#include &quot;TunTap.h&quot;</span></div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="preprocessor">#include &quot;Headers.h&quot;</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="Debug_8h.html">Debug.h</a>&quot;</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="Lock_8h.html">Lock.h</a>&quot;</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="Singleton_8h.html">Singleton.h</a>&quot;</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="Deque_8h.html">Deque.h</a>&quot;</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="Memory_8h.html">Memory.h</a>&quot;</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="TunTap_8h.html">TunTap.h</a>&quot;</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="Headers_8h.html">Headers.h</a>&quot;</span></div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="ProxyConf_8h.html">ProxyConf.h</a>&quot;</span></div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="Check_8h.html">Check.h</a>&quot;</span></div>
@@ -165,19 +165,19 @@ $(document).ready(function(){initNavTree('Iface_8cpp_source.html','');});
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        <span class="keywordflow">if</span> (_read) {</div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="preprocessor">#ifdef __FreeBSD__</span></div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;                <span class="keywordflow">if</span> (reinterpret_cast&lt;Craft::ip*&gt;(_buff+4)-&gt;ip_v == 6) {</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;                        <span class="keyword">auto</span> ip6_h=<span class="keyword">reinterpret_cast&lt;</span>Craft::ip6*<span class="keyword">&gt;</span>(_buff+4);</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;                        <span class="keyword">auto</span> ip6_h=<span class="keyword">reinterpret_cast&lt;</span><a class="code" href="structCraft_1_1ip6.html">Craft::ip6</a>*<span class="keyword">&gt;</span>(_buff+4);</div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="preprocessor">#else</span></div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;                <span class="keywordflow">if</span> (reinterpret_cast&lt;Craft::ip*&gt;(_buff)-&gt;ip_v == 6) {</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;                        <span class="keyword">auto</span> ip6_h=<span class="keyword">reinterpret_cast&lt;</span>Craft::ip6*<span class="keyword">&gt;</span>(_buff);</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;                        <span class="keyword">auto</span> ip6_h=<span class="keyword">reinterpret_cast&lt;</span><a class="code" href="structCraft_1_1ip6.html">Craft::ip6</a>*<span class="keyword">&gt;</span>(_buff);</div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;                        lenght = ntohs(ip6_h-&gt;ip6_plen)+40;</div>
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;                        <a class="code" href="classProxy_1_1Iface.html#a27dbd1a603d2e9f2aa1ffa600fd58814">logh</a>-&gt;Log(<span class="stringliteral">&quot;[Iface::MultiAf]: moving&quot;</span>, lenght);</div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="preprocessor">#ifdef DONOTDISABLEV4</span></div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;                } <span class="keywordflow">else</span> {</div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="preprocessor">#ifdef __FreeBSD__</span></div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;                        <span class="keyword">auto</span> ip_h=<span class="keyword">reinterpret_cast&lt;</span>Craft::ip*<span class="keyword">&gt;</span>(_buff+4);</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;                        <span class="keyword">auto</span> ip_h=<span class="keyword">reinterpret_cast&lt;</span><a class="code" href="structCraft_1_1ip.html">Craft::ip</a>*<span class="keyword">&gt;</span>(_buff+4);</div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="preprocessor">#else</span></div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;                        <span class="keyword">auto</span> ip_h=<span class="keyword">reinterpret_cast&lt;</span>Craft::ip*<span class="keyword">&gt;</span>(_buff);</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;                        <span class="keyword">auto</span> ip_h=<span class="keyword">reinterpret_cast&lt;</span><a class="code" href="structCraft_1_1ip.html">Craft::ip</a>*<span class="keyword">&gt;</span>(_buff);</div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;                        lenght = ntohs(ip_h-&gt;ip_len);</div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;                        <a class="code" href="classProxy_1_1Iface.html#a27dbd1a603d2e9f2aa1ffa600fd58814">logh</a>-&gt;Log(<span class="stringliteral">&quot;[Iface::MultiAf]: moving&quot;</span>, lenght);</div>
@@ -188,7 +188,7 @@ $(document).ready(function(){initNavTree('Iface_8cpp_source.html','');});
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        } <span class="keywordflow">else</span> {</div>
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;                <span class="keywordflow">if</span> (reinterpret_cast&lt;Craft::ip*&gt;(_buff)-&gt;ip_v == 6) {</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;                        <span class="keyword">auto</span> ip6_h=<span class="keyword">reinterpret_cast&lt;</span>Craft::ip6*<span class="keyword">&gt;</span>(_buff);</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;                        <span class="keyword">auto</span> ip6_h=<span class="keyword">reinterpret_cast&lt;</span><a class="code" href="structCraft_1_1ip6.html">Craft::ip6</a>*<span class="keyword">&gt;</span>(_buff);</div>
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;                        lenght = ntohs(ip6_h-&gt;ip6_plen)+40;</div>
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;                        <a class="code" href="classProxy_1_1Iface.html#a27dbd1a603d2e9f2aa1ffa600fd58814">logh</a>-&gt;Log(<span class="stringliteral">&quot;[Iface::MultiAf]: moving&quot;</span>, lenght);</div>
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="preprocessor">#ifdef __FreeBSD__</span></div>
@@ -199,7 +199,7 @@ $(document).ready(function(){initNavTree('Iface_8cpp_source.html','');});
 <div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<span class="preprocessor">#ifdef DONOTDISABLEV4</span></div>
 <div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;                } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;                        <span class="keyword">auto</span> ip_h=<span class="keyword">reinterpret_cast&lt;</span>Craft::ip*<span class="keyword">&gt;</span>(_buff);</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;                        <span class="keyword">auto</span> ip_h=<span class="keyword">reinterpret_cast&lt;</span><a class="code" href="structCraft_1_1ip.html">Craft::ip</a>*<span class="keyword">&gt;</span>(_buff);</div>
 <div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;                        lenght = ntohs(ip_h-&gt;ip_len);</div>
 <div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;                        <a class="code" href="classProxy_1_1Iface.html#a27dbd1a603d2e9f2aa1ffa600fd58814">logh</a>-&gt;Log(<span class="stringliteral">&quot;[Iface::MultiAf]: moving&quot;</span>, lenght);</div>
 <div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;<span class="preprocessor">#ifdef __FreeBSD__</span></div>
@@ -294,10 +294,10 @@ $(document).ready(function(){initNavTree('Iface_8cpp_source.html','');});
 <div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;</div>
 <div class="line"><a name="l00187"></a><span class="lineno"><a class="line" href="classProxy_1_1Iface.html#abbb313442d9a8a05b3d68cd8e4fadf70">  187</a></span>&#160;<a class="code" href="classProxy_1_1Iface.html#abbb313442d9a8a05b3d68cd8e4fadf70">Iface::Iface</a>(std::shared_ptr&lt;TunTap::Interface&gt; _i)</div>
 <div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;        : <a class="code" href="classProxy_1_1Iface.html#ad56c0d20cae0b001f6bbdc1f00cf6328">iface</a>(_i),</div>
-<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;          <a class="code" href="classProxy_1_1Iface.html#a52344e6c349f343a2ccbc0075b0a2920">dh</a>(Singleton::_&lt;<a class="code" href="namespaceDeque.html">Deque</a>::<a class="code" href="namespaceDeque.html">Deque</a>&lt;int, char*&gt;&gt;()),</div>
-<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;          <a class="code" href="classProxy_1_1Iface.html#a2a644230868427f7f3a28dd330fbbbae">mp</a>(__(<a class="code" href="namespaceMemory.html">Memory</a>::MemoryPool)),</div>
-<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;          <a class="code" href="classProxy_1_1Iface.html#a0a3e12606637e9d6c91e5cd033b3ac0b">confh</a>(__(<a class="code" href="namespaceCheck.html">Check</a>::PConf)),</div>
-<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;          <a class="code" href="classProxy_1_1Iface.html#a27dbd1a603d2e9f2aa1ffa600fd58814">logh</a>(__(<a class="code" href="namespaceDebug.html">Debug</a>::<a class="code" href="namespaceDebug.html">Debug</a>))</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;          <a class="code" href="classProxy_1_1Iface.html#a52344e6c349f343a2ccbc0075b0a2920">dh</a>(<a class="code" href="namespaceSingleton.html">Singleton</a>::<a class="code" href="namespaceSingleton.html#af869352dbb84905a4956bedf1411ebf2">_</a>&lt;<a class="code" href="namespaceDeque.html">Deque</a>::<a class="code" href="namespaceDeque.html">Deque</a>&lt;int, char*&gt;&gt;()),</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;          <a class="code" href="classProxy_1_1Iface.html#a2a644230868427f7f3a28dd330fbbbae">mp</a>(<a class="code" href="Singleton_8h.html#a798d57b6fad3ea2438d29cd51a116ba1">__</a>(<a class="code" href="namespaceMemory.html">Memory</a>::MemoryPool)),</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;          <a class="code" href="classProxy_1_1Iface.html#a0a3e12606637e9d6c91e5cd033b3ac0b">confh</a>(<a class="code" href="Singleton_8h.html#a798d57b6fad3ea2438d29cd51a116ba1">__</a>(<a class="code" href="namespaceCheck.html">Check</a>::PConf)),</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;          <a class="code" href="classProxy_1_1Iface.html#a27dbd1a603d2e9f2aa1ffa600fd58814">logh</a>(<a class="code" href="Singleton_8h.html#a798d57b6fad3ea2438d29cd51a116ba1">__</a>(<a class="code" href="namespaceDebug.html">Debug</a>::<a class="code" href="namespaceDebug.html">Debug</a>))</div>
 <div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;{</div>
 <div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;        <a class="code" href="classProxy_1_1Iface.html#a27dbd1a603d2e9f2aa1ffa600fd58814">logh</a>-&gt;Log(<span class="stringliteral">&quot;[Iface::Iface]&quot;</span>);</div>
 <div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;        <span class="keywordtype">id</span> = <a class="code" href="classProxy_1_1Iface.html#ad56c0d20cae0b001f6bbdc1f00cf6328">iface</a>-&gt;Fd();</div>
@@ -314,24 +314,36 @@ $(document).ready(function(){initNavTree('Iface_8cpp_source.html','');});
 <div class="ttc" id="classProxy_1_1Iface_html_a499ed7a6730dea2805b0f09ef72f7838"><div class="ttname"><a href="classProxy_1_1Iface.html#a499ed7a6730dea2805b0f09ef72f7838">Proxy::Iface::Write</a></div><div class="ttdeci">void Write()</div><div class="ttdef"><b>Definition:</b> <a href="Iface_8cpp_source.html#l00146">Iface.cpp:146</a></div></div>
 <div class="ttc" id="classProxy_1_1Iface_html_a52344e6c349f343a2ccbc0075b0a2920"><div class="ttname"><a href="classProxy_1_1Iface.html#a52344e6c349f343a2ccbc0075b0a2920">Proxy::Iface::dh</a></div><div class="ttdeci">std::shared_ptr&lt; Deque::Deque&lt; int, char * &gt; &gt; dh</div><div class="ttdef"><b>Definition:</b> <a href="Iface_8h_source.html#l00056">Iface.h:56</a></div></div>
 <div class="ttc" id="classProxy_1_1Iface_html_ad56c0d20cae0b001f6bbdc1f00cf6328"><div class="ttname"><a href="classProxy_1_1Iface.html#ad56c0d20cae0b001f6bbdc1f00cf6328">Proxy::Iface::iface</a></div><div class="ttdeci">std::shared_ptr&lt; TunTap::Interface &gt; iface</div><div class="ttdef"><b>Definition:</b> <a href="Iface_8h_source.html#l00055">Iface.h:55</a></div></div>
+<div class="ttc" id="Debug_8h_html"><div class="ttname"><a href="Debug_8h.html">Debug.h</a></div></div>
+<div class="ttc" id="Lock_8h_html"><div class="ttname"><a href="Lock_8h.html">Lock.h</a></div></div>
 <div class="ttc" id="classProxy_1_1Iface_html_abbb313442d9a8a05b3d68cd8e4fadf70"><div class="ttname"><a href="classProxy_1_1Iface.html#abbb313442d9a8a05b3d68cd8e4fadf70">Proxy::Iface::Iface</a></div><div class="ttdeci">Iface(std::shared_ptr&lt; TunTap::Interface &gt;)</div><div class="ttdef"><b>Definition:</b> <a href="Iface_8cpp_source.html#l00187">Iface.cpp:187</a></div></div>
 <div class="ttc" id="namespaceMemory_html"><div class="ttname"><a href="namespaceMemory.html">Memory</a></div><div class="ttdef"><b>Definition:</b> <a href="Iface_8h_source.html#l00043">Iface.h:43</a></div></div>
+<div class="ttc" id="structCraft_1_1ip6_html"><div class="ttname"><a href="structCraft_1_1ip6.html">Craft::ip6</a></div><div class="ttdef"><b>Definition:</b> <a href="Headers_8h_source.html#l00079">Headers.h:79</a></div></div>
 <div class="ttc" id="classProxy_1_1Iface_html_a2a644230868427f7f3a28dd330fbbbae"><div class="ttname"><a href="classProxy_1_1Iface.html#a2a644230868427f7f3a28dd330fbbbae">Proxy::Iface::mp</a></div><div class="ttdeci">std::shared_ptr&lt; Memory::MemoryPool &gt; mp</div><div class="ttdef"><b>Definition:</b> <a href="Iface_8h_source.html#l00057">Iface.h:57</a></div></div>
+<div class="ttc" id="Memory_8h_html"><div class="ttname"><a href="Memory_8h.html">Memory.h</a></div></div>
+<div class="ttc" id="Singleton_8h_html_a798d57b6fad3ea2438d29cd51a116ba1"><div class="ttname"><a href="Singleton_8h.html#a798d57b6fad3ea2438d29cd51a116ba1">__</a></div><div class="ttdeci">#define __(T)</div><div class="ttdef"><b>Definition:</b> <a href="Singleton_8h_source.html#l00084">Singleton.h:84</a></div></div>
 <div class="ttc" id="ProxyConf_8h_html_a42257a545daf5b7933d6e8f96adc74f2"><div class="ttname"><a href="ProxyConf_8h.html#a42257a545daf5b7933d6e8f96adc74f2">F</a></div><div class="ttdeci">#define F</div><div class="ttdef"><b>Definition:</b> <a href="ProxyConf_8h_source.html#l00046">ProxyConf.h:46</a></div></div>
+<div class="ttc" id="TunTap_8h_html"><div class="ttname"><a href="TunTap_8h.html">TunTap.h</a></div></div>
 <div class="ttc" id="ProxyConf_8h_html_a76ba789cde9c36cd57dbb390bdee7661"><div class="ttname"><a href="ProxyConf_8h.html#a76ba789cde9c36cd57dbb390bdee7661">AF</a></div><div class="ttdeci">#define AF</div><div class="ttdef"><b>Definition:</b> <a href="ProxyConf_8h_source.html#l00040">ProxyConf.h:40</a></div></div>
 <div class="ttc" id="classProxy_1_1Iface_html_aa8f79b31f3888815df14672585d56162"><div class="ttname"><a href="classProxy_1_1Iface.html#aa8f79b31f3888815df14672585d56162">Proxy::Iface::~Iface</a></div><div class="ttdeci">virtual ~Iface()</div><div class="ttdef"><b>Definition:</b> <a href="Iface_8cpp_source.html#l00198">Iface.cpp:198</a></div></div>
 <div class="ttc" id="namespaceCheck_html"><div class="ttname"><a href="namespaceCheck.html">Check</a></div><div class="ttdef"><b>Definition:</b> <a href="Check_8cpp_source.html#l00046">Check.cpp:46</a></div></div>
+<div class="ttc" id="Headers_8h_html"><div class="ttname"><a href="Headers_8h.html">Headers.h</a></div></div>
+<div class="ttc" id="namespaceSingleton_html"><div class="ttname"><a href="namespaceSingleton.html">Singleton</a></div><div class="ttdef"><b>Definition:</b> <a href="Singleton_8h_source.html#l00048">Singleton.h:48</a></div></div>
 <div class="ttc" id="classProxy_1_1Iface_html_a0a5fc7e4ffa6b2248a98176974f4af53"><div class="ttname"><a href="classProxy_1_1Iface.html#a0a5fc7e4ffa6b2248a98176974f4af53">Proxy::Iface::Read</a></div><div class="ttdeci">void Read()</div><div class="ttdef"><b>Definition:</b> <a href="Iface_8cpp_source.html#l00113">Iface.cpp:113</a></div></div>
+<div class="ttc" id="Singleton_8h_html"><div class="ttname"><a href="Singleton_8h.html">Singleton.h</a></div></div>
 <div class="ttc" id="classProxy_1_1Iface_html_a27dbd1a603d2e9f2aa1ffa600fd58814"><div class="ttname"><a href="classProxy_1_1Iface.html#a27dbd1a603d2e9f2aa1ffa600fd58814">Proxy::Iface::logh</a></div><div class="ttdeci">std::shared_ptr&lt; Debug::Debug &gt; logh</div><div class="ttdef"><b>Definition:</b> <a href="Iface_8h_source.html#l00059">Iface.h:59</a></div></div>
 <div class="ttc" id="classCheck_1_1DConf_html_a7651ae79fddad419bd66fc6e820f5492"><div class="ttname"><a href="classCheck_1_1DConf.html#a7651ae79fddad419bd66fc6e820f5492">Check::DConf::GetReset</a></div><div class="ttdeci">static bool GetReset()</div><div class="ttdef"><b>Definition:</b> <a href="Check_8cpp_source.html#l00148">Check.cpp:148</a></div></div>
 <div class="ttc" id="classProxy_1_1Iface_html_afd958de741a58bf59d1ba76e32d30024"><div class="ttname"><a href="classProxy_1_1Iface.html#afd958de741a58bf59d1ba76e32d30024">Proxy::Iface::MultiAf</a></div><div class="ttdeci">int MultiAf(char *, bool) const </div><div class="ttdef"><b>Definition:</b> <a href="Iface_8cpp_source.html#l00054">Iface.cpp:54</a></div></div>
+<div class="ttc" id="Deque_8h_html"><div class="ttname"><a href="Deque_8h.html">Deque.h</a></div></div>
 <div class="ttc" id="namespaceDebug_html"><div class="ttname"><a href="namespaceDebug.html">Debug</a></div><div class="ttdef"><b>Definition:</b> <a href="Check_8h_source.html#l00043">Check.h:43</a></div></div>
 <div class="ttc" id="namespaceProxy_html"><div class="ttname"><a href="namespaceProxy.html">Proxy</a></div><div class="ttdef"><b>Definition:</b> <a href="Dae_8cpp_source.html#l00052">Dae.cpp:52</a></div></div>
+<div class="ttc" id="namespaceSingleton_html_af869352dbb84905a4956bedf1411ebf2"><div class="ttname"><a href="namespaceSingleton.html#af869352dbb84905a4956bedf1411ebf2">Singleton::_</a></div><div class="ttdeci">std::shared_ptr&lt; T1 &gt; _(Args...vargs)</div><div class="ttdef"><b>Definition:</b> <a href="Singleton_8h_source.html#l00086">Singleton.h:86</a></div></div>
 <div class="ttc" id="ProxyConf_8h_html"><div class="ttname"><a href="ProxyConf_8h.html">ProxyConf.h</a></div></div>
 <div class="ttc" id="classProxy_1_1Iface_html_adf7f34937a2db255476979639b9d5e35"><div class="ttname"><a href="classProxy_1_1Iface.html#adf7f34937a2db255476979639b9d5e35">Proxy::Iface::Run</a></div><div class="ttdeci">void Run()</div><div class="ttdef"><b>Definition:</b> <a href="Iface_8cpp_source.html#l00166">Iface.cpp:166</a></div></div>
 <div class="ttc" id="Iface_8h_html"><div class="ttname"><a href="Iface_8h.html">Iface.h</a></div></div>
 <div class="ttc" id="classCheck_1_1CConf_html_a16611a4200e7d2d345e2c9300f9bc419"><div class="ttname"><a href="classCheck_1_1CConf.html#a16611a4200e7d2d345e2c9300f9bc419">Check::CConf::Status</a></div><div class="ttdeci">static bool Status()</div><div class="ttdef"><b>Definition:</b> <a href="Check_8cpp_source.html#l00248">Check.cpp:248</a></div></div>
 <div class="ttc" id="classProxy_1_1Iface_html_a0a3e12606637e9d6c91e5cd033b3ac0b"><div class="ttname"><a href="classProxy_1_1Iface.html#a0a3e12606637e9d6c91e5cd033b3ac0b">Proxy::Iface::confh</a></div><div class="ttdeci">std::shared_ptr&lt; Check::PConf &gt; confh</div><div class="ttdef"><b>Definition:</b> <a href="Iface_8h_source.html#l00058">Iface.h:58</a></div></div>
+<div class="ttc" id="structCraft_1_1ip_html"><div class="ttname"><a href="structCraft_1_1ip.html">Craft::ip</a></div><div class="ttdef"><b>Definition:</b> <a href="Headers_8h_source.html#l00061">Headers.h:61</a></div></div>
 <div class="ttc" id="ProxyConf_8h_html_affc9cbf86b78292bdb405361761c47f5"><div class="ttname"><a href="ProxyConf_8h.html#affc9cbf86b78292bdb405361761c47f5">U</a></div><div class="ttdeci">#define U</div><div class="ttdef"><b>Definition:</b> <a href="ProxyConf_8h_source.html#l00044">ProxyConf.h:44</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
@@ -339,7 +351,7 @@ $(document).ready(function(){initNavTree('Iface_8cpp_source.html','');});
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="Iface_8cpp.html">Iface.cpp</a></li>
-    <li class="footer">Generated on Tue Sep 8 2015 00:12:05 for MiniLib by
+    <li class="footer">Generated on Sat Sep 12 2015 03:23:44 for Proxy by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.8 </li>
   </ul>

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['prototype',['ProtoType',['../namespaceCheck.html#abbd5f740a4da9671bd4fa3a23ecfd8ad',1,'Check']]]
+  ['direction',['direction',['../namespaceDeque.html#a0da5a9ac5e0123601c5dca300f303780',1,'Deque']]]
 ];

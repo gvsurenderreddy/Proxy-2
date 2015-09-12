@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.8"/>
-<title>MiniLib: Deque Namespace Reference</title>
+<title>Proxy: Deque Namespace Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -29,7 +29,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">MiniLib
+   <div id="projectname">Proxy
    </div>
   </td>
  </tr>
@@ -92,7 +92,7 @@ $(document).ready(function(){initNavTree('namespaceDeque.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Data Structures</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Data Structures</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -103,7 +103,9 @@ $(document).ready(function(){initNavTree('namespaceDeque.html','');});
 
 <div class="header">
   <div class="summary">
-<a href="#nested-classes">Data Structures</a>  </div>
+<a href="#nested-classes">Data Structures</a> &#124;
+<a href="#typedef-members">Typedefs</a> &#124;
+<a href="#enum-members">Enumerations</a>  </div>
   <div class="headertitle">
 <div class="title">Deque Namespace Reference</div>  </div>
 </div><!--header-->
@@ -113,14 +115,119 @@ $(document).ready(function(){initNavTree('namespaceDeque.html','');});
 Data Structures</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">singleton &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="singletonDeque_1_1Deque.html">Deque</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
+Typedefs</h2></td></tr>
+<tr class="memitem:ae44f9d21ad926c0e7a8f89cee3c89e94"><td class="memTemplParams" colspan="2">template&lt;typename I , typename T &gt; </td></tr>
+<tr class="memitem:ae44f9d21ad926c0e7a8f89cee3c89e94"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceDeque.html#ae44f9d21ad926c0e7a8f89cee3c89e94">SearchPtr</a> = std::shared_ptr&lt; T &gt;(*)(I)</td></tr>
+<tr class="separator:ae44f9d21ad926c0e7a8f89cee3c89e94"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5d0b0ad881bc39744086a87e5513d212"><td class="memTemplParams" colspan="2">template&lt;typename I , typename T &gt; </td></tr>
+<tr class="memitem:a5d0b0ad881bc39744086a87e5513d212"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceDeque.html#a5d0b0ad881bc39744086a87e5513d212">element</a> = std::pair&lt; I, T &gt;</td></tr>
+<tr class="separator:a5d0b0ad881bc39744086a87e5513d212"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a040e7e7133a55505690a0af06d629035"><td class="memTemplParams" colspan="2">template&lt;typename I , typename T &gt; </td></tr>
+<tr class="memitem:a040e7e7133a55505690a0af06d629035"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceDeque.html#a040e7e7133a55505690a0af06d629035">qelement</a> = std::shared_ptr&lt; <a class="el" href="namespaceDeque.html#a5d0b0ad881bc39744086a87e5513d212">element</a>&lt; I, T &gt;&gt;</td></tr>
+<tr class="separator:a040e7e7133a55505690a0af06d629035"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9efa85408c99801c8c2f1eeb507b3857"><td class="memItemLeft" align="right" valign="top">typedef uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceDeque.html#a9efa85408c99801c8c2f1eeb507b3857">index</a></td></tr>
+<tr class="separator:a9efa85408c99801c8c2f1eeb507b3857"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
+Enumerations</h2></td></tr>
+<tr class="memitem:a0da5a9ac5e0123601c5dca300f303780"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceDeque.html#a0da5a9ac5e0123601c5dca300f303780">direction</a> { <a class="el" href="namespaceDeque.html#a0da5a9ac5e0123601c5dca300f303780ad4aa6dcb9c28e822c8daa65450af1938">DIRECT</a> =1, 
+<a class="el" href="namespaceDeque.html#a0da5a9ac5e0123601c5dca300f303780ac90e9e52cc2d441bfb75f94927a5607d">REVERSE</a> =3
+ }</td></tr>
+<tr class="separator:a0da5a9ac5e0123601c5dca300f303780"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Typedef Documentation</h2>
+<a class="anchor" id="a5d0b0ad881bc39744086a87e5513d212"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename I , typename T &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="namespaceDeque.html#a5d0b0ad881bc39744086a87e5513d212">Deque::element</a> = typedef std::pair&lt;I, T&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="Deque_8h_source.html#l00063">63</a> of file <a class="el" href="Deque_8h_source.html">Deque.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a9efa85408c99801c8c2f1eeb507b3857"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef uint32_t <a class="el" href="namespaceDeque.html#a9efa85408c99801c8c2f1eeb507b3857">Deque::index</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="Deque_8h_source.html#l00068">68</a> of file <a class="el" href="Deque_8h_source.html">Deque.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a040e7e7133a55505690a0af06d629035"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename I , typename T &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="namespaceDeque.html#a040e7e7133a55505690a0af06d629035">Deque::qelement</a> = typedef std::shared_ptr&lt;<a class="el" href="namespaceDeque.html#a5d0b0ad881bc39744086a87e5513d212">element</a>&lt;I, T&gt;&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="Deque_8h_source.html#l00066">66</a> of file <a class="el" href="Deque_8h_source.html">Deque.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ae44f9d21ad926c0e7a8f89cee3c89e94"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename I , typename T &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="namespaceDeque.html#ae44f9d21ad926c0e7a8f89cee3c89e94">Deque::SearchPtr</a> = typedef std::shared_ptr&lt;T&gt;(*)(I)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="Deque_8h_source.html#l00060">60</a> of file <a class="el" href="Deque_8h_source.html">Deque.h</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Enumeration Type Documentation</h2>
+<a class="anchor" id="a0da5a9ac5e0123601c5dca300f303780"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="namespaceDeque.html#a0da5a9ac5e0123601c5dca300f303780">Deque::direction</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a class="anchor" id="a0da5a9ac5e0123601c5dca300f303780ad4aa6dcb9c28e822c8daa65450af1938"></a>DIRECT&#160;</td><td class="fielddoc">
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="a0da5a9ac5e0123601c5dca300f303780ac90e9e52cc2d441bfb75f94927a5607d"></a>REVERSE&#160;</td><td class="fielddoc">
+</td></tr>
+</table>
+
+<p>Definition at line <a class="el" href="Deque_8h_source.html#l00069">69</a> of file <a class="el" href="Deque_8h_source.html">Deque.h</a>.</p>
+
+</div>
+</div>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespaceDeque.html">Deque</a></li>
-    <li class="footer">Generated on Tue Sep 8 2015 00:12:05 for MiniLib by
+    <li class="footer">Generated on Sat Sep 12 2015 03:23:45 for Proxy by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.8 </li>
   </ul>

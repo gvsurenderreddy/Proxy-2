@@ -1,14 +1,11 @@
 var searchData=
 [
-  ['iauto',['Iauto',['../classCheck_1_1PConf.html#a422a8d4275c7d0432c620e18f25cf142',1,'Check::PConf::Iauto()'],['../namespaceCheck.html#a64635b9ee5a949aef45c487300c345c5ae27c7667719a380936234913197340d8',1,'Check::IAUTO()']]],
-  ['iconf',['IConf',['../classCheck_1_1IConf.html',1,'Check']]],
-  ['iconf',['IConf',['../classCheck_1_1IConf.html#ae416d63f9bf0c0c6a4b5e56938f0899c',1,'Check::IConf']]],
-  ['id',['id',['../classProxy_1_1Iface.html#a639208ba2be46267eeb283b653546724',1,'Proxy::Iface']]],
-  ['iface',['Iface',['../classProxy_1_1Iface.html#abbb313442d9a8a05b3d68cd8e4fadf70',1,'Proxy::Iface::Iface(std::shared_ptr&lt; TunTap::Interface &gt;)'],['../classProxy_1_1Iface.html#ad56c0d20cae0b001f6bbdc1f00cf6328',1,'Proxy::Iface::iface()']]],
-  ['iface',['Iface',['../classProxy_1_1Iface.html',1,'Proxy']]],
-  ['iface_2ecpp',['Iface.cpp',['../Iface_8cpp.html',1,'']]],
-  ['iface_2eh',['Iface.h',['../Iface_8h.html',1,'']]],
-  ['init',['Init',['../classProxy_1_1BaseSocket.html#a7aa8c5eec35c671f2af8ea9817087957',1,'Proxy::BaseSocket::Init()'],['../classProxy_1_1InnerSocket.html#a2411ec94b9b2150da4e61681fe1948a2',1,'Proxy::InnerSocket::Init()'],['../classProxy_1_1OuterSocket.html#a8449f31c14ba5e7e31380c18dace60e3',1,'Proxy::OuterSocket::Init()'],['../classProxy_1_1ProtoBase.html#a95283e3593bc5909267230f88f8f3999',1,'Proxy::ProtoBase::Init()'],['../classProxy_1_1StreamClient.html#a24e2b304d3c65244d401848fc5a176d2',1,'Proxy::StreamClient::Init()'],['../classProxy_1_1StreamServer.html#a3df61ac41cc76e2f141b235e1d21c79e',1,'Proxy::StreamServer::Init()']]],
-  ['innersocket',['InnerSocket',['../classProxy_1_1InnerSocket.html#a43200274e5be244d49b552009de6cfb5',1,'Proxy::InnerSocket']]],
-  ['innersocket',['InnerSocket',['../classProxy_1_1InnerSocket.html',1,'Proxy']]]
+  ['halt',['Halt',['../classThreads_1_1Thread.html#afa2cd2fa6ad967608fbd4d4ea987f985',1,'Threads::Thread']]],
+  ['halted',['HALTED',['../namespaceThreads.html#af838b82ab5aaf9ec238f7a9a408ac476a8078f7b2bc5246314493bb3bd33f3c8b',1,'Threads']]],
+  ['hb',['HB',['../ProxyConf_8h.html#afba2c99288e2765f84ae162307ea0c1f',1,'ProxyConf.h']]],
+  ['header',['header',['../classCraft_1_1Packet.html#a625879053070f46d47183d73c36f262f',1,'Craft::Packet::header()'],['../structCraft_1_1picmp6.html#a38d406892fe5ec6dd6a7240e337b3331',1,'Craft::picmp6::header()']]],
+  ['headerlength',['HeaderLength',['../classCraft_1_1Packet.html#a65de2352994067edca64d1c492117898',1,'Craft::Packet']]],
+  ['headers_2eh',['Headers.h',['../Headers_8h.html',1,'']]],
+  ['hex',['Hex',['../classDebug_1_1Debug.html#a6e8342f7a9637e6598d0a203588e9f45',1,'Debug::Debug']]],
+  ['hlength',['hlength',['../classCraft_1_1Packet.html#a0a370427ab7218f48e396032a70ec6fa',1,'Craft::Packet']]]
 ];

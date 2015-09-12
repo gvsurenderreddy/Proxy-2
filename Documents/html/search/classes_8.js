@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['streamclient',['StreamClient',['../classProxy_1_1StreamClient.html',1,'Proxy']]],
-  ['streamserver',['StreamServer',['../classProxy_1_1StreamServer.html',1,'Proxy']]]
+  ['memory',['Memory',['../classMemory_1_1Memory.html',1,'Memory']]],
+  ['memorypool',['MemoryPool',['../classMemory_1_1MemoryPool.html',1,'Memory']]]
 ];

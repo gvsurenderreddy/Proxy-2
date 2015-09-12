@@ -1,4 +1,4 @@
 var namespaceDeque =
 [
-    [ "Deque", "singletonDeque_1_1Deque.html", null ]
+    [ "Deque", "singletonDeque_1_1Deque.html", "singletonDeque_1_1Deque" ]
 ];

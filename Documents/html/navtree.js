@@ -1,12 +1,14 @@
 var NAVTREE =
 [
-  [ "MiniLib", "index.html", [
+  [ "Proxy", "index.html", [
     [ "What's Proxy?", "md_README.html", null ],
     [ "Namespaces", null, [
       [ "Namespace List", "namespaces.html", "namespaces" ],
       [ "Namespace Members", "namespacemembers.html", [
         [ "All", "namespacemembers.html", null ],
+        [ "Functions", "namespacemembers_func.html", null ],
         [ "Variables", "namespacemembers_vars.html", null ],
+        [ "Typedefs", "namespacemembers_type.html", null ],
         [ "Enumerations", "namespacemembers_enum.html", null ],
         [ "Enumerator", "namespacemembers_eval.html", null ]
       ] ]
@@ -16,9 +18,10 @@ var NAVTREE =
       [ "Data Structure Index", "classes.html", null ],
       [ "Class Hierarchy", "hierarchy.html", "hierarchy" ],
       [ "Data Fields", "functions.html", [
-        [ "All", "functions.html", null ],
-        [ "Functions", "functions_func.html", null ],
-        [ "Variables", "functions_vars.html", null ]
+        [ "All", "functions.html", "functions_dup" ],
+        [ "Functions", "functions_func.html", "functions_func" ],
+        [ "Variables", "functions_vars.html", null ],
+        [ "Related Functions", "functions_rela.html", null ]
       ] ]
     ] ],
     [ "Files", null, [
@@ -34,7 +37,10 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"Check_8cpp.html"
+"Check_8cpp.html",
+"Threads_8h.html#af838b82ab5aaf9ec238f7a9a408ac476a8078f7b2bc5246314493bb3bd33f3c8b",
+"classLayer_1_1DataSock.html#a0aee18c12753afc68bc97354a069e0b7",
+"classThreads_1_1ThreadPool.html#a546befebfd5363e5e17b9b0214eba146"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
