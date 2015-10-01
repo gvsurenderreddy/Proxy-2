@@ -86,7 +86,7 @@ void InnerSocket::Init()
 	}
 	if (confh->Client() && confh->Iauto())
 	{
-		//iface->SSRoute6();
+		iface->SSRoute6();
 		iface->SDRoute6();
 #ifdef DONOTDISABLEV4
 		iface->SSRoute4();
