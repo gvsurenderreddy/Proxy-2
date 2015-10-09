@@ -90,53 +90,6 @@ void ProtoBase::KeepAlive()
 		}
 		return 0;
 	});
-#ifndef __FreeBSD__
-	sd->SetOptlevel(SOL_TCP);
-	sd->SetOptname(TCP_KEEPIDLE);
-	int opt=10;
-	sd->SetOptval(reinterpret_cast<char*>(&opt));
-	sd->SetOptlen(sizeof(opt));
-	err = exc->run([this]()->int {
-		if (Check::DConf::GetReset())
-			return -1;
-		this->sh->Setsockopt(this->sd);
-		if (this->sd->GetError()->Get()) {
-			Check::DConf::SetReset();
-			return -1;
-		}
-		return 0;
-	});
-	sd->SetOptlevel(SOL_TCP);
-	sd->SetOptname(TCP_KEEPINTVL);
-	int opt=5;
-	sd->SetOptval(reinterpret_cast<char*>(&opt));
-	sd->SetOptlen(sizeof(opt));
-	err = exc->run([this]()->int {
-		if (Check::DConf::GetReset())
-			return -1;
-		this->sh->Setsockopt(this->sd);
-		if (this->sd->GetError()->Get()) {
-			Check::DConf::SetReset();
-			return -1;
-		}
-		return 0;
-	});
-	sd->SetOptlevel(SOL_TCP);
-	sd->SetOptname(TCP_KEEPCNT);
-	int opt=10;
-	sd->SetOptval(reinterpret_cast<char*>(&opt));
-	sd->SetOptlen(sizeof(opt));
-	err = exc->run([this]()->int {
-		if (Check::DConf::GetReset())
-			return -1;
-		this->sh->Setsockopt(this->sd);
-		if (this->sd->GetError()->Get()) {
-			Check::DConf::SetReset();
-			return -1;
-		}
-		return 0;
-	});
-#else
 	pid_t pid=-1;
 	int status=0;
 	if ((pid=fork()) < 0)
@@ -144,10 +97,16 @@ void ProtoBase::KeepAlive()
 	else if (pid > 0)
 		waitpid(pid, &status, 0);
 	else 
+#ifdef __FreeBSD__
 		execl("/sbin/sysctl", "/sbin/sysctl", "-w",
 		    "net.inet.tcp.keepidle=10000",
 		    "net.inet.tcp.keepintvl=5000",
 		    "net.inet.tcp.keepcnt=10", nullptr);
+#else
+		execl("/sbin/sysctl", "/sbin/sysctl", "-w",
+		    "net.ipv4.tcp_keepalive_time=10",
+		    "net.ipv4.tcp_keepalive_intvl=5",
+		    "net.ipv4.tcp_keepalive_probes=10", nullptr);
 	logh->Log("[ProtoBase::KeepAlive]: keep alive with status", status);
 #endif
 	if (err == -1)
