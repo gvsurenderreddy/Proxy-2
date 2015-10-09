@@ -28,6 +28,8 @@
  *
  */
 
+#include <unistd.h>
+#include <sys/wait.h>
 #include <map>
 #include <algorithm>
 
@@ -68,6 +70,88 @@ int ProtoBase::Lenght(char *_buff) const
 #endif
 	}
 	return lenght;
+}
+
+void ProtoBase::KeepAlive()
+{
+	/* ! SO_KEEPALIVE experiments*/
+	sd->SetOptlevel(SOL_SOCKET);
+	sd->SetOptname(SO_KEEPALIVE);
+	int opt=1;
+	sd->SetOptval(reinterpret_cast<char*>(&opt));
+	sd->SetOptlen(sizeof(opt));
+	int err = exc->run([this]()->int {
+		if (Check::DConf::GetReset())
+			return -1;
+		this->sh->Setsockopt(this->sd);
+		if (this->sd->GetError()->Get()) {
+			Check::DConf::SetReset();
+			return -1;
+		}
+		return 0;
+	});
+#ifndef __FreeBSD__
+	sd->SetOptlevel(SOL_TCP);
+	sd->SetOptname(TCP_KEEPIDLE);
+	int opt=10;
+	sd->SetOptval(reinterpret_cast<char*>(&opt));
+	sd->SetOptlen(sizeof(opt));
+	err = exc->run([this]()->int {
+		if (Check::DConf::GetReset())
+			return -1;
+		this->sh->Setsockopt(this->sd);
+		if (this->sd->GetError()->Get()) {
+			Check::DConf::SetReset();
+			return -1;
+		}
+		return 0;
+	});
+	sd->SetOptlevel(SOL_TCP);
+	sd->SetOptname(TCP_KEEPINTVL);
+	int opt=5;
+	sd->SetOptval(reinterpret_cast<char*>(&opt));
+	sd->SetOptlen(sizeof(opt));
+	err = exc->run([this]()->int {
+		if (Check::DConf::GetReset())
+			return -1;
+		this->sh->Setsockopt(this->sd);
+		if (this->sd->GetError()->Get()) {
+			Check::DConf::SetReset();
+			return -1;
+		}
+		return 0;
+	});
+	sd->SetOptlevel(SOL_TCP);
+	sd->SetOptname(TCP_KEEPCNT);
+	int opt=10;
+	sd->SetOptval(reinterpret_cast<char*>(&opt));
+	sd->SetOptlen(sizeof(opt));
+	err = exc->run([this]()->int {
+		if (Check::DConf::GetReset())
+			return -1;
+		this->sh->Setsockopt(this->sd);
+		if (this->sd->GetError()->Get()) {
+			Check::DConf::SetReset();
+			return -1;
+		}
+		return 0;
+	});
+#else
+	pid_t pid=-1;
+	int status=0;
+	if ((pid=fork()) < 0)
+		logh->Exc("[Interface::Addr6]: error forking");
+	else if (pid > 0)
+		waitpid(pid, &status, 0);
+	else 
+		execl("/sbin/sysctl", "/sbin/sysctl", "-w",
+		    "net.inet.tcp.keepidle=10000",
+		    "net.inet.tcp.keepintvl=5000",
+		    "net.inet.tcp.keepcnt=10", nullptr);
+	logh->Log("[ProtoBase::KeepAlive]: keep alive with status", status);
+#endif
+	if (err == -1)
+		logh->Exc("[ProtoBase::KeepAlive]: error initializing");
 }
 
 /*
@@ -256,6 +340,7 @@ void StreamClient::Init()
 		}
 		return 0;
 	});
+	KeepAlive();
 	err = exc->run([this]()->int {
 		if (Check::DConf::GetReset())
 			return -1;
@@ -436,6 +521,7 @@ void StreamServer::Init()
 		}
 		return 0;
 	});
+	KeepAlive();
 	err = exc->run([this]()->int {
 		if (Check::DConf::GetReset())
 			return -1;

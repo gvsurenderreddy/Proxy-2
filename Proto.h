@@ -77,9 +77,10 @@ protected:
 	std::shared_ptr<Layer::SockHandler> sh;
 	std::shared_ptr<Layer::BaseSock> sd;
 	std::shared_ptr<Debug::Debug> logh;
-	virtual int Lenght(char*) const;
-	virtual void Recv(std::shared_ptr<Layer::BaseSock>, int*);
-	virtual void Send(std::shared_ptr<Layer::BaseSock>, int*);
+	int Lenght(char*) const;
+	void KeepAlive();
+	void Recv(std::shared_ptr<Layer::BaseSock>, int*);
+	void Send(std::shared_ptr<Layer::BaseSock>, int*);
 public:
 	void SetHandler(std::shared_ptr<Layer::SockHandler>);
 	std::shared_ptr<Layer::SockHandler> GetHandler() const;
