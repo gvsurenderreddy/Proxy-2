@@ -90,6 +90,21 @@ void ProtoBase::KeepAlive()
 		}
 		return 0;
 	});
+	sd->SetOptlevel(SOL_SOCKET);
+	sd->SetOptname(SO_LINGER);
+	linger so_linger={1,0};
+	sd->SetOptval(reinterpret_cast<char*>(&so_linger));
+	sd->SetOptlen(sizeof(so_linger));
+	err = exc->run([this]()->int {
+		if (Check::DConf::GetReset())
+			return -1;
+		this->sh->Setsockopt(this->sd);
+		if (this->sd->GetError()->Get()) {
+			Check::DConf::SetReset();
+			return -1;
+		}
+		return 0;
+	});
 	pid_t pid=-1;
 	int status=0;
 	if ((pid=fork()) < 0)
