@@ -28,7 +28,7 @@
  *
  */
 
-#ifndef __WIN32
+#ifndef _WIN32
 
 #include <memory>
 

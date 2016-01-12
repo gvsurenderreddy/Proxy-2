@@ -57,6 +57,7 @@ void sig()
 	signal(SIGABRT, [](int par) {
 		__(Debug::Debug)->Exc("[Main]: SIGABRT caught, ignoring");
 	});
+#ifndef _WIN32
 	/* SIGPIPE ignored */
 	signal(SIGPIPE, [](int par) {
 		__(Debug::Debug)->Exc("[Main]: SIGPIPE caught, ignoring");
@@ -67,6 +68,7 @@ void sig()
 	});
 	/* SIGCHLD ignored */
 	signal(SIGCHLD, SIG_IGN);
+#endif
 }
 
 /*

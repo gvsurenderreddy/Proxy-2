@@ -28,7 +28,7 @@
  *
  */
 
-#ifndef __WIN32
+#ifndef _WIN32
 #ifndef NIX_H
 #define NIX_H
 

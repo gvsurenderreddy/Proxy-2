@@ -17,3 +17,5 @@ Proxy
 Documents/
 *.opensdf
 *.sdf
+Debug/
+Release/

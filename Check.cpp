@@ -28,7 +28,7 @@
  *
  */
 
-#ifndef __WIN32
+#ifndef _WIN32
 #include <unistd.h>
 #include <cstdlib>
 #endif
@@ -48,7 +48,7 @@ namespace Check {
 bool DConf::reset=false;
 bool DConf::config=false;
 bool CConf::status=false;
-#ifdef __WIN32
+#ifdef _WIN32
 CRITICAL_SECTION g_csl=*Lock::SingleMutex().get(); /*S g_csl!=csl!*/
 #else
 pthread_mutex_t g_csl=PTHREAD_MUTEX_INITIALIZER; /*S g_csl!=csl!*/
@@ -71,7 +71,7 @@ void *IConf::Config(const int _k)
 IConf::IConf()
 	: logh(__(Debug::Debug))
 {
-#ifdef __WIN32
+#ifdef _WIN32
 	InitializeCriticalSection(&csl);
 #else
 	csl = PTHREAD_MUTEX_INITIALIZER;
@@ -81,7 +81,7 @@ IConf::IConf()
 
 IConf::~IConf()
 {
-#ifdef __WIN32
+#ifdef _WIN32
 	DeleteCriticalSection(&csl);
 #endif
 	logh->Log("[IConf::~IConf]");
@@ -159,7 +159,7 @@ DConf::DConf()
 #else
 	daemonize = false;
 #endif
-#ifdef __WIN32
+#ifdef _WIN32
 	guard = 1;
 #else
 	guard = 1000;
@@ -494,7 +494,7 @@ PConf::PConf(int argc, char** argv)
 	  cconf(std::make_shared<CConf>()),
 	  logh(__(Debug::Debug))
 {
-#ifdef __WIN32
+#ifdef _WIN32
 	InitializeCriticalSection(&csl);
 #else
 	csl = PTHREAD_MUTEX_INITIALIZER;
@@ -553,7 +553,7 @@ PConf::PConf(int argc, char** argv)
 PConf::~PConf()
 {
 	logh->Log("[PConf::~PConf]");
-#ifdef __WIN32
+#ifdef _WIN32
 	DeleteCriticalSection(&csl);
 #endif
 }

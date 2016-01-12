@@ -33,7 +33,7 @@
 
 #include <string>
 
-#ifdef __WIN32
+#ifdef _WIN32
 #define _WINSOCKAPI_
 #include <windows.h>
 #else
@@ -52,7 +52,7 @@ enum ProtoType {CLIENT=1, ADDR, PORT, KEY, X509, CAX, TUNI};
 
 class IConf {
 protected:
-#ifdef __WIN32
+#ifdef _WIN32
 	mutable CRITICAL_SECTION csl;
 #else
 	mutable pthread_mutex_t csl;
@@ -108,7 +108,7 @@ public:
 
 class PConf {
 private:
-#ifdef __WIN32
+#ifdef _WIN32
 	mutable CRITICAL_SECTION csl;
 #else
 	mutable pthread_mutex_t csl;
