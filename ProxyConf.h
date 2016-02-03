@@ -26,6 +26,10 @@
 #undef MAX_BUFF
 #endif
 #define MAX_BUFF 131072
+#ifdef MIN_BUFF
+#undef MIN_BUFF
+#endif
+#define MIN_BUFF 2048
 #define SHID "_sid_\n"
 #define CONFIG "_config_:"
 #define CL 9

@@ -32,6 +32,7 @@
 #ifndef __FreeBSD__
 #include <linux/if_tun.h>
 #endif
+#include <algorithm>
 
 #include "Debug.h"
 #include "Singleton.h"
@@ -147,7 +148,11 @@ void OuterSocket::InitClient()
 	sd->SetMode(ModeClient);
 	sd->SetMutual(true);
 	sd->SetPort(Active, confh->Port());
-	sd->SetBuff(const_cast<char*>((confh->Addr()).c_str()));
+	char tbuff[MIN_BUFF]={0};
+	auto tstr=confh->Addr();
+	auto tlen=std::min((uint32_t)tstr.size(), (uint32_t)MIN_BUFF-1);
+	sd->SetBuff(tbuff);
+	std::copy(tstr.begin(), tstr.begin()+tlen, tbuff);
 	tls->Getaddrinfo(sd);
 }
 
