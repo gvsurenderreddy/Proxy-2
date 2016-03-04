@@ -32,6 +32,7 @@
 #define DAE_H
 
 #include <memory>
+#include <string>
 
 #include "SockHandler.h"
 
@@ -76,10 +77,11 @@ public:
 class Iface;
 class InnerSocket : public BaseSocket {
 private:
-	std::shared_ptr<TunTap::Interface> iface;
-	std::shared_ptr<Iface> app;
 	InnerSocket(const InnerSocket&);
 	InnerSocket& operator=(const InnerSocket&);
+protected:
+	std::shared_ptr<TunTap::Interface> iface;
+	std::shared_ptr<Iface> app;
 public:
 	void Init();
 	void Run();
@@ -90,22 +92,35 @@ public:
 class ProtoBase;
 class OuterSocket : public BaseSocket {
 private:
+	OuterSocket(const OuterSocket&);
+	OuterSocket& operator=(const OuterSocket&);
+protected:
 	std::shared_ptr<Layer::ActiveSock<Layer::IA6, Layer::SAI6>> sd;
 	std::shared_ptr<ProtoBase> app;
 	std::shared_ptr<Layer::SockHandler> tls;
 	std::shared_ptr<Layer::SockHandler> tcp;
 	std::shared_ptr<Layer::SockHandler> ip;
-	void InitClient();
-	void InitServer();
+	void InitClient(std::string, uint16_t);
+	void InitServer(std::string, uint16_t);
 	void InitSsl();
-	OuterSocket(const OuterSocket&);
-	OuterSocket& operator=(const OuterSocket&);
 public:
-	void Init();
-	void Run();
+	virtual void Init();
+	virtual void Run();
 	OuterSocket();
 	virtual ~OuterSocket();
 };
+
+class ControlSocket : public OuterSocket {
+private:
+	ControlSocket(const ControlSocket&);
+	ControlSocket& operator=(const ControlSocket&);
+public:
+	void Init();
+	void Run();
+	ControlSocket();
+	virtual ~ControlSocket();
+};
+
 } /* namespace Proxy */
 #endif
 /* tabstop=8 */

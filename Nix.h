@@ -45,6 +45,9 @@ namespace Threads {
 	class SmartThread;
 	class ThreadPool;
 }
+namespace Layer {
+	class SockPool;
+}
 namespace Check {
 	class PConf;
 }
@@ -55,20 +58,26 @@ class BaseSocket;
 class Nix {
 private:
 	std::shared_ptr<Threads::ThreadPool> tp;
+	std::shared_ptr<Threads::SmartThread> ct;
 	std::shared_ptr<Threads::SmartThread> it;
 	std::shared_ptr<Threads::SmartThread> ot;
+	std::shared_ptr<Layer::SockPool> sp;
+	std::shared_ptr<BaseSocket> cs;
 	std::shared_ptr<BaseSocket> is;
 	std::shared_ptr<BaseSocket> os;
+	bool cflag;
 	bool iflag;
 	bool oflag;
 	std::shared_ptr<Check::PConf> confh;
 	std::shared_ptr<Debug::Debug> logh;
+	void Control();
 	void Cinner();
 	void Couter();
 	void Summary() const;
 	void Cycle();
 	void Clean();
 public:
+	void Tctrl();
 	void Tinit();
 	void Tloop();
 	Nix();

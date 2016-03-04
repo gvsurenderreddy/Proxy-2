@@ -36,6 +36,7 @@
 #include "Singleton.h"
 #include "Deque.h"
 #include "Threads.h"
+#include "SockHandler.h"
 
 #include "ProxyConf.h"
 #include "Check.h"
@@ -43,6 +44,26 @@
 #include "Dae.h"
 
 namespace Proxy {
+
+/*
+ * Control plane thread:
+ * manages server control plane
+ */
+void Nix::Control()
+{
+	logh->Log("[Nix::Control]");
+	ct = std::make_shared<Threads::SmartThread>([](void *_t)->void* {
+		auto _x=static_cast<Nix*>(_t);
+		_x->cs->Run();
+		_x->cflag = true;
+		return nullptr;
+	}, (void*)this);
+	cflag = false;
+
+	/* add thread to pool and start its execution */
+	Threads::STI sti;
+	tp->Add(ct, &sti);
+}
 
 /*
  * Inner socket thread:
@@ -106,11 +127,7 @@ void Nix::Summary() const
  */
 void Nix::Cycle()
 {
-	logh->Log("[Nix::Cycle]");
-	if (!Check::DConf::GetConfig())
-		logh->Log("[Nix::Cycle]: threads #", tp->Cycle());
-	else
-		logh->Log("[Nix::Cycle]: threads ok");
+	logh->Log("[Nix::Cycle]: threads #", tp->Cycle());
 }
 
 /*
@@ -121,13 +138,18 @@ void Nix::Cycle()
 void Nix::Clean()
 {
 	logh->Log("[Nix::Clean]");
-	if (!Check::DConf::GetReset()) {
-		Check::DConf::SetConfig(false);
-		logh->Log("[Nix::Clean]: recovering ...");
-		Tloop();
-	} else {
-		logh->Log("[Nix::Clean]: tearing down gently");
-		tp->Join();
+	tp->Join();
+	sp->Clear();
+}
+
+/*
+ * Client control plane
+ */
+void Nix::Tctrl()
+{
+	if (confh->Client()) {
+		logh->Log("[Nix::Tctrl]: control plane init");
+		cs->Init();
 	}
 }
 
@@ -148,8 +170,10 @@ void Nix::Tloop()
 {
 	logh->Log("[Nix::Tloop]: preparing threads");
 	timeval tp={confh->Guard()*TF/F, U};
-	while (!Check::DConf::GetConfig() && !Check::DConf::GetReset()) {
+	while (!Check::DConf::GetReset()) {
 		timeval tv=tp;
+		if (!confh->Client() && cflag)
+			Control();
 		if (iflag)
 			Cinner();
 		if (oflag)
@@ -163,10 +187,14 @@ void Nix::Tloop()
 
 Nix::Nix()
 	: tp(__(Threads::ThreadPool)),
+	  ct(nullptr),
 	  it(nullptr),
 	  ot(nullptr),
+	  sp(__(Layer::SockPool)),
+	  cs(std::make_shared<ControlSocket>()),
 	  is(std::make_shared<InnerSocket>()),
 	  os(std::make_shared<OuterSocket>()),
+	  cflag(true),
 	  iflag(true),
 	  oflag(true),
 	  confh(__(Check::PConf)),

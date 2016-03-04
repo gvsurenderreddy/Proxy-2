@@ -46,7 +46,6 @@
 namespace Check {
 
 bool DConf::reset=false;
-bool DConf::config=false;
 bool CConf::status=false;
 #ifdef _WIN32
 CRITICAL_SECTION g_csl=*Lock::SingleMutex().get(); /*S g_csl!=csl!*/
@@ -127,18 +126,6 @@ void *DConf::Config(const std::string _k)
 	};
 }
 
-void DConf::SetConfig(const bool _c)
-{
-	Lock::Lock l(&g_csl);
-	config = _c;
-}
-
-bool DConf::GetConfig()
-{
-	Lock::Lock l(&g_csl);
-	return config;
-}
-
 void DConf::SetReset()
 {
 	Lock::Lock l(&g_csl);
@@ -213,6 +200,12 @@ void CConf::Config(const std::string _k, const std::string _v)
 	case TUNI:
 		logh->Log("[CConf::Config]: tun interface", _v);
 		tun = _v;
+	case AC6:
+		logh->Log("[CConf::Config]: ac6", _v);
+		ac6 = _v;
+	case AC4:
+		logh->Log("[CConf::Config]: ac4", _v);
+		ac4 = _v;
 	};
 }
 
@@ -234,6 +227,10 @@ void *CConf::Config(const std::string _k)
 		return &cax;
 	case TUNI:
 		return &tun;
+	case AC6:
+		return &ac6;
+	case AC4:
+		return &ac4;
 	default:
 		return nullptr;
 	};
@@ -294,6 +291,16 @@ CConf::CConf()
 	tun = TUN;
 #else
 	tun = "tun3";
+#endif
+#ifdef TCADDR6
+	ac6 = TCADDR6;
+#else
+	ac6 = "2001:3::3:203/64";
+#endif
+#ifdef TCADDR4
+	ac4 = TCADDR4;
+#else
+	ac4 = "192.168.7.203/24"
 #endif
 	logh->Log("[CConf::CConf]");
 }
@@ -443,6 +450,16 @@ const std::string PConf::Cax() const
 const std::string PConf::Tun() const
 {
 	return *(static_cast<const std::string*>(cconf->Config(TUNI)));
+}
+
+const std::string PConf::Ac6() const
+{
+	return *(static_cast<const std::string*>(cconf->Config(AC6)));
+}
+
+const std::string PConf::Ac4() const
+{
+	return *(static_cast<const std::string*>(cconf->Config(AC4)));
 }
 
 void PConf::Static(const std::string _c) const

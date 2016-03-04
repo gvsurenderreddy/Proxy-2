@@ -1,4 +1,4 @@
-/*-
+/*
  * Copyright 2015 - Datagram Garden OÜ - All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -36,10 +36,11 @@
 #include <windows.h>
 #else 
 #include <pthread.h>
-#include <pthread.h>
 #endif 
 
 #include <memory>
+#include <tuple>
+#include <stack>
 #include <map>
 
 namespace Debug {
@@ -67,20 +68,13 @@ namespace Layer {
 
 namespace Proxy {
 
+typedef std::tuple<std::string, std::string, int> resource;
 
 class ProtoBase {
 protected:
-	std::shared_ptr<Deque::Deque<int, char*>> dh;
-	std::shared_ptr<Memory::MemoryPool> mp;
-	std::shared_ptr<Decorator::Decorator<int, int, ProtoBase*>> exc;
-	std::shared_ptr<Check::PConf> confh;
 	std::shared_ptr<Layer::SockHandler> sh;
 	std::shared_ptr<Layer::BaseSock> sd;
 	std::shared_ptr<Debug::Debug> logh;
-	int Lenght(char*) const;
-	void KeepAlive();
-	void Recv(std::shared_ptr<Layer::BaseSock>, int*);
-	void Send(std::shared_ptr<Layer::BaseSock>, int*);
 public:
 	void SetHandler(std::shared_ptr<Layer::SockHandler>);
 	std::shared_ptr<Layer::SockHandler> GetHandler() const;
@@ -93,7 +87,23 @@ public:
 	virtual ~ProtoBase();
 };
 
-class StreamClient : public ProtoBase {
+class StreamBase : public ProtoBase {
+protected:
+	std::shared_ptr<Deque::Deque<int, char*>> dh;
+	std::shared_ptr<Memory::MemoryPool> mp;
+	std::shared_ptr<Decorator::Decorator<int, int, StreamBase*>> exc;
+	std::shared_ptr<Check::PConf> confh;
+	int Lenght(char*) const;
+	void KeepAlive();
+	void Recv(std::shared_ptr<Layer::BaseSock>, int*);
+	void Send(std::shared_ptr<Layer::BaseSock>, int*);
+public:
+	StreamBase(std::shared_ptr<Layer::BaseSock> _s=nullptr,
+	    std::shared_ptr<Layer::SockHandler> _h=nullptr);
+	virtual ~StreamBase();
+};
+
+class StreamClient : public virtual StreamBase {
 private:
 	void Summary() const;
 	void Selector();
@@ -105,8 +115,8 @@ public:
 	virtual ~StreamClient();
 };
 
-class StreamServer : public ProtoBase {
-private:
+class StreamServer : public virtual StreamBase {
+protected:
 	class Csd {
 	private:
 #ifdef _WIN32
@@ -126,15 +136,33 @@ private:
 	Csd csd;
 	std::shared_ptr<Layer::SockPool> sp;
 	std::shared_ptr<Threads::ThreadPool> tp;
-	void Summary() const;
-	void HandleConn();
-	void Selector();
+	virtual void Summary() const;
+	virtual void HandleConn();
+	virtual void Selector();
 public:
-	void Init();
-	void Run();
+	virtual void Init();
+	virtual void Run();
 	StreamServer(std::shared_ptr<Layer::BaseSock> _s=nullptr,
 	    std::shared_ptr<Layer::SockHandler> _h=nullptr);
 	virtual ~StreamServer();
+};
+
+class Control : public StreamServer, public StreamClient {
+private:
+	std::stack<std::shared_ptr<resource>> resources;
+protected:
+	void Collector();
+	std::shared_ptr<resource> Pop();
+	void Push(std::shared_ptr<resource>);
+	void Process(char*, std::shared_ptr<resource> _r=nullptr);
+	void Selector();
+	void Populate();
+public:
+	void Init();
+	void Run();
+	Control(std::shared_ptr<Layer::BaseSock> _s=nullptr,
+	    std::shared_ptr<Layer::SockHandler> _h=nullptr);
+	virtual ~Control();
 };
 } /* namespace Proxy */
 #endif

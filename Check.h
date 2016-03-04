@@ -48,7 +48,7 @@ namespace Check {
 
 enum ConfType {PTYPE=3, PPROTO=5};
 enum ServType {DAEMON=1, SAFE, MAX, IAUTO};
-enum ProtoType {CLIENT=1, ADDR, PORT, KEY, X509, CAX, TUNI};
+enum ProtoType {CLIENT=1, ADDR, PORT, KEY, X509, CAX, TUNI, AC6, AC4};
 
 class IConf {
 protected:
@@ -74,12 +74,9 @@ private:
 	uint32_t max;
 	bool iauto;
 	static bool reset;
-	static bool config;
 public:
 	void Config(const std::string, const std::string);
 	void *Config(const std::string);
-	static void SetConfig(const bool _c=true);
-	static bool GetConfig();
 	static void SetReset();
 	static bool GetReset();
 	DConf();
@@ -97,6 +94,8 @@ private:
 	std::string cax;
 	std::string tun;
 	static bool status;
+	std::string ac6;
+	std::string ac4;
 public:
 	void Config(const std::string, const std::string);
 	void *Config(const std::string);
@@ -134,6 +133,8 @@ public:
 	const std::string Cert() const;
 	const std::string Cax() const;
 	const std::string Tun() const;
+	const std::string Ac6() const;
+	const std::string Ac4() const;
 	void Static(const std::string) const;
 	void Dynamic(const std::string) const;
 	PConf(int argc=0, char** argv=nullptr);

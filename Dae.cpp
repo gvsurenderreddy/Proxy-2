@@ -29,10 +29,11 @@
  */
 
 #include <memory>
+#include <string>
+#include <algorithm>
 #ifndef __FreeBSD__
 #include <linux/if_tun.h>
 #endif
-#include <algorithm>
 
 #include "Debug.h"
 #include "Singleton.h"
@@ -71,13 +72,16 @@ BaseSocket::~BaseSocket()
 void InnerSocket::Init()
 {
 	logh->Log("[InnerSocket::Init]");
-	iface->Alloc();
+	if (iface->Alloc() < 0) {
+		Check::DConf::SetReset();
+		return;
+	}
 	iface->Up();
 	app = std::make_shared<Iface>(iface);
 	if (confh->Client()) {
-		iface->Addr6(std::string(TCADDR6));
+		iface->Addr6(confh->Ac6());
 #ifdef DONOTDISABLEV4
-		iface->Addr4(std::string(TCADDR4));
+		iface->Addr4(confh->Ac4());
 #endif
 	} else {
 		iface->Addr6(std::string(TSADDR6));
@@ -142,14 +146,14 @@ InnerSocket::~InnerSocket()
  * Outer socket client initialization:
  * configure socket descriptor (message in COR)
  */
-void OuterSocket::InitClient()
+void OuterSocket::InitClient(std::string _addr, uint16_t _port)
 {
 	logh->Log("[OuterSocket::InitClient]");
 	sd->SetMode(ModeClient);
 	sd->SetMutual(true);
-	sd->SetPort(Active, confh->Port());
+	sd->SetPort(Active, _port);
 	char tbuff[MIN_BUFF]={0};
-	auto tstr=confh->Addr();
+	auto tstr=_addr;
 	auto tlen=std::min((uint32_t)tstr.size(), (uint32_t)MIN_BUFF-1);
 	sd->SetBuff(tbuff);
 	std::copy(tstr.begin(), tstr.begin()+tlen, tbuff);
@@ -160,13 +164,13 @@ void OuterSocket::InitClient()
  * Outer socket server initialization:
  * configure socket descriptor (message in COR)
  */
-void OuterSocket::InitServer()
+void OuterSocket::InitServer(std::string _addr, uint16_t _port)
 {
 	logh->Log("[OuterSocket::InitServer]");
 	sd->SetMode(ModeServer);
 	sd->SetMutual(true);
-	sd->SetAddr(Passive, confh->Addr());
-	sd->SetPort(Passive, confh->Port());
+	sd->SetAddr(Passive, _addr);
+	sd->SetPort(Passive, _port);
         sd->SetOptlevel(SOL_SOCKET);
         sd->SetOptname(SO_REUSEADDR);
 	int opt=1;
@@ -208,9 +212,9 @@ void OuterSocket::Init()
 	tls->SetSucc(tcp);
 	tcp->SetSucc(ip);
 	if (confh->Client())
-		InitClient();
+		InitClient(confh->Addr(), confh->Port());
 	else
-		InitServer();
+		InitServer(confh->Addr(), confh->Port());
 	InitSsl();
 	app->SetHandler(tls);
 	app->SetSocket(sd);
@@ -241,6 +245,59 @@ OuterSocket::OuterSocket()
 OuterSocket::~OuterSocket()
 {
 	logh->Log("[OuterSocket::~OuterSocket]");
+}
+
+/*
+ * Control socket init:
+ * request 1
+ */
+void ControlSocket::Init()
+{
+	logh->Log("[ControlSocket::Init]");
+	app = std::make_shared<Control>();
+	tls = std::make_shared<Layer::SockTls>();
+	tcp = std::make_shared<Layer::SockTcp>();
+	ip = std::make_shared<Layer::SockIp<Layer::IA6,Layer::SAI6>>(IPv6);
+	sd = std::make_shared<Layer::ActiveSock<Layer::IA6,Layer::SAI6>>(IPv6);
+	tls->SetSucc(tcp);
+	tcp->SetSucc(ip);
+	InitClient(confh->Addr(), PORT_C);
+	InitSsl();
+	app->SetHandler(tls);
+	app->SetSocket(sd);
+	app->Init();
+}
+
+/*
+ * Control socket run:
+ * Control loop logic, server 1
+ */
+void ControlSocket::Run()
+{
+	logh->Log("[ControlSocket::Run]");
+	app = std::make_shared<Control>();
+	tls = std::make_shared<Layer::SockTls>();
+	tcp = std::make_shared<Layer::SockTcp>();
+	ip = std::make_shared<Layer::SockIp<Layer::IA6,Layer::SAI6>>(IPv6);
+	sd = std::make_shared<Layer::ActiveSock<Layer::IA6,Layer::SAI6>>(IPv6);
+	tls->SetSucc(tcp);
+	tcp->SetSucc(ip);
+	InitServer(confh->Addr(), PORT_C);
+	InitSsl();
+	app->SetHandler(tls);
+	app->SetSocket(sd);
+	app->Run();
+}
+
+ControlSocket::ControlSocket()
+	: OuterSocket()
+{
+	logh->Log("[ControlSocket::ControlSocket]");
+}
+
+ControlSocket::~ControlSocket()
+{
+	logh->Log("[ControlSocket::~ControlSocket]");
 }
 } /* namespace Proxy */
 /* tabstop=8 */

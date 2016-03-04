@@ -30,8 +30,12 @@
 
 #include <unistd.h>
 #include <sys/wait.h>
+
 #include <map>
+#include <tuple>
+#include <stack>
 #include <algorithm>
+#include <regex>
 
 #include "Debug.h"
 #include "Lock.h"
@@ -52,27 +56,81 @@
 namespace Proxy {
 
 /*
+ * Set Handler:
+ * socket handler is used by means of object composition
+ */
+void ProtoBase::SetHandler(std::shared_ptr<Layer::SockHandler> _h)
+{
+	logh->Log("[ProtoBase::SetHandler]: manually setting sh");
+	sh = _h;
+}
+
+/*
+ * Get Handler:
+ * returns the socket layer handler (the COR for the TCP/IP stack)
+ */
+std::shared_ptr<Layer::SockHandler> ProtoBase::GetHandler() const
+{
+	logh->Log("[ProtoBase::GetHandler]");
+	return sh;
+}
+
+/*
+ * Set Socket:
+ * set the socket, that is, the message passed in the COR
+ */
+void ProtoBase::SetSocket(std::shared_ptr<Layer::BaseSock> _s)
+{
+	logh->Log("[ProtoBase::SetSocket]: manually setting sd");
+	sd = _s;
+}
+
+/*
+ * Get Socket:
+ * return the socket, that is, the message passed in the COR
+ */
+std::shared_ptr<Layer::BaseSock> ProtoBase::GetSock() const
+{
+	logh->Log("[ProtoBase::GetSocket]");
+	return sd;
+}
+
+ProtoBase::ProtoBase(std::shared_ptr<Layer::BaseSock> _s,
+    std::shared_ptr<Layer::SockHandler> _h) 
+	: sh(_h),
+	  sd(_s),
+	  logh(__(Debug::Debug))
+{
+	logh->Log("[ProtoBase::ProtoBase]");
+}
+
+ProtoBase::~ProtoBase()
+{
+	logh->Log("[ProtoBase::~ProtoBase]");
+}
+
+/*
  * Lenght I/O
  * Lenght of IPv6 datagram (or IPv4 datagram)
  */
-int ProtoBase::Lenght(char *_buff) const
+int StreamBase::Lenght(char *_buff) const
 {
 	int lenght=0;
 	if (reinterpret_cast<Craft::ip*>(_buff)->ip_v == 6) {
 		auto ip6_h=reinterpret_cast<Craft::ip6*>(_buff);
 		lenght = ntohs(ip6_h->ip6_plen)+40;
-		logh->Log("[ProtoBase::Lenght]: IPv6 of", lenght);
+		logh->Log("[StreamBase::Lenght]: IPv6 of", lenght);
 #ifdef DONOTDISABLEV4
 	} else {
 		auto ip_h=reinterpret_cast<Craft::ip*>(_buff);
 		lenght = ntohs(ip_h->ip_len);
-		logh->Log("[ProtoBase::Lenght]: IPv4 of", lenght);
+		logh->Log("[StreamBase::Lenght]: IPv4 of", lenght);
 #endif
 	}
 	return lenght;
 }
 
-void ProtoBase::KeepAlive()
+void StreamBase::KeepAlive()
 {
 	/* ! SO_KEEPALIVE experiments*/
 	sd->SetOptlevel(SOL_SOCKET);
@@ -122,38 +180,38 @@ void ProtoBase::KeepAlive()
 		    "net.ipv4.tcp_keepalive_time=10",
 		    "net.ipv4.tcp_keepalive_intvl=5",
 		    "net.ipv4.tcp_keepalive_probes=10", nullptr);
-	logh->Log("[ProtoBase::KeepAlive]: keep alive with status", status);
+	logh->Log("[StreamBase::KeepAlive]: keep alive with status", status);
 #endif
 	if (err == -1)
-		logh->Exc("[ProtoBase::KeepAlive]: error initializing");
+		logh->Exc("[StreamBase::KeepAlive]: error initializing");
 }
 
 /*
  * Recv I/O
  * receiving in the outer socket writes in the reverse deque
  */
-void ProtoBase::Recv(std::shared_ptr<Layer::BaseSock> _fd, int *_flag)
+void StreamBase::Recv(std::shared_ptr<Layer::BaseSock> _fd, int *_flag)
 {
 	char *buff=nullptr;
 	int n=mp->Alloc(buff);
 	if (!n) {
-		logh->Exc("[ProtoBase::Recv]: no memory blocks available");
+		logh->Exc("[StreamBase::Recv]: no memory blocks available");
 		return;
 	}
 	_fd->SetBuff(buff);
 	_fd->SetN(n);
 	int nread;
 	if ((nread=sh->Recv(_fd))>0 && !_fd->GetError()->Get()) {
-		logh->Log("[ProtoBase::Recv]:", nread);
+		logh->Log("[StreamBase::Recv]:", nread);
 		logh->Hex(buff, nread);
 		int plen=Lenght(buff);
 		if (plen != nread)
-			logh->Exc("[ProtoBase::Lenght]:", nread, "!=", plen);
+			logh->Exc("[StreamBase::Lenght]:", nread, "!=", plen);
 		else
-			logh->Log("[ProtoBase::Lenght]: bce xopowo");
+			logh->Log("[StreamBase::Lenght]: bce xopowo");
 		dh->PushReverse(nread, buff);
 	} else {
-		logh->Log("[ProtoBase::Recv]: EOF", *_flag);
+		logh->Log("[StreamBase::Recv]: EOF", *_flag);
 		mp->Dealloc(buff);
 		*_flag = 0;
 	}
@@ -163,15 +221,15 @@ void ProtoBase::Recv(std::shared_ptr<Layer::BaseSock> _fd, int *_flag)
  * Send I/O
  * receiving in the direct deque writes in the outer socket
  */
-void ProtoBase::Send(std::shared_ptr<Layer::BaseSock> _fd, int *_flag)
+void StreamBase::Send(std::shared_ptr<Layer::BaseSock> _fd, int *_flag)
 {
-	logh->Log("[ProtoBase::Send]: send", *_flag);
+	logh->Log("[StreamBase::Send]: send", *_flag);
 	auto de=dh->FrontDirect();
 	if (de) { 
 		_fd->SetBuff(de->second);
 		_fd->SetN(Lenght(de->second));
 		if (sh->Send(_fd)<=0 || _fd->GetError()->Get()) {
-			logh->Exc("[ProtoBase::Send]: EOF", *_flag);
+			logh->Exc("[StreamBase::Send]: EOF", *_flag);
 			*_flag = 0;
 		}
 		mp->Dealloc(de->second);
@@ -180,70 +238,29 @@ void ProtoBase::Send(std::shared_ptr<Layer::BaseSock> _fd, int *_flag)
 	dh->CheckDirect();
 }
 
-/*
- * Set Handler:
- * socket handler is used by means of object composition
- */
-void ProtoBase::SetHandler(std::shared_ptr<Layer::SockHandler> _h)
-{
-	logh->Log("[ProtoBase::SetHandler]: manually setting sh");
-	sh = _h;
-}
 
-/*
- * Get Handler:
- * returns the socket layer handler (the COR for the TCP/IP stack)
- */
-std::shared_ptr<Layer::SockHandler> ProtoBase::GetHandler() const
-{
-	logh->Log("[ProtoBase::GetHandler]");
-	return sh;
-}
-
-/*
- * Set Socket:
- * set the socket, that is, the message passed in the COR
- */
-void ProtoBase::SetSocket(std::shared_ptr<Layer::BaseSock> _s)
-{
-	logh->Log("[ProtoBase::SetSocket]: manually setting sd");
-	sd = _s;
-}
-
-/*
- * Get Socket:
- * return the socket, that is, the message passed in the COR
- */
-std::shared_ptr<Layer::BaseSock> ProtoBase::GetSock() const
-{
-	logh->Log("[ProtoBase::GetSocket]");
-	return sd;
-}
-
-ProtoBase::ProtoBase(std::shared_ptr<Layer::BaseSock> _s,
+StreamBase::StreamBase(std::shared_ptr<Layer::BaseSock> _s,
     std::shared_ptr<Layer::SockHandler> _h) 
-	: dh(Singleton::_<Deque::Deque<int, char*>>()),
+	: ProtoBase(_s, _h),
+	  dh(Singleton::_<Deque::Deque<int, char*>>()),
 	  mp(__(Memory::MemoryPool)),
 	  exc(nullptr),
-	  confh(__(Check::PConf)),
-	  sh(_h),
-	  sd(_s),
-	  logh(__(Debug::Debug))
+	  confh(__(Check::PConf))
 {
-	logh->Log("[ProtoBase::ProtoBase]");
-	auto ee=std::make_shared<ExecUnit::Eunit<int, ProtoBase*>>
-	    ([](ProtoBase *_this)->int {
+	logh->Log("[StreamBase::StreamBase]");
+	auto ee=std::make_shared<ExecUnit::Eunit<int, StreamBase*>>
+	    ([](StreamBase *_this)->int {
 		if (_this->sd->GetError()->Get())
 			return 1;
 		return 0;
 	}, this);
 	ee->SetDrc(-1);
-	exc = std::make_shared<Decorator::Decorator<int, int, ProtoBase*>>(ee);
+	exc = std::make_shared<Decorator::Decorator<int, int, StreamBase*>>(ee);
 }
 
-ProtoBase::~ProtoBase()
+StreamBase::~StreamBase()
 {
-	logh->Log("[ProtoBase::~ProtoBase]");
+	logh->Log("[StreamBase::~StreamBase]");
 }
 
 /*
@@ -265,7 +282,7 @@ void StreamClient::Summary() const
 void StreamClient::Selector()
 {
 	timeval ts;
-	fd_set rds, wds;
+	fd_set rds;
 	int dd=dh->FdDirect();
 	int fd=sd->GetSd(0);
 	int tfd=fd;
@@ -274,7 +291,6 @@ void StreamClient::Selector()
 		ts = {confh->Guard()*AF/F, U};
 		auto maxfd=std::max(dd, fd)+1;
 		FD_ZERO(&rds);
-		FD_ZERO(&wds);
 		FD_SET(fd, &rds);
 		FD_SET(dd, &rds);
 		select(maxfd, &rds, 0, 0, &ts);
@@ -344,7 +360,7 @@ void StreamClient::Run()
 
 StreamClient::StreamClient(std::shared_ptr<Layer::BaseSock> _s,
     std::shared_ptr<Layer::SockHandler> _h) 
-	: ProtoBase(_s, _h)
+	: StreamBase(_s, _h)
 {
 	logh->Log("[StreamClient::StreamClient]");
 }
@@ -415,11 +431,6 @@ void StreamServer::HandleConn()
 	csd[st->Uid()] = sd->GetSd(1);
 	Threads::STI sti;
 	tp->Add(st, &sti);
-
-	/* current version only supports one connection */
-	sh->Close(sd->GetSd(0));
-	st->Join();
-	Init();
 }
 
 /*
@@ -437,12 +448,11 @@ void StreamServer::Selector()
 	auto tsd=sp->Get(fd);
 	logh->Log("[StreamServer::Selector]:", fd);
 	timeval ts;
-	fd_set rds, wds;
+	fd_set rds;
 	while (fd && !Check::DConf::GetReset() && !tsd->GetError()->Get()) {
 		ts = {confh->Guard()*AF/F, U};
 		auto maxfd=std::max(dd, fd)+1;
 		FD_ZERO(&rds);
-		FD_ZERO(&wds);
 		FD_SET(fd, &rds);
 		FD_SET(dd, &rds);
 		select(maxfd, &rds, 0, 0, &ts);
@@ -563,7 +573,7 @@ void StreamServer::Run()
 
 StreamServer::StreamServer(std::shared_ptr<Layer::BaseSock> _s,
     std::shared_ptr<Layer::SockHandler> _h) 
-	: ProtoBase(_s, _h),
+	: StreamBase(_s, _h),
 	  csd(),
 	  sp(__(Layer::SockPool)),
 	  tp(__(Threads::ThreadPool))
@@ -574,7 +584,225 @@ StreamServer::StreamServer(std::shared_ptr<Layer::BaseSock> _s,
 StreamServer::~StreamServer()
 {
 	logh->Log("[StreamServer::~StreamServer]");
-	sp->Clear();
+}
+
+/*
+ * Control Collector
+ */
+void Control::Collector()
+{
+	char *buff=nullptr;
+	int n=mp->Alloc(buff);
+	logh->Log("[Control::Collector]");
+	if (!n) {
+		logh->Exc("[Control::Collector]: no memory blocks available");
+		Check::DConf::SetReset();
+		return;
+	}
+	std::string tstr=COLLECT;
+	std::copy(tstr.begin(), tstr.begin()+tstr.size(), buff);
+	sd->SetBuff(buff);
+	sd->SetN(tstr.size());
+	if (sh->Send(sd)<=0 || sd->GetError()->Get()) {
+		logh->Exc("[Control::Collector]: EOF", buff);
+		Check::DConf::SetReset();
+		mp->Dealloc(buff);
+		return;
+	}
+	timeval ts={confh->Guard()*AF/F, U};
+	fd_set rds;
+	FD_ZERO(&rds);
+	FD_SET(sd->GetSd(0), &rds);
+	select(sd->GetSd(0)+1, &rds, 0, 0, &ts);
+	if (FD_ISSET(sd->GetSd(0), &rds) && !Check::DConf::GetReset() &&
+	    !sd->GetError()->Get()) {
+		int nread;
+		sd->SetN(n);
+		if ((nread=sh->Recv(sd))<=0 || sd->GetError()->Get()) {
+			logh->Exc("[Control::Collector]: EOF");
+			Check::DConf::SetReset();
+			mp->Dealloc(buff);
+			return;
+		}
+		logh->Log("[Control::Collector]: IPs", buff);
+		std::regex ips("^(.+),(.+),(.+)$");
+		std::smatch mtch;
+		std::string tmp(buff);
+		if (std::regex_search(tmp, mtch, ips)) {
+			confh->C()->Config(Check::AC6, mtch[1]);
+			confh->C()->Config(Check::AC4, mtch[2]);
+		} else
+			logh->Exc("[Control::Collector]: error getting IPs");
+	}
+}
+
+/*
+ * Control pop
+ */
+std::shared_ptr<resource> Control::Pop()
+{
+	logh->Log("[Control::Pop]");
+	auto _r=resources.top();
+	resources.pop();
+	return _r;
+}
+
+/*
+ * Control push
+ */
+void Control::Push(std::shared_ptr<resource> _r)
+{
+	logh->Log("[Control::Push]");
+	resources.push(_r);
+	_r.reset();
+}
+
+/*
+ * Control Process request
+ */
+void Control::Process(char *_b, std::shared_ptr<resource> _r)
+{
+	std::string line=_b;
+	std::regex command("^_(\\S+)_$");
+	std::smatch m;
+	if (std::regex_search(line, m, command)) {
+		logh->Log("[Control::Selector]: match", m[0], m[1]);
+		if (m[1].compare(COLLECT))
+			_r = Pop();
+		else if (m[1].compare(DISMISS))
+			Push(_r);
+		else
+			logh->Exc("[Control::Process]: unknown command");
+	} else
+		logh->Exc("[Control::Selector]: no match", line);
+	std::string tstr;
+	if (_r)
+		tstr = std::get<0>(*_r) + "," + std::get<1>(*_r) + "," +
+		    std::to_string(std::get<2>(*_r));
+	std::copy(tstr.begin(), tstr.begin()+tstr.size(), _b);
+	auto tt=tp->Get(Threads::ThreadBase::Pself());
+	int fd=csd[tt->Uid()];
+	auto tsd=sp->Get(fd);
+	tsd->SetN(tstr.size());
+	if (sh->Send(tsd)<=0 || tsd->GetError()->Get())
+		logh->Exc("[Control::Selector]: EOF");
+	logh->Log("[Control::Process]");
+}
+
+/*
+ * Control Selector
+ */
+void Control::Selector()
+{
+	char *buff=nullptr;
+	int n=mp->Alloc(buff);
+	if (!n) {
+		logh->Exc("[Control::Selector]: no memory blocks available");
+		Check::DConf::SetReset();
+		return;
+	}
+	auto tt=tp->Get(Threads::ThreadBase::Pself());
+	logh->Log("[Control::Selector]: getting for", tt->Uid());
+	int fd=csd[tt->Uid()];
+	auto tsd=sp->Get(fd);
+	tsd->SetBuff(buff);
+	logh->Log("[Control::Selector]:", fd);
+	timeval ts={confh->Guard()*AF/F, U};
+	fd_set rds;
+	int nread;
+	FD_ZERO(&rds);
+	FD_SET(fd, &rds);
+	select(fd+1, &rds, 0, 0, &ts);
+	if (FD_ISSET(fd, &rds) && !Check::DConf::GetReset() &&
+	    !tsd->GetError()->Get()) {
+		tsd->SetN(n);
+		if ((nread=sh->Recv(tsd))<=0 || tsd->GetError()->Get())
+			logh->Exc("[Control::Selector]: EOF");
+		else
+			Process(buff);
+	} else
+		logh->Exc("[Control::Selector]: timeout");
+	logh->Log("[Control::Selector]: closing connection", fd);
+	if (!((confh->Key()).empty() || (confh->Cert()).empty()))
+		sh->Close(fd, tsd->GetSsl());
+	else
+		sh->Close(fd);
+}
+
+/*
+ * Control: Populate
+ */
+void Control::Populate()
+{
+	logh->Log("[Control::Populate]");
+	std::regex ip6("^(.+:)(.+)/(.*)$");
+	std::regex ip4("^(.+\\.)(.+)/(.*)$");
+	std::smatch mtch6, mtch4;
+	std::string pre6, pre4, net6, net4;
+	std::string tmp6(TCADDR6P);
+	std::string tmp4(TCADDR4P);
+	if (std::regex_search(tmp6, mtch6, ip6)) {
+		net6 = mtch6[3];
+		if (!mtch6[2].compare(":"))
+			pre6 = std::string(mtch6[1]) + std::string(mtch6[2]);
+		else
+			pre6 = mtch6[1];
+			
+	} else {
+		logh->Exc("[Control::Populate]: error parsing IPv6");
+		Check::DConf::SetReset();
+	}
+	if (std::regex_search(tmp4, mtch4, ip4)) {
+		pre4 = mtch4[1];
+		net4 = mtch4[3];
+		
+	} else {
+		logh->Exc("[Control::Populate]: error parsing IPv4");
+		Check::DConf::SetReset();
+	}
+	for (int i=1; i<=TCADDRTOTAL; ++i) {
+		std::string tmp6(pre6 + std::to_string(i) + "/" + net6);
+		std::string tmp4(pre4 + std::to_string(i) + "/" + net4);
+		logh->Log("[Control::Populate]: pool", tmp6, tmp4);
+		resources.push(std::make_shared<resource>
+		    (std::make_tuple(tmp6, tmp4, i)));
+	}
+}
+
+/*
+ * Control: request 1
+ */
+void Control::Init()
+{
+	logh->Log("[Control::Init]");
+	StreamClient::Init();
+	Collector();
+}
+
+/*
+ * Control: server 1
+ */
+void Control::Run()
+{
+	logh->Log("[Control::Run]");
+	Populate();
+	StreamServer::Init();
+	StreamServer::Run();
+}
+
+Control::Control(std::shared_ptr<Layer::BaseSock> _s,
+    std::shared_ptr<Layer::SockHandler> _h)
+	: StreamBase(_s, _h),
+	  StreamServer(_s, _h),
+	  StreamClient(_s, _h),
+	  resources()
+{
+	logh->Log("[Control::Control]");
+}
+
+Control::~Control()
+{
+	logh->Log("[Control::~Control]");
 }
 } /* namespace Proxy */
 /* tabstop=8 */

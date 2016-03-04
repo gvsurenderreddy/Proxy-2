@@ -88,6 +88,7 @@ int main(int argc, char* argv[])
 
 	/* Instantiate platform specific Proxy class, init and run loop */
 	Proxy::Nix nix;
+	nix.Tctrl();
 	nix.Tinit();
 	nix.Tloop();
 	__(Debug::Debug)->Log("[Main]: bye bye", _rc(Debug::Debug));

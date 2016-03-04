@@ -3,7 +3,7 @@
 
 /* dynamic config */
 #define PROXYCONF "Proxy.conf"
-#ifdef _MSC_VER
+#ifdef _WIN32
 /* service name */
 #define SVCNAME "ProxyService"
 #endif
@@ -20,6 +20,7 @@
 /* default addr */
 #define ADDRANY_L "::"
 /* default port */
+#define PORT_C 11234
 #define PORT_L 11235
 /* Layer >= Craft >= App */
 #ifdef MAX_BUFF
@@ -32,6 +33,8 @@
 #define MIN_BUFF 2048
 #define SHID "_sid_\n"
 #define CONFIG "_config_:"
+#define COLLECT "_collect_"
+#define DISMISS "_dismiss_"
 #define CL 9
 #define SOCKERROR -1
 #define FILECONN "activeconn"
@@ -53,17 +56,24 @@
  * tun interface
  */
 #define TUN "tun0"
+/* Total number of IP addresses*/
+#define TCADDRTOTAL 128
 /* IPv6 tun address for server */
-#define TSADDR6 "2001:3::1:77/64"
+#define TSADDR6 "2001:3::1:201/64"
 #ifdef DONOTDISABLEV4
 /* IPv4 tun address for server */
-#define TSADDR4 "192.168.7.77/24"
+#define TSADDR4 "192.168.7.201/24"
 #endif
 /* IPv6 tun address for client */
-#define TCADDR6 "2001:3::3:73/64"
+#define TCADDR6 "2001:3::3:203/64"
+/* IPv6 pool */
+#define TCADDR6P "2001:3::3:1/64"
+
 #ifdef DONOTDISABLEV4
 /* IPv4 tun address for client */
-#define TCADDR4 "192.168.7.73/24"
+#define TCADDR4 "192.168.7.203/24"
+/* IPv4 pool */
+#define TCADDR4P "192.168.7.1/24"
 #endif
 
 /* key */
