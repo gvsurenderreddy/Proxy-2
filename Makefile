@@ -16,7 +16,7 @@ OBJECT_PATH ?= .obj
 
 #DOPTS = -g -O0
 DOPTS = -O1
-CXXFLAGS := -Wall $(DOPTS) -I$(INCLUDE_PATH) -I$(MINILIB_PATH)/Include -std=c++1y
+CXXFLAGS := -Wall $(DOPTS) -I$(INCLUDE_PATH) -I$(MINILIB_PATH)/Include -std=c++1z
 
 LOCKFLAGS := $(MINILIB_PATH)/$(UNAME_S)/LibLock.a
 DAEMONFLAGS := $(MINILIB_PATH)/$(UNAME_S)/LibDaemon.a
@@ -46,3 +46,4 @@ $(OBJECT_PATH):
 
 clean:
 	$(RM) $(OBJECT_PATH)/*.o $(TARGET)
+
