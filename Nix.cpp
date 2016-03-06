@@ -55,6 +55,7 @@ void Nix::Control()
 	ct = std::make_shared<Threads::SmartThread>([](void *_t)->void* {
 		auto _x=static_cast<Nix*>(_t);
 		_x->cs->Run();
+		_x->cs->End();
 		_x->cflag = true;
 		return nullptr;
 	}, (void*)this);
@@ -75,6 +76,7 @@ void Nix::Cinner()
 	it = std::make_shared<Threads::SmartThread>([](void *_t)->void* {
 		auto _x=static_cast<Nix*>(_t);
 		_x->is->Run();
+		_x->is->End();
 		_x->iflag = true;
 		return nullptr;
 	}, (void*)this);
@@ -95,6 +97,7 @@ void Nix::Couter()
 	ot = std::make_shared<Threads::SmartThread>([](void *_t)->void* {
 		auto _x=static_cast<Nix*>(_t);
 		_x->os->Run();
+		_x->os->End();
 		_x->oflag = true;
 		return nullptr;
 	}, (void*)this);
@@ -138,6 +141,8 @@ void Nix::Cycle()
 void Nix::Clean()
 {
 	logh->Log("[Nix::Clean]");
+	if (confh->Client())
+		cs->End();
 	tp->Join();
 	sp->Clear();
 }

@@ -82,6 +82,7 @@ public:
 	std::shared_ptr<Layer::BaseSock> GetSock() const;
 	virtual void Init()=0;
 	virtual void Run()=0;
+	virtual void End()=0;
 	ProtoBase(std::shared_ptr<Layer::BaseSock> _s=nullptr,
 	    std::shared_ptr<Layer::SockHandler> _h=nullptr);
 	virtual ~ProtoBase();
@@ -110,6 +111,7 @@ private:
 public:
 	void Init();
 	void Run();
+	void End();
 	StreamClient(std::shared_ptr<Layer::BaseSock> _s=nullptr,
 	    std::shared_ptr<Layer::SockHandler> _h=nullptr);
 	virtual ~StreamClient();
@@ -142,24 +144,26 @@ protected:
 public:
 	virtual void Init();
 	virtual void Run();
+	virtual void End();
 	StreamServer(std::shared_ptr<Layer::BaseSock> _s=nullptr,
 	    std::shared_ptr<Layer::SockHandler> _h=nullptr);
 	virtual ~StreamServer();
 };
 
-class Control : public StreamServer, public StreamClient {
+class Control : public StreamClient, public StreamServer {
 private:
 	std::stack<std::shared_ptr<resource>> resources;
 protected:
-	void Collector();
+	void Collector(std::string, std::string _6="0", std::string _4="0");
 	std::shared_ptr<resource> Pop();
 	void Push(std::shared_ptr<resource>);
-	void Process(char*, std::shared_ptr<resource> _r=nullptr);
+	void Process(char*);
 	void Selector();
 	void Populate();
 public:
 	void Init();
 	void Run();
+	void End();
 	Control(std::shared_ptr<Layer::BaseSock> _s=nullptr,
 	    std::shared_ptr<Layer::SockHandler> _h=nullptr);
 	virtual ~Control();

@@ -70,6 +70,7 @@ protected:
 public:
 	virtual void Init()=0;
 	virtual void Run()=0;
+	virtual void End()=0;
 	BaseSocket();
 	virtual ~BaseSocket();
 };
@@ -85,6 +86,7 @@ protected:
 public:
 	void Init();
 	void Run();
+	void End();
 	InnerSocket();
 	virtual ~InnerSocket();
 };
@@ -106,6 +108,7 @@ protected:
 public:
 	virtual void Init();
 	virtual void Run();
+	virtual void End();
 	OuterSocket();
 	virtual ~OuterSocket();
 };

@@ -285,7 +285,6 @@ void StreamClient::Selector()
 	fd_set rds;
 	int dd=dh->FdDirect();
 	int fd=sd->GetSd(0);
-	int tfd=fd;
 	logh->Log("[StreamServer::Selector]:", fd);
 	while (fd && !Check::DConf::GetReset() && !sd->GetError()->Get()) {
 		ts = {confh->Guard()*AF/F, U};
@@ -301,12 +300,6 @@ void StreamClient::Selector()
 		    !sd->GetError()->Get())
 			Send(sd, &fd);
 	}
-	Check::CConf::Status(false);
-	logh->Log("[StreamServer::Selector]: removing", tfd);
-	if (!((confh->Key()).empty() || (confh->Cert()).empty()))
-		sh->Close(tfd, sd->GetSsl());
-	else
-		sh->Close(tfd);
 }
 
 /*
@@ -358,6 +351,19 @@ void StreamClient::Run()
 		Check::DConf::SetReset();
 }
 
+/*
+ * Clean cleanup
+ */
+void StreamClient::End()
+{
+	logh->Log("[StreamClient::End]: removing", sd->GetSd(0));
+	Check::CConf::Status(false);
+	if (!((confh->Key()).empty() || (confh->Cert()).empty()))
+		sh->Close(sd->GetSd(0), sd->GetSsl());
+	else
+		sh->Close(sd->GetSd(0));
+}
+
 StreamClient::StreamClient(std::shared_ptr<Layer::BaseSock> _s,
     std::shared_ptr<Layer::SockHandler> _h) 
 	: StreamBase(_s, _h)
@@ -403,7 +409,6 @@ StreamServer::Csd::Csd()
  */
 void StreamServer::Summary() const
 {
-	logh->Log("[StreamServer::Summary]: outer socket status");
 	logh->Log("[StreamServer::Summary]:\tsockpool", sp->N());
 	logh->Log("[StreamServer::Summary]:\tdeque reverse size",
 	    dh->SizeReverse());
@@ -419,6 +424,7 @@ void StreamServer::HandleConn()
 {
 	logh->Log("[StreamServer::HandleConn]");
 	auto nsd=std::make_shared<Layer::BaseSock>(*sd);
+	nsd->SetSd(1, sd->GetSd(1));
 	sp->Set(sd->GetSd(1), nsd);
 	auto st=std::make_shared<Threads::SmartThread>([](void *_t)->void* {
 		auto _x=static_cast<StreamServer*>(_t);
@@ -441,10 +447,8 @@ void StreamServer::HandleConn()
 void StreamServer::Selector()
 {
 	auto tt=tp->Get(Threads::ThreadBase::Pself());
-	logh->Log("[StreamServer::Selector]: getting for", tt->Uid());
 	int fd=csd[tt->Uid()];
 	int dd=dh->FdDirect();
-	int tfd=fd;
 	auto tsd=sp->Get(fd);
 	logh->Log("[StreamServer::Selector]:", fd);
 	timeval ts;
@@ -460,17 +464,18 @@ void StreamServer::Selector()
 		    !tsd->GetError()->Get())
 			Recv(tsd, &fd);
 		if (FD_ISSET(dd, &rds) && !Check::DConf::GetReset() &&
-		    !sd->GetError()->Get())
+		    !tsd->GetError()->Get())
 			Send(tsd, &fd);
 	}
 	Check::CConf::Status(false);
-	logh->Log("[StreamServer::Selector]: closing connection", tfd);
+	logh->Log("[StreamServer::Selector]: closing connection",
+	    tsd->GetSd(1));
+	sp->Del(tsd->GetSd(1));
 	csd.Erase(tt->Uid());
-	sp->Del(tfd);
 	if (!((confh->Key()).empty() || (confh->Cert()).empty()))
-		sh->Close(tfd, tsd->GetSsl());
+		sh->Close(tsd->GetSd(1), tsd->GetSsl());
 	else
-		sh->Close(tfd);
+		sh->Close(tsd->GetSd(1));
 }
 
 /*
@@ -571,6 +576,15 @@ void StreamServer::Run()
 		Check::DConf::SetReset();
 }
 
+/*
+ * Clean cleanup
+ */
+void StreamServer::End()
+{
+	logh->Log("[StreamServer::End]: closing connection", sd->GetSd(0));
+	sh->Close(sd->GetSd(0));
+}
+
 StreamServer::StreamServer(std::shared_ptr<Layer::BaseSock> _s,
     std::shared_ptr<Layer::SockHandler> _h) 
 	: StreamBase(_s, _h),
@@ -589,7 +603,7 @@ StreamServer::~StreamServer()
 /*
  * Control Collector
  */
-void Control::Collector()
+void Control::Collector(std::string _a, std::string _6, std::string _4)
 {
 	char *buff=nullptr;
 	int n=mp->Alloc(buff);
@@ -599,7 +613,7 @@ void Control::Collector()
 		Check::DConf::SetReset();
 		return;
 	}
-	std::string tstr=COLLECT;
+	std::string tstr=_a + _6 + "," + _4 + "," + "0";
 	std::copy(tstr.begin(), tstr.begin()+tstr.size(), buff);
 	sd->SetBuff(buff);
 	sd->SetN(tstr.size());
@@ -624,15 +638,20 @@ void Control::Collector()
 			mp->Dealloc(buff);
 			return;
 		}
-		logh->Log("[Control::Collector]: IPs", buff);
-		std::regex ips("^(.+),(.+),(.+)$");
-		std::smatch mtch;
-		std::string tmp(buff);
-		if (std::regex_search(tmp, mtch, ips)) {
-			confh->C()->Config(Check::AC6, mtch[1]);
-			confh->C()->Config(Check::AC4, mtch[2]);
+		if (!_a.compare(COLLECT)) {
+			logh->Log("[Control::Collector]: IPs", buff);
+			std::regex ips("^(.+),(.+),(.+)$");
+			std::smatch mtch;
+			std::string tmp(buff);
+			if (std::regex_search(tmp, mtch, ips)) {
+				confh->C()->Config(Check::AC6, mtch[1]);
+				confh->C()->Config(Check::AC4, mtch[2]);
+			} else {
+				logh->Exc("[Control::Collector]: error");
+				Check::DConf::SetReset();
+			}
 		} else
-			logh->Exc("[Control::Collector]: error getting IPs");
+			logh->Log("[Control::Collect]: deallocated", tstr);
 	}
 }
 
@@ -642,9 +661,12 @@ void Control::Collector()
 std::shared_ptr<resource> Control::Pop()
 {
 	logh->Log("[Control::Pop]");
-	auto _r=resources.top();
-	resources.pop();
-	return _r;
+	std::shared_ptr<resource> res(nullptr);
+	if (!resources.empty()) {
+		res = resources.top();
+		resources.pop();
+	}
+	return res;
 }
 
 /*
@@ -660,32 +682,35 @@ void Control::Push(std::shared_ptr<resource> _r)
 /*
  * Control Process request
  */
-void Control::Process(char *_b, std::shared_ptr<resource> _r)
+void Control::Process(char *_b)
 {
 	std::string line=_b;
-	std::regex command("^_(\\S+)_$");
+	std::regex command("^(_\\S+_)(.+?),(.+?),(.+?)$");
 	std::smatch m;
+	std::shared_ptr<resource> res;
 	if (std::regex_search(line, m, command)) {
-		logh->Log("[Control::Selector]: match", m[0], m[1]);
-		if (m[1].compare(COLLECT))
-			_r = Pop();
-		else if (m[1].compare(DISMISS))
-			Push(_r);
-		else
+		logh->Log("[Control::Process]: match", m[0], m[1]);
+		if (!m[1].compare(COLLECT))
+			res = Pop();
+		else if (!m[1].compare(DISMISS)) {
+			res = std::make_shared<resource>
+			    (std::make_tuple(m[2], m[3], std::stoi(m[4])));
+			Push(res);
+		} else
 			logh->Exc("[Control::Process]: unknown command");
 	} else
-		logh->Exc("[Control::Selector]: no match", line);
+		logh->Exc("[Control::Process]: no match", line);
 	std::string tstr;
-	if (_r)
-		tstr = std::get<0>(*_r) + "," + std::get<1>(*_r) + "," +
-		    std::to_string(std::get<2>(*_r));
+	if (res)
+		tstr = std::get<0>(*res) + "," + std::get<1>(*res) + "," +
+		    std::to_string(std::get<2>(*res));
 	std::copy(tstr.begin(), tstr.begin()+tstr.size(), _b);
 	auto tt=tp->Get(Threads::ThreadBase::Pself());
 	int fd=csd[tt->Uid()];
 	auto tsd=sp->Get(fd);
 	tsd->SetN(tstr.size());
 	if (sh->Send(tsd)<=0 || tsd->GetError()->Get())
-		logh->Exc("[Control::Selector]: EOF");
+		logh->Exc("[Control::Process]: EOF");
 	logh->Log("[Control::Process]");
 }
 
@@ -702,31 +727,35 @@ void Control::Selector()
 		return;
 	}
 	auto tt=tp->Get(Threads::ThreadBase::Pself());
-	logh->Log("[Control::Selector]: getting for", tt->Uid());
 	int fd=csd[tt->Uid()];
 	auto tsd=sp->Get(fd);
 	tsd->SetBuff(buff);
 	logh->Log("[Control::Selector]:", fd);
 	timeval ts={confh->Guard()*AF/F, U};
 	fd_set rds;
-	int nread;
-	FD_ZERO(&rds);
-	FD_SET(fd, &rds);
-	select(fd+1, &rds, 0, 0, &ts);
-	if (FD_ISSET(fd, &rds) && !Check::DConf::GetReset() &&
-	    !tsd->GetError()->Get()) {
-		tsd->SetN(n);
-		if ((nread=sh->Recv(tsd))<=0 || tsd->GetError()->Get())
-			logh->Exc("[Control::Selector]: EOF");
-		else
-			Process(buff);
-	} else
-		logh->Exc("[Control::Selector]: timeout");
-	logh->Log("[Control::Selector]: closing connection", fd);
+	while (fd && !Check::DConf::GetReset() && !tsd->GetError()->Get()) {
+		int nread;
+		FD_ZERO(&rds);
+		FD_SET(fd, &rds);
+		select(fd+1, &rds, 0, 0, &ts);
+		if (FD_ISSET(fd, &rds) && !Check::DConf::GetReset() &&
+		    !tsd->GetError()->Get()) {
+			tsd->SetN(n);
+			if ((nread=sh->Recv(tsd))<=0 ||
+			    tsd->GetError()->Get()) {
+				logh->Exc("[Control::Selector]: EOF");
+				fd = 0;
+			} else
+				Process(buff);
+		}
+	}
+	logh->Log("[Control::Selector]: closing connection", tsd->GetSd(1));
+	sp->Del(tsd->GetSd(1));
+	csd.Erase(tt->Uid());
 	if (!((confh->Key()).empty() || (confh->Cert()).empty()))
-		sh->Close(fd, tsd->GetSsl());
+		sh->Close(tsd->GetSd(1), tsd->GetSsl());
 	else
-		sh->Close(fd);
+		sh->Close(tsd->GetSd(1));
 }
 
 /*
@@ -776,7 +805,7 @@ void Control::Init()
 {
 	logh->Log("[Control::Init]");
 	StreamClient::Init();
-	Collector();
+	Collector(std::string(COLLECT));
 }
 
 /*
@@ -790,11 +819,26 @@ void Control::Run()
 	StreamServer::Run();
 }
 
+/*
+ * Clean cleanup
+ */
+void Control::End()
+{
+	if (confh->Client())
+		Collector(std::string(DISMISS), confh->Ac6(), confh->Ac4());
+	logh->Log("[Control::End]: closing connection", sd->GetSd(0));
+	if (!((confh->Key()).empty() || (confh->Cert()).empty()) && 
+	    confh->Client())
+		sh->Close(sd->GetSd(0), sd->GetSsl());
+	else
+		sh->Close(sd->GetSd(0));
+}
+
 Control::Control(std::shared_ptr<Layer::BaseSock> _s,
     std::shared_ptr<Layer::SockHandler> _h)
 	: StreamBase(_s, _h),
-	  StreamServer(_s, _h),
 	  StreamClient(_s, _h),
+	  StreamServer(_s, _h),
 	  resources()
 {
 	logh->Log("[Control::Control]");

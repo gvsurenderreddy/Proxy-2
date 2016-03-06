@@ -122,6 +122,14 @@ void InnerSocket::Run()
 	}
 }
 
+/*
+ * Inner socket cleanup
+ */
+void InnerSocket::End()
+{
+	logh->Log("[InnerSocket::End]: doing nothing");
+}
+
 InnerSocket::InnerSocket()
 	: BaseSocket(),
 #ifdef __FreeBSD__
@@ -229,6 +237,15 @@ void OuterSocket::Run()
 {
 	logh->Log("[OuterSocket::Run]");
 	app->Run();
+}
+
+/*
+ * Outersocket cleanup
+ */
+void OuterSocket::End()
+{
+	logh->Log("[OuterSocket::End]");
+	app->End();
 }
 
 OuterSocket::OuterSocket()
