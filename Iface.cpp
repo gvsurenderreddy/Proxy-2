@@ -56,10 +56,10 @@ int Iface::MultiAf(char *_buff, bool _read) const
 	int lenght=0;
 	if (_read) {
 #ifdef __FreeBSD__
-		if (reinterpret_cast<Craft::ip*>(_buff+4)->ip_v == 6) {
+		if (reinterpret_cast<Craft::ip4*>(_buff+4)->ip_v == 6) {
 			auto ip6_h=reinterpret_cast<Craft::ip6*>(_buff+4);
 #else
-		if (reinterpret_cast<Craft::ip*>(_buff)->ip_v == 6) {
+		if (reinterpret_cast<Craft::ip4*>(_buff)->ip_v == 6) {
 			auto ip6_h=reinterpret_cast<Craft::ip6*>(_buff);
 #endif
 			lenght = ntohs(ip6_h->ip6_plen)+40;
@@ -67,9 +67,9 @@ int Iface::MultiAf(char *_buff, bool _read) const
 #ifdef DONOTDISABLEV4
 		} else {
 #ifdef __FreeBSD__
-			auto ip_h=reinterpret_cast<Craft::ip*>(_buff+4);
+			auto ip_h=reinterpret_cast<Craft::ip4*>(_buff+4);
 #else
-			auto ip_h=reinterpret_cast<Craft::ip*>(_buff);
+			auto ip_h=reinterpret_cast<Craft::ip4*>(_buff);
 #endif
 			lenght = ntohs(ip_h->ip_len);
 			logh->Log("[Iface::MultiAf]: moving", lenght);
@@ -79,7 +79,7 @@ int Iface::MultiAf(char *_buff, bool _read) const
 		memmove(_buff, _buff+4, lenght);
 #endif
 	} else {
-		if (reinterpret_cast<Craft::ip*>(_buff)->ip_v == 6) {
+		if (reinterpret_cast<Craft::ip4*>(_buff)->ip_v == 6) {
 			auto ip6_h=reinterpret_cast<Craft::ip6*>(_buff);
 			lenght = ntohs(ip6_h->ip6_plen)+40;
 			logh->Log("[Iface::MultiAf]: moving", lenght);
@@ -91,7 +91,7 @@ int Iface::MultiAf(char *_buff, bool _read) const
 #endif
 #ifdef DONOTDISABLEV4
 		} else {
-			auto ip_h=reinterpret_cast<Craft::ip*>(_buff);
+			auto ip_h=reinterpret_cast<Craft::ip4*>(_buff);
 			lenght = ntohs(ip_h->ip_len);
 			logh->Log("[Iface::MultiAf]: moving", lenght);
 #ifdef __FreeBSD__

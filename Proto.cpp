@@ -116,13 +116,13 @@ ProtoBase::~ProtoBase()
 int StreamBase::Lenght(char *_buff) const
 {
 	int lenght=0;
-	if (reinterpret_cast<Craft::ip*>(_buff)->ip_v == 6) {
+	if (reinterpret_cast<Craft::ip4*>(_buff)->ip_v == 6) {
 		auto ip6_h=reinterpret_cast<Craft::ip6*>(_buff);
 		lenght = ntohs(ip6_h->ip6_plen)+40;
 		logh->Log("[StreamBase::Lenght]: IPv6 of", lenght);
 #ifdef DONOTDISABLEV4
 	} else {
-		auto ip_h=reinterpret_cast<Craft::ip*>(_buff);
+		auto ip_h=reinterpret_cast<Craft::ip4*>(_buff);
 		lenght = ntohs(ip_h->ip_len);
 		logh->Log("[StreamBase::Lenght]: IPv4 of", lenght);
 #endif
