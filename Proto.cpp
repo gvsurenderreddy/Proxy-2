@@ -212,6 +212,8 @@ void StreamBase::Recv(std::shared_ptr<Layer::BaseSock> _fd, int *_flag)
 		dh->PushReverse(nread, buff);
 	} else {
 		logh->Log("[StreamBase::Recv]: EOF", *_flag);
+		if (confh->Client())
+			Check::DConf::SetReset();
 		mp->Dealloc(buff);
 		*_flag = 0;
 	}
@@ -230,6 +232,8 @@ void StreamBase::Send(std::shared_ptr<Layer::BaseSock> _fd, int *_flag)
 		_fd->SetN(Lenght(de->second));
 		if (sh->Send(_fd)<=0 || _fd->GetError()->Get()) {
 			logh->Exc("[StreamBase::Send]: EOF", *_flag);
+			if (confh->Client())
+				Check::DConf::SetReset();
 			*_flag = 0;
 		}
 		mp->Dealloc(de->second);
@@ -731,9 +735,10 @@ void Control::Selector()
 	auto tsd=sp->Get(fd);
 	tsd->SetBuff(buff);
 	logh->Log("[Control::Selector]:", fd);
-	timeval ts={confh->Guard()*AF/F, U};
+	timeval ts;
 	fd_set rds;
 	while (fd && !Check::DConf::GetReset() && !tsd->GetError()->Get()) {
+		ts = {confh->Guard()*AF/F, U};
 		int nread;
 		FD_ZERO(&rds);
 		FD_SET(fd, &rds);
